@@ -13,12 +13,7 @@
             font-family: 'Nunito', sans-serif;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
-        }
-
-        /* Ocultar barra de scroll pero permitir funcionalidad para aspecto de App Nativa */
-        ::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
+            background-color: #1e3a8a; /* Fondo base azul oscuro */
         }
 
         .glass-card {
@@ -34,7 +29,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Animaciones para los botones */
+        /* Animaciones */
         .option-btn {
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -43,19 +38,19 @@
         }
 
         .correct-answer {
-            background-color: #10B981 !important; /* Green */
+            background-color: #10B981 !important;
             color: white !important;
             border-color: #059669 !important;
         }
 
         .wrong-answer {
-            background-color: #EF4444 !important; /* Red */
+            background-color: #EF4444 !important;
             color: white !important;
             border-color: #DC2626 !important;
         }
 
         .fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
+            animation: fadeIn 0.3s ease-out forwards;
         }
 
         .slide-up {
@@ -68,7 +63,7 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
+            from { opacity: 0; transform: translateY(100%); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -76,7 +71,6 @@
             transition: width 0.1s linear, background-color 0.3s;
         }
 
-        /* Animación para el botón de compartir */
         @keyframes pulse-share {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.02); }
@@ -86,97 +80,95 @@
         }
     </style>
 </head>
-<!-- Se eliminó overflow-hidden del body para permitir scroll en caso de desbordamiento extremo y se configuró como columna flex -->
-<body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 min-h-[100dvh] text-white flex flex-col items-center justify-center sm:p-4">
+<body class="min-h-screen text-white flex flex-col items-center">
 
-    <!-- Contenedor principal de la app -->
-    <main class="w-full max-w-md h-[100dvh] sm:h-auto sm:min-h-[600px] sm:max-h-[95vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
+    <!-- Contenedor principal: Flujo natural, sin absolute insets ni alturas fijas raras -->
+    <main class="w-full max-w-lg min-h-screen flex flex-col relative bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
         
         <!-- PANTALLA DE INICIO -->
-        <!-- En vez de absolute, usa flex-1 y overflow-y-auto -->
-        <section id="screen-start" class="flex-1 flex flex-col p-6 z-10 fade-in overflow-y-auto">
-            <div class="my-auto flex flex-col items-center justify-center w-full py-4">
-                <div class="text-center mb-8">
-                    <div class="text-6xl mb-4">🌊</div>
-                    <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
-                    <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
-                    <p class="text-blue-100 text-base sm:text-lg leading-tight px-2">
-                        Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
-                    </p>
-                </div>
-                
-                <div class="glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
-                    <p class="mb-1">⏱️ Tes 30 segundos por palabra.</p>
-                    <p>🚀 Canto máis rápido, máis puntos.</p>
-                </div>
-
-                <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-4 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
-                    DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
-                </button>
+        <section id="screen-start" class="flex-1 flex flex-col justify-center items-center p-6 fade-in">
+            <div class="text-center mb-8 w-full">
+                <div class="text-7xl mb-4">🌊</div>
+                <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
+                <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
+                <p class="text-blue-100 text-lg leading-tight px-2">
+                    Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
+                </p>
             </div>
+            
+            <div class="glass-card rounded-2xl p-4 w-full mb-10 text-base text-center">
+                <p class="mb-2">⏱️ Tes <strong>30 segundos</strong> por palabra.</p>
+                <p>🚀 Canto máis rápido, máis puntos.</p>
+            </div>
+
+            <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-5 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
+                DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
+            </button>
         </section>
 
         <!-- PANTALLA DE JUEGO -->
-        <section id="screen-game" class="flex-1 flex flex-col hidden z-10 p-4 overflow-y-auto">
-            <div class="w-full max-w-full flex flex-col h-full">
-                <!-- Header -->
-                <header class="flex justify-between items-center mb-4 shrink-0">
-                    <div class="font-bold text-base sm:text-lg bg-black/30 px-4 py-1 rounded-full">
-                        <i class="fa-solid fa-star text-yellow-400"></i> <span id="score-display">0</span>
-                    </div>
-                    <div class="font-bold text-base sm:text-lg bg-black/30 px-4 py-1 rounded-full">
-                        <span id="question-count">1/5</span>
-                    </div>
-                </header>
-
-                <!-- Barra de tiempo y contador numérico -->
-                <div class="flex items-center mb-4 sm:mb-6 w-full shrink-0">
-                    <i class="fa-solid fa-clock text-blue-200 mr-3 text-xl"></i>
-                    <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
-                        <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
-                    </div>
-                    <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">30</div>
+        <section id="screen-game" class="flex-1 flex flex-col hidden p-4 sm:p-6 fade-in">
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-6 shrink-0 pt-2">
+                <div class="font-bold text-lg bg-black/30 px-4 py-2 rounded-full flex items-center">
+                    <i class="fa-solid fa-star text-yellow-400 mr-2"></i> <span id="score-display">0</span>
                 </div>
-
-                <!-- Pregunta -->
-                <div class="flex-1 flex flex-col justify-center items-center mb-4 min-h-[150px]">
-                    <p class="text-blue-200 text-sm sm:text-base font-bold uppercase tracking-widest mb-3 text-center">¿Qué significa?</p>
-                    <!-- Añadido break-words y ajuste de tamaño de texto para evitar cortes -->
-                    <h2 id="word-display" class="text-3xl sm:text-4xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-3 sm:py-4 px-3 rounded-2xl border border-white/10 break-words">
-                        FUCAR
-                    </h2>
+                <div class="font-bold text-lg bg-black/30 px-4 py-2 rounded-full">
+                    <span id="question-count">1/5</span>
                 </div>
+            </header>
 
-                <!-- Opciones -->
-                <div id="options-container" class="grid grid-cols-1 gap-3 sm:gap-4 pb-2 shrink-0">
-                    <!-- Se llenan por JS -->
+            <!-- Barra de tiempo -->
+            <div class="flex items-center mb-8 w-full shrink-0">
+                <i class="fa-solid fa-clock text-blue-200 mr-3 text-2xl"></i>
+                <div class="flex-1 bg-black/40 rounded-full h-5 p-1">
+                    <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
                 </div>
+                <div id="timer-text" class="ml-4 font-black text-2xl w-8 text-right text-white">30</div>
+            </div>
+
+            <!-- Pregunta -->
+            <div class="flex flex-col justify-center items-center mb-8 shrink-0">
+                <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-3 text-center">¿Qué significa?</p>
+                <!-- Ajustado a text-4xl y padding normal para que no se coma toda la pantalla -->
+                <h2 id="word-display" class="text-4xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 px-4 rounded-2xl border border-white/10 break-words">
+                    FUCAR
+                </h2>
+            </div>
+
+            <!-- Opciones: Fluyen naturalmente ocupando el espacio restante -->
+            <div id="options-container" class="flex-1 flex flex-col gap-3 pb-4 justify-end">
+                <!-- Se llenan por JS -->
             </div>
         </section>
 
         <!-- MODAL DE FEEDBACK (Correcto/Incorrecto) -->
-        <div id="feedback-modal" class="absolute inset-0 bg-black/60 z-50 hidden flex flex-col justify-end pt-16">
-            <!-- Quitamos el overflow de la tarjeta principal para que el icono no se corte -->
-            <div id="feedback-card" class="glass-modal w-full max-h-full rounded-t-3xl flex flex-col relative">
-                <!-- Icono centrado en el borde superior, posicionado de forma absoluta -->
-                <div class="absolute left-1/2 -translate-x-1/2 -top-10 sm:-top-12 z-10">
-                    <div id="feedback-icon" class="text-5xl sm:text-6xl bg-white rounded-full shadow-lg flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24">✅</div>
+        <!-- Cambiado a 'fixed' para cubrir la pantalla natural, y se separó el icono del contenedor con scroll -->
+        <div id="feedback-modal" class="fixed inset-0 bg-black/70 z-50 hidden flex-col justify-end items-center px-0 sm:px-4">
+            
+            <div class="w-full max-w-lg flex flex-col relative max-h-[90vh] slide-up">
+                
+                <!-- ICONO FLOTANTE: Separado del contenido que hace scroll para que NO se corte -->
+                <div class="flex justify-center relative z-20 -mb-12">
+                    <div id="feedback-icon" class="text-6xl bg-white rounded-full shadow-2xl flex items-center justify-center w-24 h-24 border-4 border-white">
+                        ✅
+                    </div>
                 </div>
                 
-                <!-- Contenido con scroll interno -->
-                <div class="overflow-y-auto p-5 sm:p-6 pt-12 sm:pt-14 flex flex-col items-center w-full">
-                    <h3 id="feedback-title" class="text-2xl sm:text-3xl font-black mb-1 text-center">¡Buah neno!</h3>
-                    <p id="feedback-points" class="font-bold text-green-600 mb-4 text-lg sm:text-xl">+850 pts</p>
+                <!-- TARJETA: Contiene el scroll interno y deja el icono en paz -->
+                <div id="feedback-card" class="glass-modal w-full rounded-t-3xl sm:rounded-3xl pt-16 pb-6 px-5 sm:px-8 flex flex-col items-center overflow-y-auto">
+                    <h3 id="feedback-title" class="text-3xl sm:text-4xl font-black mb-1 text-center">¡Buah neno!</h3>
+                    <p id="feedback-points" class="font-bold text-green-600 mb-6 text-xl sm:text-2xl">+850 pts</p>
                     
-                    <div class="w-full bg-blue-50 rounded-xl p-4 mb-4 sm:mb-6 border border-blue-100">
-                        <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
-                        <p id="feedback-meaning" class="font-bold text-base sm:text-lg mb-3 leading-tight">Robar algo con disimulo.</p>
+                    <div class="w-full bg-blue-50 rounded-xl p-5 mb-6 border border-blue-100 shadow-inner">
+                        <p class="text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
+                        <p id="feedback-meaning" class="font-bold text-lg sm:text-xl text-gray-800 mb-4 leading-tight">Robar algo con disimulo.</p>
                         
-                        <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
-                        <p id="feedback-example" class="italic text-gray-600 text-sm sm:text-base leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
+                        <p class="text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
+                        <p id="feedback-example" class="italic text-gray-700 text-base sm:text-lg leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
                     </div>
 
-                    <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-lg sm:text-xl py-3 sm:py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
+                    <button onclick="nextQuestion()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
                         Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
                     </button>
                 </div>
@@ -184,46 +176,44 @@
         </div>
 
         <!-- PANTALLA FINAL (VERSIÓN VIRAL) -->
-        <section id="screen-end" class="flex-1 bg-blue-900 flex flex-col p-4 sm:p-5 z-40 hidden overflow-y-auto">
-            <div class="my-auto flex flex-col items-center justify-center w-full py-4">
-                <div class="text-center w-full max-w-sm mb-4">
-                    <h2 class="text-3xl sm:text-4xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
+        <section id="screen-end" class="flex-1 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden fade-in">
+            <div class="text-center w-full max-w-sm mb-6">
+                <h2 class="text-4xl sm:text-5xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
+            </div>
+
+            <!-- Carnet Koruño (Ticket de resultados) -->
+            <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 sm:p-8 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
+                <!-- Marca de agua / Sello -->
+                <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-9xl">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div class="absolute top-0 right-0 bg-black text-yellow-400 text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-widest">
+                    CARNET OFICIAL
                 </div>
 
-                <!-- Carnet Koruño (Ticket de resultados) -->
-                <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-5 sm:p-6 shadow-2xl transform rotate-1 border-4 border-white mb-6 sm:mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
-                    <!-- Marca de agua / Sello -->
-                    <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-8xl sm:text-9xl">
-                        <i class="fa-solid fa-certificate"></i>
-                    </div>
-                    <div class="absolute top-0 right-0 bg-black text-yellow-400 text-[9px] sm:text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-widest">
-                        CARNET OFICIAL
-                    </div>
-
-                    <div class="relative z-10 text-center">
-                        <p class="text-blue-900 font-bold uppercase tracking-widest text-xs sm:text-sm mb-0">Puntuación Total:</p>
-                        <div class="text-5xl sm:text-6xl font-black text-blue-900 drop-shadow-sm mb-4" id="final-score">0</div>
-                        
-                        <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-white/60 shadow-inner">
-                            <p class="text-[10px] sm:text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
-                            <p class="text-xl sm:text-2xl font-black text-blue-900 leading-tight mb-2" id="final-rank">Turista Despistado</p>
-                            <div class="w-12 h-1 bg-blue-900/20 mx-auto rounded-full mb-2 sm:mb-3"></div>
-                            <p class="text-xs sm:text-sm text-blue-900 italic font-medium leading-snug" id="final-message">
-                                "Mellor volve por onde viñeches antes de que te ataquen as gaivotas."
-                            </p>
-                        </div>
+                <div class="relative z-10 text-center mt-2">
+                    <p class="text-blue-900 font-bold uppercase tracking-widest text-sm mb-1">Puntuación Total:</p>
+                    <div class="text-6xl font-black text-blue-900 drop-shadow-sm mb-6" id="final-score">0</div>
+                    
+                    <div class="bg-white/60 backdrop-blur-md rounded-2xl p-4 border border-white/60 shadow-sm">
+                        <p class="text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
+                        <p class="text-2xl font-black text-blue-900 leading-tight mb-3" id="final-rank">Turista Despistado</p>
+                        <div class="w-16 h-1 bg-blue-900/20 mx-auto rounded-full mb-3"></div>
+                        <p class="text-sm text-blue-900 italic font-medium leading-snug" id="final-message">
+                            "Mellor volve por onde viñeches antes de que te ataquen as gaivotas."
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Botones de Acción -->
-                <div class="w-full max-w-sm space-y-3 slide-up" style="animation-delay: 0.2s;">
-                    <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-lg sm:text-xl py-3 sm:py-4 rounded-2xl shadow-[0_4px_0_#1e3a8a] sm:shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[4px] sm:active:translate-y-[6px] transition-all flex justify-center items-center">
-                        <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
-                    </button>
-                    <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-base sm:text-lg py-3 sm:py-4 rounded-2xl active:scale-95 transition-all">
-                        XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
-                    </button>
-                </div>
+            <!-- Botones de Acción -->
+            <div class="w-full max-w-sm space-y-4 slide-up" style="animation-delay: 0.2s;">
+                <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-xl py-4 rounded-2xl shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[6px] transition-all flex justify-center items-center">
+                    <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
+                </button>
+                <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-lg py-4 rounded-2xl active:scale-95 transition-all">
+                    XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
+                </button>
             </div>
         </section>
 
@@ -449,17 +439,16 @@
         let currentIndex = 0;
         let score = 0;
         let timerInterval;
-        let timeLeft = 30; // Ajustado a 30
-        const TIME_LIMIT = 30; // Ajustado a 30
+        let timeLeft = 30;
+        const TIME_LIMIT = 30;
         let isAnswering = false;
-        let currentRankText = ""; // Guardar para compartir
+        let currentRankText = "";
 
         // ELEMENTOS DEL DOM
         const screenStart = document.getElementById('screen-start');
         const screenGame = document.getElementById('screen-game');
         const screenEnd = document.getElementById('screen-end');
         const modalFeedback = document.getElementById('feedback-modal');
-        const feedbackCard = document.getElementById('feedback-card');
         
         const wordDisplay = document.getElementById('word-display');
         const optionsContainer = document.getElementById('options-container');
@@ -470,7 +459,6 @@
 
         // INICIAR JUEGO
         function startGame() {
-            // Barajar preguntas y coger 5
             currentQuestions = [...db].sort(() => 0.5 - Math.random()).slice(0, 5);
             currentIndex = 0;
             score = 0;
@@ -479,7 +467,7 @@
             screenStart.classList.add('hidden');
             screenEnd.classList.add('hidden');
             screenGame.classList.remove('hidden');
-            screenGame.classList.add('fade-in');
+            screenGame.classList.add('flex'); // Cambiado para flex natural
             
             loadQuestion();
         }
@@ -493,7 +481,6 @@
             questionCountDisplay.innerText = `${currentIndex + 1}/${currentQuestions.length}`;
             wordDisplay.innerText = q.word;
 
-            // Preparar opciones barajadas
             let options = [...q.fakes, q.correct].map(opt => ({
                 text: opt,
                 isCorrect: opt === q.correct
@@ -502,9 +489,9 @@
             optionsContainer.innerHTML = '';
             options.forEach((opt, index) => {
                 const btn = document.createElement('button');
-                // Tamaños y paddings aumentados para mejor legibilidad y zona táctil en móvil
-                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 sm:p-5 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight text-base sm:text-lg';
-                btn.innerHTML = `<span class="inline-block w-6 text-blue-400">${String.fromCharCode(65 + index)}.</span> ${opt.text}`;
+                // Estilo ajustado: text-lg y flex nativo para la estructura de las opciones
+                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 rounded-xl shadow-md border-2 border-transparent text-left leading-tight text-base sm:text-lg min-h-[60px] flex items-center';
+                btn.innerHTML = `<span class="inline-block font-black text-blue-400 mr-3 w-4 shrink-0">${String.fromCharCode(65 + index)}.</span> <span>${opt.text}</span>`;
                 btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
                 optionsContainer.appendChild(btn);
             });
@@ -516,9 +503,8 @@
         function startTimer() {
             clearInterval(timerInterval);
             timerBar.style.width = '100%';
-            timerBar.style.backgroundColor = '#4ade80'; // verde
+            timerBar.style.backgroundColor = '#4ade80';
             
-            // Reiniciar estilos del texto del temporizador
             timerText.innerText = '30'; 
             timerText.classList.remove('text-yellow-400', 'text-red-400', 'animate-pulse');
             timerText.classList.add('text-white');
@@ -532,26 +518,23 @@
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     timeLeft = 0;
-                    handleAnswer(null, false, currentQuestions[currentIndex], true); // Tiempo agotado
+                    handleAnswer(null, false, currentQuestions[currentIndex], true);
                 }
 
-                // Actualizar UI
                 let percentage = (timeLeft / TIME_LIMIT) * 100;
                 timerBar.style.width = `${percentage}%`;
                 
-                // Mostrar segundos sin decimales, redondeando hacia arriba
                 timerText.innerText = Math.ceil(timeLeft);
 
-                // Cambiar colores según el tiempo
                 if (percentage < 40 && percentage >= 15) {
-                    timerBar.style.backgroundColor = '#facc15'; // amarillo
+                    timerBar.style.backgroundColor = '#facc15';
                     timerText.classList.replace('text-white', 'text-yellow-400');
                 }
                 if (percentage < 15) {
-                    timerBar.style.backgroundColor = '#f87171'; // rojo
+                    timerBar.style.backgroundColor = '#f87171';
                     timerText.classList.replace('text-yellow-400', 'text-red-400');
                     timerText.classList.replace('text-white', 'text-red-400');
-                    timerText.classList.add('animate-pulse'); // Efecto de latido final
+                    timerText.classList.add('animate-pulse');
                 }
             }, 50);
         }
@@ -562,7 +545,6 @@
             isAnswering = true;
             clearInterval(timerInterval);
 
-            // Calcular puntos
             let pointsWon = 0;
             if (isCorrect) {
                 pointsWon = Math.floor((timeLeft / TIME_LIMIT) * 900) + 100;
@@ -572,7 +554,6 @@
                 if(btnElement) btnElement.classList.add('correct-answer');
             } else {
                 if(btnElement) btnElement.classList.add('wrong-answer');
-                // Marcar la correcta
                 const buttons = optionsContainer.children;
                 for(let b of buttons) {
                     if (b.innerText.includes(questionData.correct)) {
@@ -581,7 +562,6 @@
                 }
             }
 
-            // Mostrar Feedback con un pequeño retraso para ver los colores
             setTimeout(() => {
                 showFeedback(isCorrect, isTimeout, pointsWon, questionData);
             }, 600);
@@ -590,15 +570,18 @@
         // MOSTRAR MODAL DE RESULTADO
         function showFeedback(isCorrect, isTimeout, points, questionData) {
             modalFeedback.classList.remove('hidden');
-            feedbackCard.classList.remove('slide-up');
-            void feedbackCard.offsetWidth; // trigger reflow
-            feedbackCard.classList.add('slide-up');
+            modalFeedback.classList.add('flex'); // Forzamos el display flex
+            
+            // Reflow para la animación de subida
+            const cardWrapper = modalFeedback.querySelector('.slide-up');
+            cardWrapper.classList.remove('slide-up');
+            void cardWrapper.offsetWidth;
+            cardWrapper.classList.add('slide-up');
 
             const icon = document.getElementById('feedback-icon');
             const title = document.getElementById('feedback-title');
             const pts = document.getElementById('feedback-points');
 
-            // Mensaxes aleatorias para darlle variedade
             const correctMsgs = ["¡Buah Neno!", "¡De locos!", "¡Canela en rama!", "¡Sobradísimo!", "¡Cremita!", "¡Niquelao!"];
             const wrongMsgs = ["Achantaste...", "¡Vaia julay!", "Manda truco...", "¡Parguelísima!", "Esvaraches...", "Vaia trapallada..."];
             const timeoutMsgs = ["Moi Lento!", "¡Espabila neno!", "Perdiches o 11!", "Tas durmindo?"];
@@ -606,17 +589,17 @@
             if (isCorrect) {
                 icon.innerHTML = '🔥';
                 title.innerText = correctMsgs[Math.floor(Math.random() * correctMsgs.length)];
-                title.className = 'text-2xl sm:text-3xl font-black mb-1 text-green-600 text-center';
+                title.className = 'text-3xl sm:text-4xl font-black mb-1 text-green-600 text-center';
                 pts.innerText = `+${points} pts`;
-                pts.className = 'font-bold text-green-500 mb-4 text-lg sm:text-xl';
+                pts.className = 'font-bold text-green-500 mb-6 text-xl sm:text-2xl';
             } else {
                 icon.innerHTML = isTimeout ? '⏱️' : '🤦‍♂️';
                 title.innerText = isTimeout 
                     ? timeoutMsgs[Math.floor(Math.random() * timeoutMsgs.length)] 
                     : wrongMsgs[Math.floor(Math.random() * wrongMsgs.length)];
-                title.className = 'text-2xl sm:text-3xl font-black mb-1 text-red-600 text-center';
+                title.className = 'text-3xl sm:text-4xl font-black mb-1 text-red-600 text-center';
                 pts.innerText = '0 pts';
-                pts.className = 'font-bold text-red-400 mb-4 text-lg sm:text-xl';
+                pts.className = 'font-bold text-red-400 mb-6 text-xl sm:text-2xl';
             }
 
             document.getElementById('feedback-meaning').innerText = questionData.correct;
@@ -626,6 +609,7 @@
         // SIGUIENTE PREGUNTA
         function nextQuestion() {
             modalFeedback.classList.add('hidden');
+            modalFeedback.classList.remove('flex');
             currentIndex++;
             if (currentIndex < currentQuestions.length) {
                 loadQuestion();
@@ -637,11 +621,12 @@
         // FINALIZAR JUEGO (PANTALLA VIRAL)
         function endGame() {
             screenGame.classList.add('hidden');
+            screenGame.classList.remove('flex');
             screenEnd.classList.remove('hidden');
+            screenEnd.classList.add('flex');
             
             document.getElementById('final-score').innerText = score;
             
-            // Determinar rango y textos graciosos
             let rank = "";
             let message = "";
             let maxScore = currentQuestions.length * 1000;
@@ -664,7 +649,7 @@
                 message = "Tes acento de Madrid e acabas de preguntar onde se colle o Metro. Achanta e marcha.";
             }
 
-            currentRankText = rank; // Para el botón de compartir
+            currentRankText = rank;
             document.getElementById('final-rank').innerText = rank;
             document.getElementById('final-message').innerText = `"${message}"`;
         }
@@ -674,13 +659,11 @@
             const btn = event.currentTarget;
             const originalHTML = btn.innerHTML;
             
-            // Emoji divertido basado en la puntuación
             let emojiStr = score > 2500 ? "😎" : "🤦‍♂️";
             const shareText = `¡He conseguido ${score} puntos en el Trivial Koruño! ${emojiStr}\n\nMi Carnet Oficial dice que soy: [ ${currentRankText} ]\n\n¿Eres capaz de superarme o vas a achantar? Xoga aquí:`;
-            const shareUrl = window.location.href; // O pon el link de tu web cuando la publiques
+            const shareUrl = window.location.href;
 
             if (navigator.share) {
-                // Móviles: Abre el menú nativo (WhatsApp, Twitter, IG...)
                 navigator.share({
                     title: 'Trivial Koruño',
                     text: shareText,
@@ -690,7 +673,6 @@
                     copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
                 });
             } else {
-                // PC: Copia al portapapeles
                 copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
             }
         }
@@ -703,7 +685,6 @@
             document.execCommand('copy');
             document.body.removeChild(dummy);
             
-            // Animación visual de éxito
             btnElement.classList.remove('btn-share-pulse', 'bg-blue-500', 'hover:bg-blue-400');
             btnElement.classList.add('bg-green-500');
             btnElement.innerHTML = '<i class="fa-solid fa-check mr-2"></i> ¡TEXTO COPIADO!';
@@ -717,6 +698,7 @@
 
         function resetGame() {
             screenEnd.classList.add('hidden');
+            screenEnd.classList.remove('flex');
             startGame();
         }
 

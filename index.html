@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trivial Koruño</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Animaciones para los botones */
+        .option-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-btn:active {
+            transform: scale(0.96);
+        }
+
+        .correct-answer {
+            background-color: #10B981 !important; /* Green */
+            color: white !important;
+            border-color: #059669 !important;
+        }
+
+        .wrong-answer {
+            background-color: #EF4444 !important; /* Red */
+            color: white !important;
+            border-color: #DC2626 !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .slide-up {
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #timer-bar {
+            transition: width 0.1s linear, background-color 0.3s;
+        }
+
+        /* Animación para el botón de compartir */
+        @keyframes pulse-share {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .btn-share-pulse {
+            animation: pulse-share 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 min-h-screen text-white overflow-hidden flex justify-center items-center">
+
+    <!-- Contenedor principal de la app (Mobile size) -->
+    <main class="w-full max-w-md h-[100dvh] sm:h-[85vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
+        
+        <!-- PANTALLA DE INICIO -->
+        <section id="screen-start" class="absolute inset-0 flex flex-col justify-center items-center p-6 z-10 fade-in">
+            <div class="text-center mb-8">
+                <div class="text-6xl mb-4">🌊</div>
+                <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
+                <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
+                <p class="text-blue-100 text-lg leading-tight px-4">
+                    Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
+                </p>
+            </div>
+            
+            <div class="glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
+                <p>⏱️ Tes 10 segundos por palabra.</p>
+                <p>🚀 Canto máis rápido, máis puntos.</p>
+            </div>
+
+            <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-4 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
+                DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
+            </button>
+        </section>
+
+        <!-- PANTALLA DE JUEGO -->
+        <section id="screen-game" class="absolute inset-0 flex flex-col hidden z-10 p-4">
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-4">
+                <div class="font-bold text-lg bg-black/30 px-4 py-1 rounded-full">
+                    <i class="fa-solid fa-star text-yellow-400"></i> <span id="score-display">0</span>
+                </div>
+                <div class="font-bold text-lg bg-black/30 px-4 py-1 rounded-full">
+                    <span id="question-count">1/5</span>
+                </div>
+            </header>
+
+            <!-- Barra de tiempo y contador numérico -->
+            <div class="flex items-center mb-6 w-full">
+                <i class="fa-solid fa-clock text-blue-200 mr-3 text-xl"></i>
+                <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
+                    <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
+                </div>
+                <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">10</div>
+            </div>
+
+            <!-- Pregunta -->
+            <div class="flex-1 flex flex-col justify-center items-center mb-6">
+                <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-2">¿Qué significa?</p>
+                <h2 id="word-display" class="text-5xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 rounded-2xl border border-white/10">
+                    FUCAR
+                </h2>
+            </div>
+
+            <!-- Opciones -->
+            <div id="options-container" class="grid grid-cols-1 gap-3 pb-4">
+                <!-- Se llenan por JS -->
+            </div>
+        </section>
+
+        <!-- MODAL DE FEEDBACK (Correcto/Incorrecto) -->
+        <div id="feedback-modal" class="absolute inset-0 bg-black/60 z-50 hidden flex flex-col justify-end">
+            <div id="feedback-card" class="glass-modal w-full rounded-t-3xl p-6 text-gray-800 flex flex-col items-center">
+                <div id="feedback-icon" class="text-6xl mb-2 -mt-12 bg-white rounded-full p-2 shadow-lg">✅</div>
+                <h3 id="feedback-title" class="text-3xl font-black mb-1">¡Buah neno!</h3>
+                <p id="feedback-points" class="font-bold text-green-600 mb-4">+850 pts</p>
+                
+                <div class="w-full bg-blue-50 rounded-xl p-4 mb-6 border border-blue-100">
+                    <p class="text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
+                    <p id="feedback-meaning" class="font-bold text-lg mb-3">Robar algo con disimulo.</p>
+                    
+                    <p class="text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
+                    <p id="feedback-example" class="italic text-gray-600">"Coidado cas carteiras que che fucan o móbil."</p>
+                </div>
+
+                <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform shadow-lg">
+                    Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA FINAL (NUEVA VERSIÓN VIRAL) -->
+        <section id="screen-end" class="absolute inset-0 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden overflow-y-auto">
+            <div class="text-center w-full max-w-sm mb-4 pt-4">
+                <h2 class="text-4xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
+            </div>
+
+            <!-- Carnet Koruño (Ticket de resultados) -->
+            <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
+                <!-- Marca de agua / Sello -->
+                <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-9xl">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div class="absolute top-0 right-0 bg-black text-yellow-400 text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-widest">
+                    CARNET OFICIAL
+                </div>
+
+                <div class="relative z-10 text-center">
+                    <p class="text-blue-900 font-bold uppercase tracking-widest text-sm mb-0">Puntuación Total:</p>
+                    <div class="text-6xl font-black text-blue-900 drop-shadow-sm mb-4" id="final-score">0</div>
+                    
+                    <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/60 shadow-inner">
+                        <p class="text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
+                        <p class="text-2xl font-black text-blue-900 leading-tight mb-2" id="final-rank">Turista Despistado</p>
+                        <div class="w-12 h-1 bg-blue-900/20 mx-auto rounded-full mb-3"></div>
+                        <p class="text-sm text-blue-900 italic font-medium leading-snug" id="final-message">
+                            "Mellor volve por onde viñeches antes de que te ataquen as gaivotas."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="w-full max-w-sm space-y-3 slide-up pb-6" style="animation-delay: 0.2s;">
+                <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-xl py-4 rounded-2xl shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[6px] transition-all flex justify-center items-center">
+                    <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
+                </button>
+                <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-lg py-4 rounded-2xl active:scale-95 transition-all">
+                    XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // BASE DE DATOS DE PREGUNTAS
+        const db = [
+            {
+                word: "FUCAR",
+                correct: "Robar algo con disimulo.",
+                fakes: [
+                    "Meter prisa a alguien de mala manera.",
+                    "Fallar estrepitosamente ligando en el Orzán.",
+                    "Dormirse en un bus urbano y aparecer en Novo Mesoiro."
+                ],
+                example: "Coidado polas noites cas carteiras, que che fucan o móbil nun despiste."
+            },
+            {
+                word: "KEL",
+                correct: "Casa, hogar.",
+                fakes: [
+                    "Una gaviota que te roba el bocadillo.",
+                    "El viento frío que entra por el Paseo Marítimo.",
+                    "Estar sin un euro a final de mes."
+                ],
+                example: "Macho, estou rebentado, voume para o kel que xa é tarde."
+            },
+            {
+                word: "ACHANTAR",
+                correct: "Callarse, rendirse o irse por miedo.",
+                fakes: [
+                    "Pisar un charco enorme sin querer.",
+                    "Comerse un pincho de tortilla de un solo bocado.",
+                    "Encontrar sitio para aparcar a la primera."
+                ],
+                example: "Viñeron os gorilas da discoteca e tivo que achantar."
+            },
+            {
+                word: "BULEBULE",
+                correct: "Persona muy inquieta o con mucha prisa.",
+                fakes: [
+                    "El bus que va al estadio de Riazor.",
+                    "Bebida mezcla de licor café y fanta.",
+                    "El ruido que hacen las olas al chocar."
+                ],
+                example: "Rapaz, non sexas bulebule e séntate un pouco a descansar."
+            },
+            {
+                word: "CHORBO / CHORBA",
+                correct: "Chico o chica, chaval.",
+                fakes: [
+                    "Un bocadillo de calamares muy grasiento.",
+                    "Lluvia fina que molesta pero no moja mucho.",
+                    "El vigilante de la ORA."
+                ],
+                example: "Ese chorbo de aí é o que traballa na panadería."
+            },
+            {
+                word: "NENO",
+                correct: "Vocativo comodín para llamar a literalmente cualquier persona.",
+                fakes: [
+                    "Un niño pequeño que aún no sabe andar.",
+                    "Un tipo de marisco que solo se da en Riazor.",
+                    "El conductor del bus de la línea 11."
+                ],
+                example: "¡Qué pasa neno! ¿Todo bien o qué?"
+            },
+            {
+                word: "ESCARALLAR",
+                correct: "Romper, estropear o dejar algo inservible.",
+                fakes: [
+                    "Caerse redondo por las escaleras de la Torre.",
+                    "Comer demasiadas pipas y atragantarse.",
+                    "Empezar a llover justo cuando tiendes la ropa."
+                ],
+                example: "Non toques iso que o vas escarallar, neno."
+            },
+            {
+                word: "PARGUELA",
+                correct: "Persona pringada, ingenua o que se deja engañar.",
+                fakes: [
+                    "Un tipo de paraguas que no aguanta el viento del Orzán.",
+                    "Especie de gaviota gigante que ataca en María Pita.",
+                    "El ayudante del cobrador del tranvía."
+                ],
+                example: "Non sexas parguela y dille que che devolva os cartos."
+            },
+            {
+                word: "KUNDA",
+                correct: "Coche, generalmente viejo o destartalado.",
+                fakes: [
+                    "Quedarse dormido en la playa del Matadero.",
+                    "Una fiesta clandestina en los bajos del estadio.",
+                    "El viento polar que corta la cara en invierno."
+                ],
+                example: "Mete as cousas na kunda que nos piramos á praia."
+            },
+            {
+                word: "SOBRARSE",
+                correct: "Pasarse de la raya, exagerar o ser muy chulo.",
+                fakes: [
+                    "Dejar comida en el plato de la abuela (pecado capital).",
+                    "Perderse por los pasillos gigantes de Marineda City.",
+                    "Pagar una ronda de Estrella Galicia para todo el bar."
+                ],
+                example: "Oíche neno, te estás sobrando un cacho, eh?"
+            },
+            {
+                word: "POTA",
+                correct: "Tener una suerte increíble e inmerecida.",
+                fakes: [
+                    "Un recipiente gigante para hacer pulpo á feira.",
+                    "Vomitar después de tres horas bebiendo en el Orzán.",
+                    "Quedarse atascado en el tráfico de Alfonso Molina."
+                ],
+                example: "¡Que pota tivo, aprobou sen chapar nada!"
+            },
+            {
+                word: "CHAPAR",
+                correct: "Estudiar muchísimo para un examen.",
+                fakes: [
+                    "Cerrar la puerta de un golpe cuando te enfadas.",
+                    "Cubrirse de crema solar hasta parecer un fantasma.",
+                    "Quedarse encerrado fuera de casa de madrugada."
+                ],
+                example: "Hoxe non podo quedar, teño que chapar para o exame de Física."
+            },
+            {
+                word: "TRAPALLADA",
+                correct: "Cosa mal hecha, inútil o de muy poco valor.",
+                fakes: [
+                    "Una empanada rellena de sobras de la semana.",
+                    "Un tropiezo aparatoso en la calle Real.",
+                    "La técnica secreta para no pagar en la zona azul."
+                ],
+                example: "Vaia trapallada de chollo che fixeron na casa."
+            },
+            {
+                word: "LERIA",
+                correct: "Conversación larga, excusa, rollo o cuento repetitivo.",
+                fakes: [
+                    "Una enfermedad transmitida por las gaviotas.",
+                    "Estar de resaca y no poder salir de la cama.",
+                    "Una gominola muy dura que venden en los kioskos."
+                ],
+                example: "Déixate de lerias e dime a verdade dunha vez."
+            },
+            {
+                word: "PENCAR",
+                correct: "Trabajar duro, tragar o apechugar con un problema.",
+                fakes: [
+                    "Darle un golpe al coche aparcando de oído en el centro.",
+                    "Comerse el último trozo de tortilla sin preguntar.",
+                    "Escapar de los revisores del bus urbano."
+                ],
+                example: "Se queres ir de vacacións, agora tócache pencar todo o mes."
+            },
+            {
+                word: "RILAR",
+                correct: "Temblar de miedo, rajarse o acobardarse.",
+                fakes: [
+                    "Frotarse las manos cuando hace mucho frío.",
+                    "Reírse a carcajadas hasta que duele la barriga.",
+                    "Robar el asiento libre en el bus a una señora mayor."
+                ],
+                example: "Íbamos saltar desde as rocas pero ao final rilamos."
+            },
+            {
+                word: "TOXO",
+                correct: "Persona muy borde, arisca o poco cariñosa.",
+                fakes: [
+                    "Un pincho moruno mal cocinado.",
+                    "La planta del pie cuando caminas descalzo por Riazor.",
+                    "Un instrumento de percusión de la banda municipal."
+                ],
+                example: "Non lle fagas caso, que é un toxo e sempre contesta mal."
+            },
+            {
+                word: "CHOTA",
+                correct: "Chivato, el que va contando los secretos de los demás.",
+                fakes: [
+                    "Un tipo de filete de ternera muy gordo.",
+                    "Volverse loco buscando aparcamiento en Monte Alto.",
+                    "La cabeza de alguien que no tiene ni un solo pelo."
+                ],
+                example: "Non lle contes nada a el que é un chota e entérase todo Dios."
+            },
+            {
+                word: "CHOSCO",
+                correct: "Alguien que ve muy mal o que está medio ciego.",
+                fakes: [
+                    "Un perrito caliente comprado de madrugada en un carrito.",
+                    "Quedarse dormido con los ojos abiertos.",
+                    "El golpe que te das contra una farola por mirar el móvil."
+                ],
+                example: "Poñe as gafas que estás chosco, neno."
+            },
+            {
+                word: "JULAY",
+                correct: "Persona pardilla o que se deja engañar fácilmente.",
+                fakes: [
+                    "El mes de Julio pronunciado en Spanglish.",
+                    "Una fiesta hawaiana en la playa de San Amaro.",
+                    "Un tipo de helado que se derrite al segundo."
+                ],
+                example: "Vendeulle a moto rota porque viu que era un julay."
+            },
+            {
+                word: "ESMORGA",
+                correct: "Juerga, fiesta descontrolada y borrachera.",
+                fakes: [
+                    "Un monstruo mitológico que vive en la Torre de Hércules.",
+                    "La niebla densa que cubre la ciudad de repente.",
+                    "Un desayuno grasiento para curar la resaca en un bar de barrio."
+                ],
+                example: "Vaia esmorga nos pillamos onte, aínda me doe a cabeza."
+            }
+        ];
+
+        // VARIABLES DE ESTADO
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let timerInterval;
+        let timeLeft = 10;
+        const TIME_LIMIT = 10;
+        let isAnswering = false;
+        let currentRankText = ""; // Guardar para compartir
+
+        // ELEMENTOS DEL DOM
+        const screenStart = document.getElementById('screen-start');
+        const screenGame = document.getElementById('screen-game');
+        const screenEnd = document.getElementById('screen-end');
+        const modalFeedback = document.getElementById('feedback-modal');
+        const feedbackCard = document.getElementById('feedback-card');
+        
+        const wordDisplay = document.getElementById('word-display');
+        const optionsContainer = document.getElementById('options-container');
+        const scoreDisplay = document.getElementById('score-display');
+        const questionCountDisplay = document.getElementById('question-count');
+        const timerBar = document.getElementById('timer-bar');
+        const timerText = document.getElementById('timer-text');
+
+        // INICIAR JUEGO
+        function startGame() {
+            // Barajar preguntas y coger 5
+            currentQuestions = [...db].sort(() => 0.5 - Math.random()).slice(0, 5);
+            currentIndex = 0;
+            score = 0;
+            updateScoreDisplay();
+            
+            screenStart.classList.add('hidden');
+            screenEnd.classList.add('hidden');
+            screenGame.classList.remove('hidden');
+            screenGame.classList.add('fade-in');
+            
+            loadQuestion();
+        }
+
+        // CARGAR PREGUNTA
+        function loadQuestion() {
+            isAnswering = false;
+            timeLeft = TIME_LIMIT;
+            const q = currentQuestions[currentIndex];
+            
+            questionCountDisplay.innerText = `${currentIndex + 1}/${currentQuestions.length}`;
+            wordDisplay.innerText = q.word;
+
+            // Preparar opciones barajadas
+            let options = [...q.fakes, q.correct].map(opt => ({
+                text: opt,
+                isCorrect: opt === q.correct
+            })).sort(() => 0.5 - Math.random());
+
+            optionsContainer.innerHTML = '';
+            options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight';
+                btn.innerHTML = `<span class="inline-block w-6 text-blue-400">${String.fromCharCode(65 + index)}.</span> ${opt.text}`;
+                btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
+                optionsContainer.appendChild(btn);
+            });
+
+            startTimer();
+        }
+
+        // TEMPORIZADOR
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerBar.style.width = '100%';
+            timerBar.style.backgroundColor = '#4ade80'; // verde
+            
+            // Reiniciar estilos del texto del temporizador
+            timerText.innerText = '10';
+            timerText.classList.remove('text-yellow-400', 'text-red-400', 'animate-pulse');
+            timerText.classList.add('text-white');
+
+            let startTime = Date.now();
+            
+            timerInterval = setInterval(() => {
+                let elapsedTime = (Date.now() - startTime) / 1000;
+                timeLeft = TIME_LIMIT - elapsedTime;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timeLeft = 0;
+                    handleAnswer(null, false, currentQuestions[currentIndex], true); // Tiempo agotado
+                }
+
+                // Actualizar UI
+                let percentage = (timeLeft / TIME_LIMIT) * 100;
+                timerBar.style.width = `${percentage}%`;
+                
+                // Mostrar segundos sin decimales, redondeando hacia arriba
+                timerText.innerText = Math.ceil(timeLeft);
+
+                // Cambiar colores según el tiempo
+                if (percentage < 40 && percentage >= 15) {
+                    timerBar.style.backgroundColor = '#facc15'; // amarillo
+                    timerText.classList.replace('text-white', 'text-yellow-400');
+                }
+                if (percentage < 15) {
+                    timerBar.style.backgroundColor = '#f87171'; // rojo
+                    timerText.classList.replace('text-yellow-400', 'text-red-400');
+                    timerText.classList.replace('text-white', 'text-red-400');
+                    timerText.classList.add('animate-pulse'); // Efecto de latido final
+                }
+            }, 50);
+        }
+
+        // MANEJAR RESPUESTA
+        function handleAnswer(btnElement, isCorrect, questionData, isTimeout = false) {
+            if (isAnswering) return;
+            isAnswering = true;
+            clearInterval(timerInterval);
+
+            // Calcular puntos
+            let pointsWon = 0;
+            if (isCorrect) {
+                // Minimo 100 pts por acertar, max 1000 dependiendo del tiempo
+                pointsWon = Math.floor((timeLeft / TIME_LIMIT) * 900) + 100;
+                score += pointsWon;
+                updateScoreDisplay();
+                
+                if(btnElement) btnElement.classList.add('correct-answer');
+            } else {
+                if(btnElement) btnElement.classList.add('wrong-answer');
+                // Marcar la correcta
+                const buttons = optionsContainer.children;
+                for(let b of buttons) {
+                    if (b.innerText.includes(questionData.correct)) {
+                        b.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
+                    }
+                }
+            }
+
+            // Mostrar Feedback con un pequeño retraso para ver los colores
+            setTimeout(() => {
+                showFeedback(isCorrect, isTimeout, pointsWon, questionData);
+            }, 600);
+        }
+
+        // MOSTRAR MODAL DE RESULTADO
+        function showFeedback(isCorrect, isTimeout, points, questionData) {
+            modalFeedback.classList.remove('hidden');
+            feedbackCard.classList.remove('slide-up');
+            void feedbackCard.offsetWidth; // trigger reflow
+            feedbackCard.classList.add('slide-up');
+
+            const icon = document.getElementById('feedback-icon');
+            const title = document.getElementById('feedback-title');
+            const pts = document.getElementById('feedback-points');
+
+            // Mensaxes aleatorias para darlle variedade
+            const correctMsgs = ["¡Buah Neno!", "¡De locos!", "¡Canela en rama!", "¡Sobradísimo!", "¡Cremita!", "¡Niquelao!"];
+            const wrongMsgs = ["Achantaste...", "¡Vaia julay!", "Manda truco...", "¡Parguelísima!", "Esvaraches...", "Vaia trapallada..."];
+            const timeoutMsgs = ["Moi Lento!", "¡Espabila neno!", "Perdiches o 11!", "Tas durmindo?"];
+
+            if (isCorrect) {
+                icon.innerHTML = '🔥';
+                title.innerText = correctMsgs[Math.floor(Math.random() * correctMsgs.length)];
+                title.className = 'text-3xl font-black mb-1 text-green-600';
+                pts.innerText = `+${points} pts`;
+                pts.className = 'font-bold text-green-500 mb-4 text-xl';
+            } else {
+                icon.innerHTML = isTimeout ? '⏱️' : '🤦‍♂️';
+                title.innerText = isTimeout 
+                    ? timeoutMsgs[Math.floor(Math.random() * timeoutMsgs.length)] 
+                    : wrongMsgs[Math.floor(Math.random() * wrongMsgs.length)];
+                title.className = 'text-3xl font-black mb-1 text-red-600';
+                pts.innerText = '0 pts';
+                pts.className = 'font-bold text-red-400 mb-4 text-xl';
+            }
+
+            document.getElementById('feedback-meaning').innerText = questionData.correct;
+            document.getElementById('feedback-example').innerText = `"${questionData.example}"`;
+        }
+
+        // SIGUIENTE PREGUNTA
+        function nextQuestion() {
+            modalFeedback.classList.add('hidden');
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        // FINALIZAR JUEGO (PANTALLA VIRAL)
+        function endGame() {
+            screenGame.classList.add('hidden');
+            screenEnd.classList.remove('hidden');
+            
+            document.getElementById('final-score').innerText = score;
+            
+            // Determinar rango y textos graciosos
+            let rank = "";
+            let message = "";
+            let maxScore = currentQuestions.length * 1000;
+            let percentage = score / maxScore;
+
+            if (percentage > 0.8) {
+                rank = "Alcalde de María Pita 👑";
+                message = "Buah neno, controlas a cidade mellor que Paco Vázquez. Eres lenda viva.";
+            } else if (percentage > 0.6) {
+                rank = "Neno/a de Riazor 🌊";
+                message = "Aprobado con nota. Sábeste mover polos cantóns sen parecer un guiri.";
+            } else if (percentage > 0.4) {
+                rank = "Habitual do Orzán 🍻";
+                message = "Non está mal, pero nótase que ás veces pides Estrella Galicia en vaso de tubo.";
+            } else if (percentage > 0.2) {
+                rank = "Turista Despistado 📸";
+                message = "Cres que a Torre de Hércules é un faro para espantar gaivotas. Toca chapar máis.";
+            } else {
+                rank = "Fodechinchos Infiltrado 🦀";
+                message = "Tes acento de Madrid e acabas de preguntar onde se colle o Metro. Achanta e marcha.";
+            }
+
+            currentRankText = rank; // Para el botón de compartir
+            document.getElementById('final-rank').innerText = rank;
+            document.getElementById('final-message').innerText = `"${message}"`;
+        }
+
+        // FUNCIÓN COMPARTIR NATIVA / PORTAPAPELES
+        function shareResult(event) {
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            
+            // Emoji divertido basado en la puntuación
+            let emojiStr = score > 2500 ? "😎" : "🤦‍♂️";
+            const shareText = `¡He conseguido ${score} puntos en el Trivial Koruño! ${emojiStr}\n\nMi Carnet Oficial dice que soy: [ ${currentRankText} ]\n\n¿Eres capaz de superarme o vas a achantar? Xoga aquí:`;
+            const shareUrl = window.location.href; // O pon el link de tu web cuando la publiques
+
+            if (navigator.share) {
+                // Móviles: Abre el menú nativo (WhatsApp, Twitter, IG...)
+                navigator.share({
+                    title: 'Trivial Koruño',
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => {
+                    console.log("Error al compartir", err);
+                    copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
+                });
+            } else {
+                // PC: Copia al portapapeles
+                copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
+            }
+        }
+
+        function copyToClipboardFallback(btnElement, text, originalHTML) {
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            // Animación visual de éxito
+            btnElement.classList.remove('btn-share-pulse', 'bg-blue-500', 'hover:bg-blue-400');
+            btnElement.classList.add('bg-green-500');
+            btnElement.innerHTML = '<i class="fa-solid fa-check mr-2"></i> ¡TEXTO COPIADO!';
+            
+            setTimeout(() => {
+                btnElement.classList.add('bg-blue-500', 'hover:bg-blue-400', 'btn-share-pulse');
+                btnElement.classList.remove('bg-green-500');
+                btnElement.innerHTML = originalHTML;
+            }, 2500);
+        }
+
+        function resetGame() {
+            screenEnd.classList.add('hidden');
+            startGame();
+        }
+
+        function updateScoreDisplay() {
+            scoreDisplay.innerText = score;
+        }
+
+    </script>
+</body>
+</html>

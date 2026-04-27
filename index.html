@@ -8,17 +8,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
         
         body {
             font-family: 'Nunito', sans-serif;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
+        }
+
+        /* Ocultar barra de scroll pero permitir funcionalidad para aspecto de App Nativa */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
         }
 
         .glass-card {
@@ -84,309 +84,139 @@
         .btn-share-pulse {
             animation: pulse-share 2s infinite;
         }
-
-        html {
-            min-height: 100%;
-        }
-
-        body {
-            margin: 0;
-            width: 100%;
-            min-height: 100dvh;
-            background: linear-gradient(135deg, #2563eb, #4338ca, #6b21a8);
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        #app-shell {
-            width: 100%;
-            max-width: 28rem;
-            height: 100vh;
-            height: 100dvh;
-        }
-
-        .app-screen {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-
-        .app-screen::-webkit-scrollbar {
-            display: none;
-        }
-
-        #screen-start,
-        #screen-end {
-            justify-content: safe center;
-        }
-
-        #screen-game {
-            min-height: 0;
-        }
-
-        .game-question {
-            min-height: 0;
-        }
-
-        .option-btn {
-            min-height: 56px;
-        }
-
-        .start-copy {
-            max-width: 20rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 640px) {
-            body {
-                align-items: stretch;
-            }
-
-            #app-shell {
-                width: 100vw;
-                max-width: none;
-                min-height: 100vh;
-                min-height: 100svh;
-            }
-
-            #screen-start,
-            #screen-game,
-            #screen-end {
-                padding-left: max(1rem, env(safe-area-inset-left));
-                padding-right: max(1rem, env(safe-area-inset-right));
-                padding-bottom: max(1rem, env(safe-area-inset-bottom));
-            }
-        }
-
-        @media (min-width: 640px) {
-            #app-shell {
-                height: 85vh;
-            }
-        }
-
-        @media (max-height: 700px) {
-            #screen-start,
-            #screen-end {
-                justify-content: flex-start;
-            }
-
-            #screen-start {
-                padding-top: 1rem;
-            }
-
-            #screen-start .start-logo {
-                font-size: 3rem;
-                margin-bottom: 0.75rem;
-            }
-
-            #screen-start h1 {
-                font-size: 2.75rem;
-            }
-
-            #screen-start h2 {
-                font-size: 1.35rem;
-                margin-bottom: 0.75rem;
-            }
-
-            #screen-start .start-copy {
-                font-size: 1rem;
-            }
-
-            #screen-start .rules-card {
-                margin-bottom: 1rem;
-            }
-
-            #screen-game {
-                padding-top: 0.875rem;
-            }
-
-            .game-header {
-                margin-bottom: 0.75rem;
-            }
-
-            .timer-row {
-                margin-bottom: 0.875rem;
-            }
-
-            .game-question {
-                justify-content: flex-start;
-                margin-bottom: 0.875rem;
-            }
-
-            #word-display {
-                font-size: clamp(2.25rem, 11vw, 3rem);
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-
-            #options-container {
-                gap: 0.625rem;
-                padding-bottom: 0.25rem;
-            }
-
-            .option-btn {
-                min-height: 48px;
-                padding: 0.75rem !important;
-                font-size: 0.95rem;
-            }
-
-            #feedback-card {
-                max-height: calc(100dvh - 1rem);
-                overflow-y: auto;
-                padding: 1.25rem;
-                padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
-            }
-
-            #feedback-icon {
-                font-size: 3rem;
-                margin-top: -2.25rem;
-            }
-
-            #feedback-title {
-                font-size: 1.6rem;
-            }
-
-            .result-ticket {
-                padding: 1.25rem;
-                margin-bottom: 1rem;
-            }
-
-            #final-score {
-                font-size: 3.5rem;
-            }
-
-            #final-rank {
-                font-size: 1.35rem;
-            }
-        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 min-h-screen text-white overflow-hidden flex justify-center items-center">
+<!-- Se eliminó overflow-hidden del body para permitir scroll en caso de desbordamiento extremo y se configuró como columna flex -->
+<body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 min-h-[100dvh] text-white flex flex-col items-center justify-center sm:p-4">
 
-    <!-- Contenedor principal de la app (Mobile size) -->
-    <main id="app-shell" class="w-full max-w-md h-[100dvh] sm:h-[85vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
+    <!-- Contenedor principal de la app -->
+    <main class="w-full max-w-md h-[100dvh] sm:h-auto sm:min-h-[600px] sm:max-h-[95vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
         
         <!-- PANTALLA DE INICIO -->
-        <section id="screen-start" class="app-screen absolute inset-0 flex flex-col justify-center items-center p-6 z-10 fade-in">
-            <div class="text-center mb-8">
-                <div class="start-logo text-6xl mb-4">🌊</div>
-                <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
-                <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
-                <p class="start-copy text-blue-100 text-lg leading-tight px-4">
-                    Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
-                </p>
-            </div>
-            
-            <div class="rules-card glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
-                <p>⏱️ Tes 30 segundos por palabra.</p>
-                <p>🚀 Canto máis rápido, máis puntos.</p>
-            </div>
+        <!-- En vez de absolute, usa flex-1 y overflow-y-auto -->
+        <section id="screen-start" class="flex-1 flex flex-col p-6 z-10 fade-in overflow-y-auto">
+            <div class="my-auto flex flex-col items-center justify-center w-full py-4">
+                <div class="text-center mb-8">
+                    <div class="text-6xl mb-4">🌊</div>
+                    <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
+                    <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
+                    <p class="text-blue-100 text-base sm:text-lg leading-tight px-2">
+                        Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
+                    </p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
+                    <p class="mb-1">⏱️ Tes 30 segundos por palabra.</p>
+                    <p>🚀 Canto máis rápido, máis puntos.</p>
+                </div>
 
-            <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-4 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
-                DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
-            </button>
+                <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-4 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
+                    DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
+                </button>
+            </div>
         </section>
 
         <!-- PANTALLA DE JUEGO -->
-        <section id="screen-game" class="app-screen absolute inset-0 flex flex-col hidden z-10 p-4">
-            <!-- Header -->
-            <header class="game-header flex justify-between items-center mb-4 shrink-0">
-                <div class="font-bold text-lg bg-black/30 px-4 py-1 rounded-full">
-                    <i class="fa-solid fa-star text-yellow-400"></i> <span id="score-display">0</span>
-                </div>
-                <div class="font-bold text-lg bg-black/30 px-4 py-1 rounded-full">
-                    <span id="question-count">1/5</span>
-                </div>
-            </header>
+        <section id="screen-game" class="flex-1 flex flex-col hidden z-10 p-4 overflow-y-auto">
+            <div class="w-full max-w-full flex flex-col h-full">
+                <!-- Header -->
+                <header class="flex justify-between items-center mb-4 shrink-0">
+                    <div class="font-bold text-base sm:text-lg bg-black/30 px-4 py-1 rounded-full">
+                        <i class="fa-solid fa-star text-yellow-400"></i> <span id="score-display">0</span>
+                    </div>
+                    <div class="font-bold text-base sm:text-lg bg-black/30 px-4 py-1 rounded-full">
+                        <span id="question-count">1/5</span>
+                    </div>
+                </header>
 
-            <!-- Barra de tiempo y contador numérico -->
-            <div class="timer-row flex items-center mb-6 w-full shrink-0">
-                <i class="fa-solid fa-clock text-blue-200 mr-3 text-xl"></i>
-                <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
-                    <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
+                <!-- Barra de tiempo y contador numérico -->
+                <div class="flex items-center mb-4 sm:mb-6 w-full shrink-0">
+                    <i class="fa-solid fa-clock text-blue-200 mr-3 text-xl"></i>
+                    <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
+                        <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
+                    </div>
+                    <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">30</div>
                 </div>
-                <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">30</div>
-            </div>
 
-            <!-- Pregunta -->
-            <div class="game-question flex-1 flex flex-col justify-center items-center mb-6">
-                <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-2">¿Qué significa?</p>
-                <h2 id="word-display" class="text-5xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 rounded-2xl border border-white/10">
-                    FUCAR
-                </h2>
-            </div>
+                <!-- Pregunta -->
+                <div class="flex-1 flex flex-col justify-center items-center mb-4 min-h-[150px]">
+                    <p class="text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-widest mb-2 text-center">¿Qué significa?</p>
+                    <!-- Añadido break-words y ajuste de tamaño de texto para evitar cortes -->
+                    <h2 id="word-display" class="text-4xl sm:text-5xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-4 sm:py-6 px-2 rounded-2xl border border-white/10 break-words">
+                        FUCAR
+                    </h2>
+                </div>
 
-            <!-- Opciones -->
-            <div id="options-container" class="grid grid-cols-1 gap-3 pb-4 shrink-0">
-                <!-- Se llenan por JS -->
+                <!-- Opciones -->
+                <div id="options-container" class="grid grid-cols-1 gap-2 sm:gap-3 pb-2 shrink-0">
+                    <!-- Se llenan por JS -->
+                </div>
             </div>
         </section>
 
         <!-- MODAL DE FEEDBACK (Correcto/Incorrecto) -->
         <div id="feedback-modal" class="absolute inset-0 bg-black/60 z-50 hidden flex flex-col justify-end">
-            <div id="feedback-card" class="glass-modal w-full rounded-t-3xl p-6 text-gray-800 flex flex-col items-center">
-                <div id="feedback-icon" class="text-6xl mb-2 -mt-12 bg-white rounded-full p-2 shadow-lg">✅</div>
-                <h3 id="feedback-title" class="text-3xl font-black mb-1">¡Buah neno!</h3>
-                <p id="feedback-points" class="font-bold text-green-600 mb-4">+850 pts</p>
+            <!-- Añadido max-h-[90%] y overflow-y-auto por si la pantalla es muy apaisada -->
+            <div id="feedback-card" class="glass-modal w-full max-h-[90%] overflow-y-auto rounded-t-3xl p-5 sm:p-6 text-gray-800 flex flex-col items-center">
+                <div id="feedback-icon" class="text-5xl sm:text-6xl mb-2 -mt-10 sm:-mt-12 bg-white rounded-full p-2 shadow-lg z-10 relative">✅</div>
+                <h3 id="feedback-title" class="text-2xl sm:text-3xl font-black mb-1 text-center">¡Buah neno!</h3>
+                <p id="feedback-points" class="font-bold text-green-600 mb-4 text-lg sm:text-xl">+850 pts</p>
                 
-                <div class="w-full bg-blue-50 rounded-xl p-4 mb-6 border border-blue-100">
-                    <p class="text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
-                    <p id="feedback-meaning" class="font-bold text-lg mb-3">Robar algo con disimulo.</p>
+                <div class="w-full bg-blue-50 rounded-xl p-4 mb-4 sm:mb-6 border border-blue-100">
+                    <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
+                    <p id="feedback-meaning" class="font-bold text-base sm:text-lg mb-3 leading-tight">Robar algo con disimulo.</p>
                     
-                    <p class="text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
-                    <p id="feedback-example" class="italic text-gray-600">"Coidado cas carteiras que che fucan o móbil."</p>
+                    <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
+                    <p id="feedback-example" class="italic text-gray-600 text-sm sm:text-base leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
                 </div>
 
-                <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform shadow-lg">
+                <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-lg sm:text-xl py-3 sm:py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
                     Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
                 </button>
             </div>
         </div>
 
-        <!-- PANTALLA FINAL (NUEVA VERSIÓN VIRAL) -->
-        <section id="screen-end" class="app-screen absolute inset-0 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden overflow-y-auto">
-            <div class="text-center w-full max-w-sm mb-4 pt-4">
-                <h2 class="text-4xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
-            </div>
-
-            <!-- Carnet Koruño (Ticket de resultados) -->
-            <div class="result-ticket w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
-                <!-- Marca de agua / Sello -->
-                <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-9xl">
-                    <i class="fa-solid fa-certificate"></i>
-                </div>
-                <div class="absolute top-0 right-0 bg-black text-yellow-400 text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-widest">
-                    CARNET OFICIAL
+        <!-- PANTALLA FINAL (VERSIÓN VIRAL) -->
+        <section id="screen-end" class="flex-1 bg-blue-900 flex flex-col p-4 sm:p-5 z-40 hidden overflow-y-auto">
+            <div class="my-auto flex flex-col items-center justify-center w-full py-4">
+                <div class="text-center w-full max-w-sm mb-4">
+                    <h2 class="text-3xl sm:text-4xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
                 </div>
 
-                <div class="relative z-10 text-center">
-                    <p class="text-blue-900 font-bold uppercase tracking-widest text-sm mb-0">Puntuación Total:</p>
-                    <div class="text-6xl font-black text-blue-900 drop-shadow-sm mb-4" id="final-score">0</div>
-                    
-                    <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/60 shadow-inner">
-                        <p class="text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
-                        <p class="text-2xl font-black text-blue-900 leading-tight mb-2" id="final-rank">Turista Despistado</p>
-                        <div class="w-12 h-1 bg-blue-900/20 mx-auto rounded-full mb-3"></div>
-                        <p class="text-sm text-blue-900 italic font-medium leading-snug" id="final-message">
-                            "Mellor volve por onde viñeches antes de que te ataquen as gaivotas."
-                        </p>
+                <!-- Carnet Koruño (Ticket de resultados) -->
+                <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-5 sm:p-6 shadow-2xl transform rotate-1 border-4 border-white mb-6 sm:mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
+                    <!-- Marca de agua / Sello -->
+                    <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-8xl sm:text-9xl">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div class="absolute top-0 right-0 bg-black text-yellow-400 text-[9px] sm:text-[10px] font-black px-3 py-1 rounded-bl-xl tracking-widest">
+                        CARNET OFICIAL
+                    </div>
+
+                    <div class="relative z-10 text-center">
+                        <p class="text-blue-900 font-bold uppercase tracking-widest text-xs sm:text-sm mb-0">Puntuación Total:</p>
+                        <div class="text-5xl sm:text-6xl font-black text-blue-900 drop-shadow-sm mb-4" id="final-score">0</div>
+                        
+                        <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-white/60 shadow-inner">
+                            <p class="text-[10px] sm:text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
+                            <p class="text-xl sm:text-2xl font-black text-blue-900 leading-tight mb-2" id="final-rank">Turista Despistado</p>
+                            <div class="w-12 h-1 bg-blue-900/20 mx-auto rounded-full mb-2 sm:mb-3"></div>
+                            <p class="text-xs sm:text-sm text-blue-900 italic font-medium leading-snug" id="final-message">
+                                "Mellor volve por onde viñeches antes de que te ataquen as gaivotas."
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Botones de Acción -->
-            <div class="w-full max-w-sm space-y-3 slide-up pb-6" style="animation-delay: 0.2s;">
-                <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-xl py-4 rounded-2xl shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[6px] transition-all flex justify-center items-center">
-                    <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
-                </button>
-                <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-lg py-4 rounded-2xl active:scale-95 transition-all">
-                    XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
-                </button>
+                <!-- Botones de Acción -->
+                <div class="w-full max-w-sm space-y-3 slide-up" style="animation-delay: 0.2s;">
+                    <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-lg sm:text-xl py-3 sm:py-4 rounded-2xl shadow-[0_4px_0_#1e3a8a] sm:shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[4px] sm:active:translate-y-[6px] transition-all flex justify-center items-center">
+                        <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
+                    </button>
+                    <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-base sm:text-lg py-3 sm:py-4 rounded-2xl active:scale-95 transition-all">
+                        XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -665,7 +495,8 @@
             optionsContainer.innerHTML = '';
             options.forEach((opt, index) => {
                 const btn = document.createElement('button');
-                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight';
+                // Tamaños y paddings ajustados para móvil
+                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-3 sm:p-4 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight text-sm sm:text-base';
                 btn.innerHTML = `<span class="inline-block w-6 text-blue-400">${String.fromCharCode(65 + index)}.</span> ${opt.text}`;
                 btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
                 optionsContainer.appendChild(btn);
@@ -681,7 +512,7 @@
             timerBar.style.backgroundColor = '#4ade80'; // verde
             
             // Reiniciar estilos del texto del temporizador
-            timerText.innerText = '30'; // Actualizado para reflejar 30s
+            timerText.innerText = '30'; 
             timerText.classList.remove('text-yellow-400', 'text-red-400', 'animate-pulse');
             timerText.classList.add('text-white');
 
@@ -727,8 +558,6 @@
             // Calcular puntos
             let pointsWon = 0;
             if (isCorrect) {
-                // Minimo 100 pts por acertar, max 1000 dependiendo del tiempo.
-                // Al ser 30s ahora, este cálculo se adapta automáticamente de manera proporcional.
                 pointsWon = Math.floor((timeLeft / TIME_LIMIT) * 900) + 100;
                 score += pointsWon;
                 updateScoreDisplay();
@@ -770,17 +599,17 @@
             if (isCorrect) {
                 icon.innerHTML = '🔥';
                 title.innerText = correctMsgs[Math.floor(Math.random() * correctMsgs.length)];
-                title.className = 'text-3xl font-black mb-1 text-green-600';
+                title.className = 'text-2xl sm:text-3xl font-black mb-1 text-green-600 text-center';
                 pts.innerText = `+${points} pts`;
-                pts.className = 'font-bold text-green-500 mb-4 text-xl';
+                pts.className = 'font-bold text-green-500 mb-4 text-lg sm:text-xl';
             } else {
                 icon.innerHTML = isTimeout ? '⏱️' : '🤦‍♂️';
                 title.innerText = isTimeout 
                     ? timeoutMsgs[Math.floor(Math.random() * timeoutMsgs.length)] 
                     : wrongMsgs[Math.floor(Math.random() * wrongMsgs.length)];
-                title.className = 'text-3xl font-black mb-1 text-red-600';
+                title.className = 'text-2xl sm:text-3xl font-black mb-1 text-red-600 text-center';
                 pts.innerText = '0 pts';
-                pts.className = 'font-bold text-red-400 mb-4 text-xl';
+                pts.className = 'font-bold text-red-400 mb-4 text-lg sm:text-xl';
             }
 
             document.getElementById('feedback-meaning').innerText = questionData.correct;

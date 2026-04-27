@@ -8,6 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
         
         body {
             font-family: 'Nunito', sans-serif;
@@ -78,25 +84,205 @@
         .btn-share-pulse {
             animation: pulse-share 2s infinite;
         }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100dvh;
+            background: linear-gradient(135deg, #2563eb, #4338ca, #6b21a8);
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        #app-shell {
+            width: 100%;
+            max-width: 28rem;
+            height: 100vh;
+            height: 100dvh;
+        }
+
+        .app-screen {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .app-screen::-webkit-scrollbar {
+            display: none;
+        }
+
+        #screen-start,
+        #screen-end {
+            justify-content: safe center;
+        }
+
+        #screen-game {
+            min-height: 0;
+        }
+
+        .game-question {
+            min-height: 0;
+        }
+
+        .option-btn {
+            min-height: 56px;
+        }
+
+        .start-copy {
+            max-width: 20rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                align-items: stretch;
+            }
+
+            #app-shell {
+                width: 100vw;
+                max-width: none;
+                min-height: 100vh;
+                min-height: 100svh;
+            }
+
+            #screen-start,
+            #screen-game,
+            #screen-end {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+                padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+        }
+
+        @media (min-width: 640px) {
+            #app-shell {
+                height: 85vh;
+            }
+        }
+
+        @media (max-height: 700px) {
+            #screen-start,
+            #screen-end {
+                justify-content: flex-start;
+            }
+
+            #screen-start {
+                padding-top: 1rem;
+            }
+
+            #screen-start .start-logo {
+                font-size: 3rem;
+                margin-bottom: 0.75rem;
+            }
+
+            #screen-start h1 {
+                font-size: 2.75rem;
+            }
+
+            #screen-start h2 {
+                font-size: 1.35rem;
+                margin-bottom: 0.75rem;
+            }
+
+            #screen-start .start-copy {
+                font-size: 1rem;
+            }
+
+            #screen-start .rules-card {
+                margin-bottom: 1rem;
+            }
+
+            #screen-game {
+                padding-top: 0.875rem;
+            }
+
+            .game-header {
+                margin-bottom: 0.75rem;
+            }
+
+            .timer-row {
+                margin-bottom: 0.875rem;
+            }
+
+            .game-question {
+                justify-content: flex-start;
+                margin-bottom: 0.875rem;
+            }
+
+            #word-display {
+                font-size: clamp(2.25rem, 11vw, 3rem);
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            #options-container {
+                gap: 0.625rem;
+                padding-bottom: 0.25rem;
+            }
+
+            .option-btn {
+                min-height: 48px;
+                padding: 0.75rem !important;
+                font-size: 0.95rem;
+            }
+
+            #feedback-card {
+                max-height: calc(100dvh - 1rem);
+                overflow-y: auto;
+                padding: 1.25rem;
+                padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+            }
+
+            #feedback-icon {
+                font-size: 3rem;
+                margin-top: -2.25rem;
+            }
+
+            #feedback-title {
+                font-size: 1.6rem;
+            }
+
+            .result-ticket {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            #final-score {
+                font-size: 3.5rem;
+            }
+
+            #final-rank {
+                font-size: 1.35rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 min-h-screen text-white overflow-hidden flex justify-center items-center">
 
     <!-- Contenedor principal de la app (Mobile size) -->
-    <main class="w-full max-w-md h-[100dvh] sm:h-[85vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
+    <main id="app-shell" class="w-full max-w-md h-[100dvh] sm:h-[85vh] sm:rounded-3xl sm:border-4 border-gray-900 relative flex flex-col overflow-hidden bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
         
         <!-- PANTALLA DE INICIO -->
-        <section id="screen-start" class="absolute inset-0 flex flex-col justify-center items-center p-6 z-10 fade-in">
+        <section id="screen-start" class="app-screen absolute inset-0 flex flex-col justify-center items-center p-6 z-10 fade-in">
             <div class="text-center mb-8">
-                <div class="text-6xl mb-4">🌊</div>
+                <div class="start-logo text-6xl mb-4">🌊</div>
                 <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
                 <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
-                <p class="text-blue-100 text-lg leading-tight px-4">
+                <p class="start-copy text-blue-100 text-lg leading-tight px-4">
                     Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
                 </p>
             </div>
             
-            <div class="glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
+            <div class="rules-card glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
                 <p>⏱️ Tes 30 segundos por palabra.</p>
                 <p>🚀 Canto máis rápido, máis puntos.</p>
             </div>
@@ -107,9 +293,9 @@
         </section>
 
         <!-- PANTALLA DE JUEGO -->
-        <section id="screen-game" class="absolute inset-0 flex flex-col hidden z-10 p-4">
+        <section id="screen-game" class="app-screen absolute inset-0 flex flex-col hidden z-10 p-4">
             <!-- Header -->
-            <header class="flex justify-between items-center mb-4">
+            <header class="game-header flex justify-between items-center mb-4 shrink-0">
                 <div class="font-bold text-lg bg-black/30 px-4 py-1 rounded-full">
                     <i class="fa-solid fa-star text-yellow-400"></i> <span id="score-display">0</span>
                 </div>
@@ -119,7 +305,7 @@
             </header>
 
             <!-- Barra de tiempo y contador numérico -->
-            <div class="flex items-center mb-6 w-full">
+            <div class="timer-row flex items-center mb-6 w-full shrink-0">
                 <i class="fa-solid fa-clock text-blue-200 mr-3 text-xl"></i>
                 <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
                     <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
@@ -128,7 +314,7 @@
             </div>
 
             <!-- Pregunta -->
-            <div class="flex-1 flex flex-col justify-center items-center mb-6">
+            <div class="game-question flex-1 flex flex-col justify-center items-center mb-6">
                 <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-2">¿Qué significa?</p>
                 <h2 id="word-display" class="text-5xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 rounded-2xl border border-white/10">
                     FUCAR
@@ -136,7 +322,7 @@
             </div>
 
             <!-- Opciones -->
-            <div id="options-container" class="grid grid-cols-1 gap-3 pb-4">
+            <div id="options-container" class="grid grid-cols-1 gap-3 pb-4 shrink-0">
                 <!-- Se llenan por JS -->
             </div>
         </section>
@@ -163,13 +349,13 @@
         </div>
 
         <!-- PANTALLA FINAL (NUEVA VERSIÓN VIRAL) -->
-        <section id="screen-end" class="absolute inset-0 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden overflow-y-auto">
+        <section id="screen-end" class="app-screen absolute inset-0 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden overflow-y-auto">
             <div class="text-center w-full max-w-sm mb-4 pt-4">
                 <h2 class="text-4xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
             </div>
 
             <!-- Carnet Koruño (Ticket de resultados) -->
-            <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
+            <div class="result-ticket w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
                 <!-- Marca de agua / Sello -->
                 <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-9xl">
                     <i class="fa-solid fa-certificate"></i>

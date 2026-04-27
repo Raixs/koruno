@@ -97,7 +97,7 @@
             </div>
             
             <div class="glass-card rounded-2xl p-4 w-full mb-8 text-sm text-center">
-                <p>⏱️ Tes 10 segundos por palabra.</p>
+                <p>⏱️ Tes 30 segundos por palabra.</p>
                 <p>🚀 Canto máis rápido, máis puntos.</p>
             </div>
 
@@ -124,7 +124,7 @@
                 <div class="flex-1 bg-black/40 rounded-full h-4 p-0.5">
                     <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
                 </div>
-                <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">10</div>
+                <div id="timer-text" class="ml-3 font-black text-2xl w-8 text-right text-white">30</div>
             </div>
 
             <!-- Pregunta -->
@@ -426,8 +426,8 @@
         let currentIndex = 0;
         let score = 0;
         let timerInterval;
-        let timeLeft = 10;
-        const TIME_LIMIT = 10;
+        let timeLeft = 30; // Ajustado a 30
+        const TIME_LIMIT = 30; // Ajustado a 30
         let isAnswering = false;
         let currentRankText = ""; // Guardar para compartir
 
@@ -495,7 +495,7 @@
             timerBar.style.backgroundColor = '#4ade80'; // verde
             
             // Reiniciar estilos del texto del temporizador
-            timerText.innerText = '10';
+            timerText.innerText = '30'; // Actualizado para reflejar 30s
             timerText.classList.remove('text-yellow-400', 'text-red-400', 'animate-pulse');
             timerText.classList.add('text-white');
 
@@ -541,7 +541,8 @@
             // Calcular puntos
             let pointsWon = 0;
             if (isCorrect) {
-                // Minimo 100 pts por acertar, max 1000 dependiendo del tiempo
+                // Minimo 100 pts por acertar, max 1000 dependiendo del tiempo.
+                // Al ser 30s ahora, este cálculo se adapta automáticamente de manera proporcional.
                 pointsWon = Math.floor((timeLeft / TIME_LIMIT) * 900) + 100;
                 score += pointsWon;
                 updateScoreDisplay();

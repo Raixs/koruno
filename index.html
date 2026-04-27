@@ -8,20 +8,38 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            background: #1e3a8a;
+        }
         
         body {
             font-family: 'Nunito', sans-serif;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             background-color: #1e3a8a; /* Fondo base azul oscuro */
+            margin: 0;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            line-height: 1.35;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            align-items: stretch;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.36);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.22);
         }
 
         .glass-modal {
@@ -32,9 +50,10 @@
         /* Animaciones */
         .option-btn {
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            touch-action: manipulation;
         }
         .option-btn:active {
-            transform: scale(0.96);
+            transform: translateY(2px) scale(0.99);
         }
 
         .correct-answer {
@@ -43,10 +62,20 @@
             border-color: #059669 !important;
         }
 
+        .correct-answer .answer-letter {
+            background: rgba(255, 255, 255, 0.24);
+            color: white;
+        }
+
         .wrong-answer {
             background-color: #EF4444 !important;
             color: white !important;
             border-color: #DC2626 !important;
+        }
+
+        .wrong-answer .answer-letter {
+            background: rgba(255, 255, 255, 0.24);
+            color: white;
         }
 
         .fade-in {
@@ -78,58 +107,224 @@
         .btn-share-pulse {
             animation: pulse-share 2s infinite;
         }
+
+        .app-shell {
+            max-width: none;
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding-left: max(1rem, env(safe-area-inset-left));
+            padding-right: max(1rem, env(safe-area-inset-right));
+            overflow-x: hidden;
+        }
+
+        .screen-content {
+            width: 100%;
+            max-width: min(100%, 32rem);
+            margin: 0 auto;
+        }
+
+        .mobile-readable {
+            color: rgba(239, 246, 255, 0.96);
+            text-shadow: 0 1px 1px rgba(15, 23, 42, 0.16);
+            overflow-wrap: anywhere;
+        }
+
+        .game-screen {
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: max(1rem, env(safe-area-inset-top)) 0 max(1rem, env(safe-area-inset-bottom));
+            gap: clamp(0.875rem, 2.6vh, 1.5rem);
+        }
+
+        .hud-pill {
+            min-height: 2.75rem;
+            background: rgba(15, 23, 42, 0.36);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+        }
+
+        .timer-track {
+            height: 1rem;
+            background: rgba(15, 23, 42, 0.36);
+        }
+
+        .question-label {
+            color: rgba(219, 234, 254, 0.92);
+            letter-spacing: 0.08em;
+        }
+
+        #word-display {
+            font-size: clamp(2.25rem, 11vw, 4rem);
+            line-height: 1;
+            overflow-wrap: anywhere;
+            text-wrap: balance;
+        }
+
+        #options-container {
+            gap: 0.75rem;
+            padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+        }
+
+        .answer-option {
+            min-height: 4.25rem;
+            padding: 0.95rem 1rem;
+            color: #10245d;
+            font-size: clamp(1.05rem, 4.3vw, 1.2rem);
+            line-height: 1.32;
+            border-radius: 1rem;
+            box-shadow: 0 8px 0 rgba(30, 58, 138, 0.16), 0 10px 22px rgba(15, 23, 42, 0.12);
+        }
+
+        .answer-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .answer-letter {
+            width: 2.1rem;
+            height: 2.1rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            margin-right: 0.75rem;
+            background: #dbeafe;
+            color: #2563eb;
+            font-weight: 900;
+            font-size: 0.95rem;
+        }
+
+        .answer-text {
+            display: block;
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .primary-action {
+            min-height: 3.75rem;
+            touch-action: manipulation;
+        }
+
+        #feedback-card {
+            padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+        }
+
+        @media (max-width: 420px) {
+            .app-shell {
+                max-width: none;
+                padding-left: 0.875rem;
+                padding-right: 0.875rem;
+            }
+
+            #screen-start {
+                padding-top: max(1rem, env(safe-area-inset-top));
+                padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+            }
+
+            .start-icon {
+                font-size: 4.75rem;
+            }
+
+            .start-title {
+                font-size: clamp(2.75rem, 13vw, 3.4rem);
+            }
+
+            .start-subtitle {
+                font-size: 1.35rem;
+            }
+
+            .start-copy {
+                font-size: 1.05rem;
+                line-height: 1.42;
+            }
+
+            .rules-card {
+                font-size: 1rem;
+                line-height: 1.35;
+            }
+
+            .game-header {
+                margin-bottom: 0;
+            }
+
+            .timer-row {
+                margin-bottom: 0;
+            }
+
+            .question-card {
+                margin-bottom: 0.25rem;
+            }
+        }
+
+        @media (max-height: 740px) {
+            .game-screen {
+                gap: 0.75rem;
+            }
+
+            #word-display {
+                padding-top: 1.05rem;
+                padding-bottom: 1.05rem;
+            }
+
+            .answer-option {
+                min-height: 3.75rem;
+                padding-top: 0.8rem;
+                padding-bottom: 0.8rem;
+            }
+        }
     </style>
 </head>
-<body class="min-h-screen text-white flex flex-col items-center">
+<body class="min-h-screen text-white">
 
     <!-- Contenedor principal: Flujo natural, sin absolute insets ni alturas fijas raras -->
-    <main class="w-full max-w-lg min-h-screen flex flex-col relative bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
+    <main class="app-shell w-full min-h-screen flex flex-col relative bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
         
         <!-- PANTALLA DE INICIO -->
-        <section id="screen-start" class="flex-1 flex flex-col justify-center items-center p-6 fade-in">
-            <div class="text-center mb-8 w-full">
-                <div class="text-7xl mb-4">🌊</div>
-                <h1 class="text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
-                <h2 class="text-2xl font-bold mb-4">Adiviña o Achanta</h2>
-                <p class="text-blue-100 text-lg leading-tight px-2">
+        <section id="screen-start" class="flex-1 flex flex-col justify-center items-center py-6 fade-in">
+            <div class="screen-content text-center mb-8">
+                <div class="start-icon text-7xl mb-4">🌊</div>
+                <h1 class="start-title text-5xl font-black mb-2 tracking-tight text-yellow-300 drop-shadow-lg">KORUÑO</h1>
+                <h2 class="start-subtitle text-2xl font-bold mb-4">Adiviña o Achanta</h2>
+                <p class="start-copy mobile-readable text-lg px-2 max-w-sm mx-auto">
                     Demostra se es un auténtico neno da Coruña ou se acabas de baixar do bus de Madrid.
                 </p>
             </div>
             
-            <div class="glass-card rounded-2xl p-4 w-full mb-10 text-base text-center">
+            <div class="rules-card screen-content glass-card rounded-2xl p-4 mb-8 text-base text-center mobile-readable">
                 <p class="mb-2">⏱️ Tes <strong>30 segundos</strong> por palabra.</p>
                 <p>🚀 Canto máis rápido, máis puntos.</p>
             </div>
 
-            <button onclick="startGame()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-black text-2xl py-5 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
+            <button onclick="startGame()" class="primary-action screen-content w-full bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black text-2xl py-5 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
                 DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
             </button>
         </section>
 
         <!-- PANTALLA DE JUEGO -->
-        <section id="screen-game" class="flex-1 flex flex-col hidden p-4 sm:p-6 fade-in">
+        <section id="screen-game" class="game-screen flex-1 flex flex-col hidden fade-in">
             <!-- Header -->
-            <header class="flex justify-between items-center mb-6 shrink-0 pt-2">
-                <div class="font-bold text-lg bg-black/30 px-4 py-2 rounded-full flex items-center">
+            <header class="game-header screen-content flex justify-between items-center shrink-0">
+                <div class="hud-pill font-black text-lg px-4 py-2 rounded-full flex items-center">
                     <i class="fa-solid fa-star text-yellow-400 mr-2"></i> <span id="score-display">0</span>
                 </div>
-                <div class="font-bold text-lg bg-black/30 px-4 py-2 rounded-full">
+                <div class="hud-pill font-black text-lg px-4 py-2 rounded-full">
                     <span id="question-count">1/5</span>
                 </div>
             </header>
 
             <!-- Barra de tiempo -->
-            <div class="flex items-center mb-8 w-full shrink-0">
-                <i class="fa-solid fa-clock text-blue-200 mr-3 text-2xl"></i>
-                <div class="flex-1 bg-black/40 rounded-full h-5 p-1">
+            <div class="timer-row screen-content flex items-center w-full shrink-0">
+                <i class="fa-solid fa-clock text-blue-100 mr-3 text-2xl"></i>
+                <div class="timer-track flex-1 rounded-full p-0.5">
                     <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
                 </div>
                 <div id="timer-text" class="ml-4 font-black text-2xl w-8 text-right text-white">30</div>
             </div>
 
             <!-- Pregunta -->
-            <div class="flex flex-col justify-center items-center mb-8 shrink-0">
-                <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-3 text-center">¿Qué significa?</p>
+            <div class="question-card screen-content flex flex-col justify-center items-center shrink-0">
+                <p class="question-label text-sm font-black uppercase mb-3 text-center">¿Qué significa?</p>
                 <!-- Ajustado a text-4xl y padding normal para que no se coma toda la pantalla -->
                 <h2 id="word-display" class="text-4xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 px-4 rounded-2xl border border-white/10 break-words">
                     FUCAR
@@ -137,7 +332,7 @@
             </div>
 
             <!-- Opciones: Fluyen naturalmente ocupando el espacio restante -->
-            <div id="options-container" class="flex-1 flex flex-col gap-3 pb-4 justify-end">
+            <div id="options-container" class="screen-content flex-1 flex flex-col justify-start">
                 <!-- Se llenan por JS -->
             </div>
         </section>
@@ -463,6 +658,7 @@
             currentIndex = 0;
             score = 0;
             updateScoreDisplay();
+            window.scrollTo(0, 0);
             
             screenStart.classList.add('hidden');
             screenEnd.classList.add('hidden');
@@ -477,6 +673,7 @@
             isAnswering = false;
             timeLeft = TIME_LIMIT;
             const q = currentQuestions[currentIndex];
+            window.scrollTo(0, 0);
             
             questionCountDisplay.innerText = `${currentIndex + 1}/${currentQuestions.length}`;
             wordDisplay.innerText = q.word;
@@ -489,9 +686,9 @@
             optionsContainer.innerHTML = '';
             options.forEach((opt, index) => {
                 const btn = document.createElement('button');
-                // Estilo ajustado: text-lg y flex nativo para la estructura de las opciones
-                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 rounded-xl shadow-md border-2 border-transparent text-left leading-tight text-base sm:text-lg min-h-[60px] flex items-center';
-                btn.innerHTML = `<span class="inline-block font-black text-blue-400 mr-3 w-4 shrink-0">${String.fromCharCode(65 + index)}.</span> <span>${opt.text}</span>`;
+                btn.type = 'button';
+                btn.className = 'option-btn answer-option w-full bg-white font-bold border-2 border-transparent text-left flex items-center';
+                btn.innerHTML = `<span class="answer-letter">${String.fromCharCode(65 + index)}</span><span class="answer-text">${opt.text}</span>`;
                 btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
                 optionsContainer.appendChild(btn);
             });
@@ -544,6 +741,9 @@
             if (isAnswering) return;
             isAnswering = true;
             clearInterval(timerInterval);
+            [...optionsContainer.children].forEach(button => {
+                button.disabled = true;
+            });
 
             let pointsWon = 0;
             if (isCorrect) {
@@ -571,6 +771,7 @@
         function showFeedback(isCorrect, isTimeout, points, questionData) {
             modalFeedback.classList.remove('hidden');
             modalFeedback.classList.add('flex'); // Forzamos el display flex
+            document.body.style.overflow = 'hidden';
             
             // Reflow para la animación de subida
             const cardWrapper = modalFeedback.querySelector('.slide-up');
@@ -610,6 +811,7 @@
         function nextQuestion() {
             modalFeedback.classList.add('hidden');
             modalFeedback.classList.remove('flex');
+            document.body.style.overflow = '';
             currentIndex++;
             if (currentIndex < currentQuestions.length) {
                 loadQuestion();
@@ -624,6 +826,7 @@
             screenGame.classList.remove('flex');
             screenEnd.classList.remove('hidden');
             screenEnd.classList.add('flex');
+            window.scrollTo(0, 0);
             
             document.getElementById('final-score').innerText = score;
             
@@ -699,6 +902,7 @@
         function resetGame() {
             screenEnd.classList.add('hidden');
             screenEnd.classList.remove('flex');
+            document.body.style.overflow = '';
             startGame();
         }
 

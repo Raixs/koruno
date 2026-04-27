@@ -140,39 +140,46 @@
 
                 <!-- Pregunta -->
                 <div class="flex-1 flex flex-col justify-center items-center mb-4 min-h-[150px]">
-                    <p class="text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-widest mb-2 text-center">¿Qué significa?</p>
+                    <p class="text-blue-200 text-sm sm:text-base font-bold uppercase tracking-widest mb-3 text-center">¿Qué significa?</p>
                     <!-- Añadido break-words y ajuste de tamaño de texto para evitar cortes -->
-                    <h2 id="word-display" class="text-4xl sm:text-5xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-4 sm:py-6 px-2 rounded-2xl border border-white/10 break-words">
+                    <h2 id="word-display" class="text-3xl sm:text-4xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-3 sm:py-4 px-3 rounded-2xl border border-white/10 break-words">
                         FUCAR
                     </h2>
                 </div>
 
                 <!-- Opciones -->
-                <div id="options-container" class="grid grid-cols-1 gap-2 sm:gap-3 pb-2 shrink-0">
+                <div id="options-container" class="grid grid-cols-1 gap-3 sm:gap-4 pb-2 shrink-0">
                     <!-- Se llenan por JS -->
                 </div>
             </div>
         </section>
 
         <!-- MODAL DE FEEDBACK (Correcto/Incorrecto) -->
-        <div id="feedback-modal" class="absolute inset-0 bg-black/60 z-50 hidden flex flex-col justify-end">
-            <!-- Añadido max-h-[90%] y overflow-y-auto por si la pantalla es muy apaisada -->
-            <div id="feedback-card" class="glass-modal w-full max-h-[90%] overflow-y-auto rounded-t-3xl p-5 sm:p-6 text-gray-800 flex flex-col items-center">
-                <div id="feedback-icon" class="text-5xl sm:text-6xl mb-2 -mt-10 sm:-mt-12 bg-white rounded-full p-2 shadow-lg z-10 relative">✅</div>
-                <h3 id="feedback-title" class="text-2xl sm:text-3xl font-black mb-1 text-center">¡Buah neno!</h3>
-                <p id="feedback-points" class="font-bold text-green-600 mb-4 text-lg sm:text-xl">+850 pts</p>
-                
-                <div class="w-full bg-blue-50 rounded-xl p-4 mb-4 sm:mb-6 border border-blue-100">
-                    <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
-                    <p id="feedback-meaning" class="font-bold text-base sm:text-lg mb-3 leading-tight">Robar algo con disimulo.</p>
-                    
-                    <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
-                    <p id="feedback-example" class="italic text-gray-600 text-sm sm:text-base leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
+        <div id="feedback-modal" class="absolute inset-0 bg-black/60 z-50 hidden flex flex-col justify-end pt-16">
+            <!-- Quitamos el overflow de la tarjeta principal para que el icono no se corte -->
+            <div id="feedback-card" class="glass-modal w-full max-h-full rounded-t-3xl flex flex-col relative">
+                <!-- Icono centrado en el borde superior, posicionado de forma absoluta -->
+                <div class="absolute left-1/2 -translate-x-1/2 -top-10 sm:-top-12 z-10">
+                    <div id="feedback-icon" class="text-5xl sm:text-6xl bg-white rounded-full shadow-lg flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24">✅</div>
                 </div>
+                
+                <!-- Contenido con scroll interno -->
+                <div class="overflow-y-auto p-5 sm:p-6 pt-12 sm:pt-14 flex flex-col items-center w-full">
+                    <h3 id="feedback-title" class="text-2xl sm:text-3xl font-black mb-1 text-center">¡Buah neno!</h3>
+                    <p id="feedback-points" class="font-bold text-green-600 mb-4 text-lg sm:text-xl">+850 pts</p>
+                    
+                    <div class="w-full bg-blue-50 rounded-xl p-4 mb-4 sm:mb-6 border border-blue-100">
+                        <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Significado real:</p>
+                        <p id="feedback-meaning" class="font-bold text-base sm:text-lg mb-3 leading-tight">Robar algo con disimulo.</p>
+                        
+                        <p class="text-[10px] sm:text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
+                        <p id="feedback-example" class="italic text-gray-600 text-sm sm:text-base leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
+                    </div>
 
-                <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-lg sm:text-xl py-3 sm:py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
-                    Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
-                </button>
+                    <button onclick="nextQuestion()" class="w-full bg-blue-600 text-white font-bold text-lg sm:text-xl py-3 sm:py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
+                        Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -495,8 +502,8 @@
             optionsContainer.innerHTML = '';
             options.forEach((opt, index) => {
                 const btn = document.createElement('button');
-                // Tamaños y paddings ajustados para móvil
-                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-3 sm:p-4 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight text-sm sm:text-base';
+                // Tamaños y paddings aumentados para mejor legibilidad y zona táctil en móvil
+                btn.className = 'option-btn w-full bg-white text-blue-900 font-bold p-4 sm:p-5 rounded-xl shadow-sm border-2 border-transparent text-left leading-tight text-base sm:text-lg';
                 btn.innerHTML = `<span class="inline-block w-6 text-blue-400">${String.fromCharCode(65 + index)}.</span> ${opt.text}`;
                 btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
                 optionsContainer.appendChild(btn);

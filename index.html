@@ -23,281 +23,12 @@
     <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#2563eb">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            min-height: 100%;
-            background: #1e3a8a;
-        }
-        
-        body {
-            font-family: 'Nunito', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            background-color: #1e3a8a; /* Fondo base azul oscuro */
-            margin: 0;
-            min-height: 100dvh;
-            overflow-x: hidden;
-            line-height: 1.35;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            align-items: stretch;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.36);
-            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.22);
-        }
-
-        .glass-modal {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Animaciones */
-        .option-btn {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            touch-action: manipulation;
-        }
-        .option-btn:active {
-            transform: translateY(2px) scale(0.99);
-        }
-
-        .correct-answer {
-            background-color: #10B981 !important;
-            color: white !important;
-            border-color: #059669 !important;
-        }
-
-        .correct-answer .answer-letter {
-            background: rgba(255, 255, 255, 0.24);
-            color: white;
-        }
-
-        .wrong-answer {
-            background-color: #EF4444 !important;
-            color: white !important;
-            border-color: #DC2626 !important;
-        }
-
-        .wrong-answer .answer-letter {
-            background: rgba(255, 255, 255, 0.24);
-            color: white;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-
-        .slide-up {
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(100%); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        #timer-bar {
-            transition: width 0.1s linear, background-color 0.3s;
-        }
-
-        @keyframes pulse-share {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-        .btn-share-pulse {
-            animation: pulse-share 2s infinite;
-        }
-
-        .app-shell {
-            max-width: none;
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding-left: max(1rem, env(safe-area-inset-left));
-            padding-right: max(1rem, env(safe-area-inset-right));
-            overflow-x: hidden;
-        }
-
-        .screen-content {
-            width: 100%;
-            max-width: min(100%, 32rem);
-            margin: 0 auto;
-        }
-
-        .mobile-readable {
-            color: rgba(239, 246, 255, 0.96);
-            text-shadow: 0 1px 1px rgba(15, 23, 42, 0.16);
-            overflow-wrap: anywhere;
-        }
-
-        .game-screen {
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding: max(1rem, env(safe-area-inset-top)) 0 max(1rem, env(safe-area-inset-bottom));
-            gap: clamp(0.875rem, 2.6vh, 1.5rem);
-        }
-
-        .hud-pill {
-            min-height: 2.75rem;
-            background: rgba(15, 23, 42, 0.36);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
-        }
-
-        .timer-track {
-            height: 1rem;
-            background: rgba(15, 23, 42, 0.36);
-        }
-
-        .question-label {
-            color: rgba(219, 234, 254, 0.92);
-            letter-spacing: 0.08em;
-        }
-
-        #word-display {
-            font-size: clamp(2.25rem, 11vw, 4rem);
-            line-height: 1;
-            overflow-wrap: anywhere;
-            text-wrap: balance;
-        }
-
-        #options-container {
-            gap: 0.75rem;
-            padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
-        }
-
-        .answer-option {
-            min-height: 4.25rem;
-            padding: 0.95rem 1rem;
-            color: #10245d;
-            font-size: clamp(1.05rem, 4.3vw, 1.2rem);
-            line-height: 1.32;
-            border-radius: 1rem;
-            box-shadow: 0 8px 0 rgba(30, 58, 138, 0.16), 0 10px 22px rgba(15, 23, 42, 0.12);
-        }
-
-        .answer-option:disabled {
-            cursor: default;
-            opacity: 1;
-        }
-
-        .answer-letter {
-            width: 2.1rem;
-            height: 2.1rem;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex: 0 0 auto;
-            margin-right: 0.75rem;
-            background: #dbeafe;
-            color: #2563eb;
-            font-weight: 900;
-            font-size: 0.95rem;
-        }
-
-        .answer-text {
-            display: block;
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
-
-        .primary-action {
-            min-height: 3.75rem;
-            touch-action: manipulation;
-        }
-
-        #feedback-card {
-            padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
-        }
-
-        @media (max-width: 420px) {
-            .app-shell {
-                max-width: none;
-                padding-left: 0.875rem;
-                padding-right: 0.875rem;
-            }
-
-            #screen-start {
-                padding-top: max(1rem, env(safe-area-inset-top));
-                padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
-            }
-
-            .start-icon {
-                font-size: 4.75rem;
-            }
-
-            .start-title {
-                font-size: clamp(2.75rem, 13vw, 3.4rem);
-            }
-
-            .start-subtitle {
-                font-size: 1.35rem;
-            }
-
-            .start-copy {
-                font-size: 1.05rem;
-                line-height: 1.42;
-            }
-
-            .rules-card {
-                font-size: 1rem;
-                line-height: 1.35;
-            }
-
-            .game-header {
-                margin-bottom: 0;
-            }
-
-            .timer-row {
-                margin-bottom: 0;
-            }
-
-            .question-card {
-                margin-bottom: 0.25rem;
-            }
-        }
-
-        @media (max-height: 740px) {
-            .game-screen {
-                gap: 0.75rem;
-            }
-
-            #word-display {
-                padding-top: 1.05rem;
-                padding-bottom: 1.05rem;
-            }
-
-            .answer-option {
-                min-height: 3.75rem;
-                padding-top: 0.8rem;
-                padding-bottom: 0.8rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/app.css">
 </head>
 <body class="min-h-screen text-white">
 
-    <!-- Contenedor principal: Flujo natural, sin absolute insets ni alturas fijas raras -->
     <main class="app-shell w-full min-h-screen flex flex-col relative bg-gradient-to-b from-blue-400 to-blue-800 shadow-2xl">
         
-        <!-- PANTALLA DE INICIO -->
         <section id="screen-start" class="flex-1 flex flex-col justify-center items-center py-6 fade-in">
             <div class="screen-content text-center mb-8">
                 <div class="start-icon text-7xl mb-4">🌊</div>
@@ -309,65 +40,54 @@
             </div>
             
             <div class="rules-card screen-content glass-card rounded-2xl p-4 mb-8 text-base text-center mobile-readable">
-                <p class="mb-2">⏱️ Tes <strong>30 segundos</strong> por palabra.</p>
+                <p class="mb-2">⏱️ Tes <strong><span id="rules-time-limit">30</span> segundos</strong> por palabra.</p>
                 <p>🚀 Canto máis rápido, máis puntos.</p>
             </div>
 
-            <button onclick="startGame()" class="primary-action screen-content w-full bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black text-2xl py-5 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all">
-                DALLE NENO! <i class="fa-solid fa-play ml-2"></i>
+            <p id="load-status" class="load-status screen-content hidden text-center text-sm font-bold -mt-4 mb-4 px-3" role="status" aria-live="polite"></p>
+
+            <button id="start-button" type="button" class="primary-action screen-content w-full bg-yellow-400 hover:bg-yellow-300 text-blue-950 font-black text-2xl py-5 rounded-2xl shadow-[0_6px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-[6px] transition-all" disabled>
+                <span id="start-button-label">Cargando palabras...</span>
+                <i id="start-button-icon" class="fa-solid fa-spinner fa-spin ml-2"></i>
             </button>
         </section>
 
-        <!-- PANTALLA DE JUEGO -->
         <section id="screen-game" class="game-screen flex-1 flex flex-col hidden fade-in">
-            <!-- Header -->
             <header class="game-header screen-content flex justify-between items-center shrink-0">
                 <div class="hud-pill font-black text-lg px-4 py-2 rounded-full flex items-center">
-                    <i class="fa-solid fa-star text-yellow-400 mr-2"></i> <span id="score-display">0</span>
+                    <i class="fa-solid fa-star text-yellow-400 mr-2"></i> <span id="score-display" aria-live="polite">0</span>
                 </div>
                 <div class="hud-pill font-black text-lg px-4 py-2 rounded-full">
                     <span id="question-count">1/5</span>
                 </div>
             </header>
 
-            <!-- Barra de tiempo -->
             <div class="timer-row screen-content flex items-center w-full shrink-0">
                 <i class="fa-solid fa-clock text-blue-100 mr-3 text-2xl"></i>
                 <div class="timer-track flex-1 rounded-full p-0.5">
                     <div id="timer-bar" class="bg-green-400 h-full rounded-full w-full"></div>
                 </div>
-                <div id="timer-text" class="ml-4 font-black text-2xl w-8 text-right text-white">30</div>
+                <div id="timer-text" class="ml-4 font-black text-2xl w-8 text-right text-white" aria-live="polite">30</div>
             </div>
 
-            <!-- Pregunta -->
             <div class="question-card screen-content flex flex-col justify-center items-center shrink-0">
                 <p class="question-label text-sm font-black uppercase mb-3 text-center">¿Qué significa?</p>
-                <!-- Ajustado a text-4xl y padding normal para que no se coma toda la pantalla -->
                 <h2 id="word-display" class="text-4xl font-black text-center text-yellow-300 drop-shadow-md bg-black/20 w-full py-6 px-4 rounded-2xl border border-white/10 break-words">
-                    FUCAR
+                    KORUÑO
                 </h2>
             </div>
 
-            <!-- Opciones: Fluyen naturalmente ocupando el espacio restante -->
-            <div id="options-container" class="screen-content flex-1 flex flex-col justify-start">
-                <!-- Se llenan por JS -->
-            </div>
+            <div id="options-container" class="screen-content flex-1 flex flex-col justify-start"></div>
         </section>
 
-        <!-- MODAL DE FEEDBACK (Correcto/Incorrecto) -->
-        <!-- Cambiado a 'fixed' para cubrir la pantalla natural, y se separó el icono del contenedor con scroll -->
-        <div id="feedback-modal" class="fixed inset-0 bg-black/70 z-50 hidden flex-col justify-end items-center px-0 sm:px-4">
-            
+        <div id="feedback-modal" class="fixed inset-0 bg-black/70 z-50 hidden flex-col justify-end items-center px-0 sm:px-4" aria-live="polite">
             <div class="w-full max-w-lg flex flex-col relative max-h-[90vh] slide-up">
-                
-                <!-- ICONO FLOTANTE: Separado del contenido que hace scroll para que NO se corte -->
                 <div class="flex justify-center relative z-20 -mb-12">
                     <div id="feedback-icon" class="text-6xl bg-white rounded-full shadow-2xl flex items-center justify-center w-24 h-24 border-4 border-white">
                         ✅
                     </div>
                 </div>
                 
-                <!-- TARJETA: Contiene el scroll interno y deja el icono en paz -->
                 <div id="feedback-card" class="glass-modal w-full rounded-t-3xl sm:rounded-3xl pt-16 pb-6 px-5 sm:px-8 flex flex-col items-center overflow-y-auto">
                     <h3 id="feedback-title" class="text-3xl sm:text-4xl font-black mb-1 text-center">¡Buah neno!</h3>
                     <p id="feedback-points" class="font-bold text-green-600 mb-6 text-xl sm:text-2xl">+850 pts</p>
@@ -378,24 +98,26 @@
                         
                         <p class="text-xs text-blue-500 font-bold uppercase mb-1">Úsase así:</p>
                         <p id="feedback-example" class="italic text-gray-700 text-base sm:text-lg leading-snug">"Coidado cas carteiras que che fucan o móbil."</p>
+
+                        <div id="feedback-note-wrap" class="hidden mt-4 pt-4 border-t border-blue-100">
+                            <p class="text-xs text-blue-500 font-bold uppercase mb-1">Comentario koruño:</p>
+                            <p id="feedback-note" class="text-gray-700 text-sm sm:text-base leading-snug"></p>
+                        </div>
                     </div>
 
-                    <button onclick="nextQuestion()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
+                    <button id="next-button" type="button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl py-4 rounded-xl active:scale-95 transition-transform shadow-lg mb-2">
                         Continuar <i class="fa-solid fa-arrow-right ml-2"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- PANTALLA FINAL (VERSIÓN VIRAL) -->
         <section id="screen-end" class="flex-1 bg-blue-900 flex flex-col justify-center items-center p-5 z-40 hidden fade-in">
             <div class="text-center w-full max-w-sm mb-6">
                 <h2 class="text-4xl sm:text-5xl font-black text-white drop-shadow-lg slide-up">REMATOU!</h2>
             </div>
 
-            <!-- Carnet Koruño (Ticket de resultados) -->
             <div class="w-full max-w-sm bg-gradient-to-br from-yellow-300 via-yellow-400 to-amber-500 rounded-3xl p-6 sm:p-8 shadow-2xl transform rotate-1 border-4 border-white mb-8 relative overflow-hidden slide-up" style="animation-delay: 0.1s;">
-                <!-- Marca de agua / Sello -->
                 <div class="absolute -right-6 -top-6 text-yellow-600 opacity-20 text-9xl">
                     <i class="fa-solid fa-certificate"></i>
                 </div>
@@ -405,7 +127,18 @@
 
                 <div class="relative z-10 text-center mt-2">
                     <p class="text-blue-900 font-bold uppercase tracking-widest text-sm mb-1">Puntuación Total:</p>
-                    <div class="text-6xl font-black text-blue-900 drop-shadow-sm mb-6" id="final-score">0</div>
+                    <div class="text-6xl font-black text-blue-900 drop-shadow-sm mb-5" id="final-score">0</div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-5">
+                        <div class="bg-white/40 rounded-xl p-3 border border-white/50">
+                            <p class="text-[10px] text-blue-800 uppercase font-black tracking-widest mb-1">Mellor marca</p>
+                            <p id="final-best-score" class="text-2xl font-black text-blue-900">0</p>
+                        </div>
+                        <div class="bg-white/40 rounded-xl p-3 border border-white/50">
+                            <p class="text-[10px] text-blue-800 uppercase font-black tracking-widest mb-1">Partidas</p>
+                            <p id="final-games-completed" class="text-2xl font-black text-blue-900">0</p>
+                        </div>
+                    </div>
                     
                     <div class="bg-white/60 backdrop-blur-md rounded-2xl p-4 border border-white/60 shadow-sm">
                         <p class="text-xs text-blue-800 uppercase font-black tracking-widest mb-1">O teu nivel é:</p>
@@ -418,12 +151,11 @@
                 </div>
             </div>
 
-            <!-- Botones de Acción -->
             <div class="w-full max-w-sm space-y-4 slide-up" style="animation-delay: 0.2s;">
-                <button onclick="shareResult(event)" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-xl py-4 rounded-2xl shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[6px] transition-all flex justify-center items-center">
+                <button id="share-button" type="button" class="btn-share-pulse w-full bg-blue-500 hover:bg-blue-400 text-white font-black text-xl py-4 rounded-2xl shadow-[0_6px_0_#1e3a8a] active:shadow-[0_0px_0_#1e3a8a] active:translate-y-[6px] transition-all flex justify-center items-center">
                     <i class="fa-solid fa-share-nodes mr-3"></i> COMPARTIR E RETAR
                 </button>
-                <button onclick="resetGame()" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-lg py-4 rounded-2xl active:scale-95 transition-all">
+                <button id="reset-button" type="button" class="w-full bg-black/20 hover:bg-black/30 border-2 border-white/30 text-white font-bold text-lg py-4 rounded-2xl active:scale-95 transition-all">
                     XOGAR OUTRA VEZ <i class="fa-solid fa-rotate-right ml-2"></i>
                 </button>
             </div>
@@ -431,502 +163,6 @@
 
     </main>
 
-    <script>
-        // BASE DE DATOS DE PREGUNTAS
-        const db = [
-            {
-                word: "FUCAR",
-                correct: "Robar algo con disimulo.",
-                fakes: [
-                    "Meter prisa a alguien de mala manera.",
-                    "Fallar estrepitosamente ligando en el Orzán.",
-                    "Dormirse en un bus urbano y aparecer en Novo Mesoiro."
-                ],
-                example: "Coidado polas noites cas carteiras, que che fucan o móbil nun despiste."
-            },
-            {
-                word: "KEL",
-                correct: "Casa, hogar.",
-                fakes: [
-                    "Una gaviota que te roba el bocadillo.",
-                    "El viento frío que entra por el Paseo Marítimo.",
-                    "Estar sin un euro a final de mes."
-                ],
-                example: "Macho, estou rebentado, voume para o kel que xa é tarde."
-            },
-            {
-                word: "ACHANTAR",
-                correct: "Callarse, rendirse o irse por miedo.",
-                fakes: [
-                    "Pisar un charco enorme sin querer.",
-                    "Comerse un pincho de tortilla de un solo bocado.",
-                    "Encontrar sitio para aparcar a la primera."
-                ],
-                example: "Viñeron os gorilas da discoteca e tivo que achantar."
-            },
-            {
-                word: "BULEBULE",
-                correct: "Persona muy inquieta o con mucha prisa.",
-                fakes: [
-                    "El bus que va al estadio de Riazor.",
-                    "Bebida mezcla de licor café y fanta.",
-                    "El ruido que hacen las olas al chocar."
-                ],
-                example: "Rapaz, non sexas bulebule e séntate un pouco a descansar."
-            },
-            {
-                word: "CHORBO / CHORBA",
-                correct: "Chico o chica, chaval.",
-                fakes: [
-                    "Un bocadillo de calamares muy grasiento.",
-                    "Lluvia fina que molesta pero no moja mucho.",
-                    "El vigilante de la ORA."
-                ],
-                example: "Ese chorbo de aí é o que traballa na panadería."
-            },
-            {
-                word: "NENO",
-                correct: "Vocativo comodín para llamar a literalmente cualquier persona.",
-                fakes: [
-                    "Un niño pequeño que aún no sabe andar.",
-                    "Un tipo de marisco que solo se da en Riazor.",
-                    "El conductor del bus de la línea 11."
-                ],
-                example: "¡Qué pasa neno! ¿Todo bien o qué?"
-            },
-            {
-                word: "ESCARALLAR",
-                correct: "Romper, estropear o dejar algo inservible.",
-                fakes: [
-                    "Caerse redondo por las escaleras de la Torre.",
-                    "Comer demasiadas pipas y atragantarse.",
-                    "Empezar a llover justo cuando tiendes la ropa."
-                ],
-                example: "Non toques iso que o vas escarallar, neno."
-            },
-            {
-                word: "PARGUELA",
-                correct: "Persona pringada, ingenua o que se deja engañar.",
-                fakes: [
-                    "Un tipo de paraguas que no aguanta el viento del Orzán.",
-                    "Especie de gaviota gigante que ataca en María Pita.",
-                    "El ayudante del cobrador del tranvía."
-                ],
-                example: "Non sexas parguela y dille que che devolva os cartos."
-            },
-            {
-                word: "KUNDA",
-                correct: "Coche, generalmente viejo o destartalado.",
-                fakes: [
-                    "Quedarse dormido en la playa del Matadero.",
-                    "Una fiesta clandestina en los bajos del estadio.",
-                    "El viento polar que corta la cara en invierno."
-                ],
-                example: "Mete as cousas na kunda que nos piramos á praia."
-            },
-            {
-                word: "SOBRARSE",
-                correct: "Pasarse de la raya, exagerar o ser muy chulo.",
-                fakes: [
-                    "Dejar comida en el plato de la abuela (pecado capital).",
-                    "Perderse por los pasillos gigantes de Marineda City.",
-                    "Pagar una ronda de Estrella Galicia para todo el bar."
-                ],
-                example: "Oíche neno, te estás sobrando un cacho, eh?"
-            },
-            {
-                word: "POTA",
-                correct: "Tener una suerte increíble e inmerecida.",
-                fakes: [
-                    "Un recipiente gigante para hacer pulpo á feira.",
-                    "Vomitar después de tres horas bebiendo en el Orzán.",
-                    "Quedarse atascado en el tráfico de Alfonso Molina."
-                ],
-                example: "¡Que pota tivo, aprobou sen chapar nada!"
-            },
-            {
-                word: "CHAPAR",
-                correct: "Estudiar muchísimo para un examen.",
-                fakes: [
-                    "Cerrar la puerta de un golpe cuando te enfadas.",
-                    "Cubrirse de crema solar hasta parecer un fantasma.",
-                    "Quedarse encerrado fuera de casa de madrugada."
-                ],
-                example: "Hoxe non podo quedar, teño que chapar para o exame de Física."
-            },
-            {
-                word: "TRAPALLADA",
-                correct: "Cosa mal hecha, inútil o de muy poco valor.",
-                fakes: [
-                    "Una empanada rellena de sobras de la semana.",
-                    "Un tropiezo aparatoso en la calle Real.",
-                    "La técnica secreta para no pagar en la zona azul."
-                ],
-                example: "Vaia trapallada de chollo che fixeron na casa."
-            },
-            {
-                word: "LERIA",
-                correct: "Conversación larga, excusa, rollo o cuento repetitivo.",
-                fakes: [
-                    "Una enfermedad transmitida por las gaviotas.",
-                    "Estar de resaca y no poder salir de la cama.",
-                    "Una gominola muy dura que venden en los kioskos."
-                ],
-                example: "Déixate de lerias e dime a verdade dunha vez."
-            },
-            {
-                word: "PENCAR",
-                correct: "Trabajar duro, tragar o apechugar con un problema.",
-                fakes: [
-                    "Darle un golpe al coche aparcando de oído en el centro.",
-                    "Comerse el último trozo de tortilla sin preguntar.",
-                    "Escapar de los revisores del bus urbano."
-                ],
-                example: "Se queres ir de vacacións, agora tócache pencar todo o mes."
-            },
-            {
-                word: "RILAR",
-                correct: "Temblar de miedo, rajarse o acobardarse.",
-                fakes: [
-                    "Frotarse las manos cuando hace mucho frío.",
-                    "Reírse a carcajadas hasta que duele la barriga.",
-                    "Robar el asiento libre en el bus a una señora mayor."
-                ],
-                example: "Íbamos saltar desde as rocas pero ao final rilamos."
-            },
-            {
-                word: "TOXO",
-                correct: "Persona muy borde, arisca o poco cariñosa.",
-                fakes: [
-                    "Un pincho moruno mal cocinado.",
-                    "La planta del pie cuando caminas descalzo por Riazor.",
-                    "Un instrumento de percusión de la banda municipal."
-                ],
-                example: "Non lle fagas caso, que é un toxo e sempre contesta mal."
-            },
-            {
-                word: "CHOTA",
-                correct: "Chivato, el que va contando los secretos de los demás.",
-                fakes: [
-                    "Un tipo de filete de ternera muy gordo.",
-                    "Volverse loco buscando aparcamiento en Monte Alto.",
-                    "La cabeza de alguien que no tiene ni un solo pelo."
-                ],
-                example: "Non lle contes nada a el que é un chota e entérase todo Dios."
-            },
-            {
-                word: "CHOSCO",
-                correct: "Alguien que ve muy mal o que está medio ciego.",
-                fakes: [
-                    "Un perrito caliente comprado de madrugada en un carrito.",
-                    "Quedarse dormido con los ojos abiertos.",
-                    "El golpe que te das contra una farola por mirar el móvil."
-                ],
-                example: "Poñe as gafas que estás chosco, neno."
-            },
-            {
-                word: "JULAY",
-                correct: "Persona pardilla o que se deja engañar fácilmente.",
-                fakes: [
-                    "El mes de Julio pronunciado en Spanglish.",
-                    "Una fiesta hawaiana en la playa de San Amaro.",
-                    "Un tipo de helado que se derrite al segundo."
-                ],
-                example: "Vendeulle a moto rota porque viu que era un julay."
-            },
-            {
-                word: "ESMORGA",
-                correct: "Juerga, fiesta descontrolada y borrachera.",
-                fakes: [
-                    "Un monstruo mitológico que vive en la Torre de Hércules.",
-                    "La niebla densa que cubre la ciudad de repente.",
-                    "Un desayuno grasiento para curar la resaca en un bar de barrio."
-                ],
-                example: "Vaia esmorga nos pillamos onte, aínda me doe a cabeza."
-            }
-        ];
-
-        // VARIABLES DE ESTADO
-        let currentQuestions = [];
-        let currentIndex = 0;
-        let score = 0;
-        let timerInterval;
-        let timeLeft = 30;
-        const TIME_LIMIT = 30;
-        let isAnswering = false;
-        let currentRankText = "";
-
-        // ELEMENTOS DEL DOM
-        const screenStart = document.getElementById('screen-start');
-        const screenGame = document.getElementById('screen-game');
-        const screenEnd = document.getElementById('screen-end');
-        const modalFeedback = document.getElementById('feedback-modal');
-        
-        const wordDisplay = document.getElementById('word-display');
-        const optionsContainer = document.getElementById('options-container');
-        const scoreDisplay = document.getElementById('score-display');
-        const questionCountDisplay = document.getElementById('question-count');
-        const timerBar = document.getElementById('timer-bar');
-        const timerText = document.getElementById('timer-text');
-
-        // INICIAR JUEGO
-        function startGame() {
-            currentQuestions = [...db].sort(() => 0.5 - Math.random()).slice(0, 5);
-            currentIndex = 0;
-            score = 0;
-            updateScoreDisplay();
-            window.scrollTo(0, 0);
-            
-            screenStart.classList.add('hidden');
-            screenEnd.classList.add('hidden');
-            screenGame.classList.remove('hidden');
-            screenGame.classList.add('flex'); // Cambiado para flex natural
-            
-            loadQuestion();
-        }
-
-        // CARGAR PREGUNTA
-        function loadQuestion() {
-            isAnswering = false;
-            timeLeft = TIME_LIMIT;
-            const q = currentQuestions[currentIndex];
-            window.scrollTo(0, 0);
-            
-            questionCountDisplay.innerText = `${currentIndex + 1}/${currentQuestions.length}`;
-            wordDisplay.innerText = q.word;
-
-            let options = [...q.fakes, q.correct].map(opt => ({
-                text: opt,
-                isCorrect: opt === q.correct
-            })).sort(() => 0.5 - Math.random());
-
-            optionsContainer.innerHTML = '';
-            options.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'option-btn answer-option w-full bg-white font-bold border-2 border-transparent text-left flex items-center';
-                btn.innerHTML = `<span class="answer-letter">${String.fromCharCode(65 + index)}</span><span class="answer-text">${opt.text}</span>`;
-                btn.onclick = () => handleAnswer(btn, opt.isCorrect, q);
-                optionsContainer.appendChild(btn);
-            });
-
-            startTimer();
-        }
-
-        // TEMPORIZADOR
-        function startTimer() {
-            clearInterval(timerInterval);
-            timerBar.style.width = '100%';
-            timerBar.style.backgroundColor = '#4ade80';
-            
-            timerText.innerText = '30'; 
-            timerText.classList.remove('text-yellow-400', 'text-red-400', 'animate-pulse');
-            timerText.classList.add('text-white');
-
-            let startTime = Date.now();
-            
-            timerInterval = setInterval(() => {
-                let elapsedTime = (Date.now() - startTime) / 1000;
-                timeLeft = TIME_LIMIT - elapsedTime;
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    timeLeft = 0;
-                    handleAnswer(null, false, currentQuestions[currentIndex], true);
-                }
-
-                let percentage = (timeLeft / TIME_LIMIT) * 100;
-                timerBar.style.width = `${percentage}%`;
-                
-                timerText.innerText = Math.ceil(timeLeft);
-
-                if (percentage < 40 && percentage >= 15) {
-                    timerBar.style.backgroundColor = '#facc15';
-                    timerText.classList.replace('text-white', 'text-yellow-400');
-                }
-                if (percentage < 15) {
-                    timerBar.style.backgroundColor = '#f87171';
-                    timerText.classList.replace('text-yellow-400', 'text-red-400');
-                    timerText.classList.replace('text-white', 'text-red-400');
-                    timerText.classList.add('animate-pulse');
-                }
-            }, 50);
-        }
-
-        // MANEJAR RESPUESTA
-        function handleAnswer(btnElement, isCorrect, questionData, isTimeout = false) {
-            if (isAnswering) return;
-            isAnswering = true;
-            clearInterval(timerInterval);
-            [...optionsContainer.children].forEach(button => {
-                button.disabled = true;
-            });
-
-            let pointsWon = 0;
-            if (isCorrect) {
-                pointsWon = Math.floor((timeLeft / TIME_LIMIT) * 900) + 100;
-                score += pointsWon;
-                updateScoreDisplay();
-                
-                if(btnElement) btnElement.classList.add('correct-answer');
-            } else {
-                if(btnElement) btnElement.classList.add('wrong-answer');
-                const buttons = optionsContainer.children;
-                for(let b of buttons) {
-                    if (b.innerText.includes(questionData.correct)) {
-                        b.classList.add('border-green-500', 'bg-green-50', 'text-green-800');
-                    }
-                }
-            }
-
-            setTimeout(() => {
-                showFeedback(isCorrect, isTimeout, pointsWon, questionData);
-            }, 600);
-        }
-
-        // MOSTRAR MODAL DE RESULTADO
-        function showFeedback(isCorrect, isTimeout, points, questionData) {
-            modalFeedback.classList.remove('hidden');
-            modalFeedback.classList.add('flex'); // Forzamos el display flex
-            document.body.style.overflow = 'hidden';
-            
-            // Reflow para la animación de subida
-            const cardWrapper = modalFeedback.querySelector('.slide-up');
-            cardWrapper.classList.remove('slide-up');
-            void cardWrapper.offsetWidth;
-            cardWrapper.classList.add('slide-up');
-
-            const icon = document.getElementById('feedback-icon');
-            const title = document.getElementById('feedback-title');
-            const pts = document.getElementById('feedback-points');
-
-            const correctMsgs = ["¡Buah Neno!", "¡De locos!", "¡Canela en rama!", "¡Sobradísimo!", "¡Cremita!", "¡Niquelao!"];
-            const wrongMsgs = ["Achantaste...", "¡Vaia julay!", "Manda truco...", "¡Parguelísima!", "Esvaraches...", "Vaia trapallada..."];
-            const timeoutMsgs = ["Moi Lento!", "¡Espabila neno!", "Perdiches o 11!", "Tas durmindo?"];
-
-            if (isCorrect) {
-                icon.innerHTML = '🔥';
-                title.innerText = correctMsgs[Math.floor(Math.random() * correctMsgs.length)];
-                title.className = 'text-3xl sm:text-4xl font-black mb-1 text-green-600 text-center';
-                pts.innerText = `+${points} pts`;
-                pts.className = 'font-bold text-green-500 mb-6 text-xl sm:text-2xl';
-            } else {
-                icon.innerHTML = isTimeout ? '⏱️' : '🤦‍♂️';
-                title.innerText = isTimeout 
-                    ? timeoutMsgs[Math.floor(Math.random() * timeoutMsgs.length)] 
-                    : wrongMsgs[Math.floor(Math.random() * wrongMsgs.length)];
-                title.className = 'text-3xl sm:text-4xl font-black mb-1 text-red-600 text-center';
-                pts.innerText = '0 pts';
-                pts.className = 'font-bold text-red-400 mb-6 text-xl sm:text-2xl';
-            }
-
-            document.getElementById('feedback-meaning').innerText = questionData.correct;
-            document.getElementById('feedback-example').innerText = `"${questionData.example}"`;
-        }
-
-        // SIGUIENTE PREGUNTA
-        function nextQuestion() {
-            modalFeedback.classList.add('hidden');
-            modalFeedback.classList.remove('flex');
-            document.body.style.overflow = '';
-            currentIndex++;
-            if (currentIndex < currentQuestions.length) {
-                loadQuestion();
-            } else {
-                endGame();
-            }
-        }
-
-        // FINALIZAR JUEGO (PANTALLA VIRAL)
-        function endGame() {
-            screenGame.classList.add('hidden');
-            screenGame.classList.remove('flex');
-            screenEnd.classList.remove('hidden');
-            screenEnd.classList.add('flex');
-            window.scrollTo(0, 0);
-            
-            document.getElementById('final-score').innerText = score;
-            
-            let rank = "";
-            let message = "";
-            let maxScore = currentQuestions.length * 1000;
-            let percentage = score / maxScore;
-
-            if (percentage > 0.8) {
-                rank = "Alcalde de María Pita 👑";
-                message = "Buah neno, controlas a cidade mellor que Paco Vázquez. Eres lenda viva.";
-            } else if (percentage > 0.6) {
-                rank = "Neno/a de Riazor 🌊";
-                message = "Aprobado con nota. Sábeste mover polos cantóns sen parecer un guiri.";
-            } else if (percentage > 0.4) {
-                rank = "Habitual do Orzán 🍻";
-                message = "Non está mal, pero nótase que ás veces pides Estrella Galicia en vaso de tubo.";
-            } else if (percentage > 0.2) {
-                rank = "Turista Despistado 📸";
-                message = "Cres que a Torre de Hércules é un faro para espantar gaivotas. Toca chapar máis.";
-            } else {
-                rank = "Fodechinchos Infiltrado 🦀";
-                message = "Tes acento de Madrid e acabas de preguntar onde se colle o Metro. Achanta e marcha.";
-            }
-
-            currentRankText = rank;
-            document.getElementById('final-rank').innerText = rank;
-            document.getElementById('final-message').innerText = `"${message}"`;
-        }
-
-        // FUNCIÓN COMPARTIR NATIVA / PORTAPAPELES
-        function shareResult(event) {
-            const btn = event.currentTarget;
-            const originalHTML = btn.innerHTML;
-            
-            let emojiStr = score > 2500 ? "😎" : "🤦‍♂️";
-            const shareText = `¡He conseguido ${score} puntos en el Trivial Koruño! ${emojiStr}\n\nMi Carnet Oficial dice que soy: [ ${currentRankText} ]\n\n¿Eres capaz de superarme o vas a achantar? Xoga aquí:`;
-            const shareUrl = window.location.href;
-
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Trivial Koruño',
-                    text: shareText,
-                    url: shareUrl
-                }).catch(err => {
-                    console.log("Error al compartir", err);
-                    copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
-                });
-            } else {
-                copyToClipboardFallback(btn, shareText + " " + shareUrl, originalHTML);
-            }
-        }
-
-        function copyToClipboardFallback(btnElement, text, originalHTML) {
-            const dummy = document.createElement('textarea');
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            
-            btnElement.classList.remove('btn-share-pulse', 'bg-blue-500', 'hover:bg-blue-400');
-            btnElement.classList.add('bg-green-500');
-            btnElement.innerHTML = '<i class="fa-solid fa-check mr-2"></i> ¡TEXTO COPIADO!';
-            
-            setTimeout(() => {
-                btnElement.classList.add('bg-blue-500', 'hover:bg-blue-400', 'btn-share-pulse');
-                btnElement.classList.remove('bg-green-500');
-                btnElement.innerHTML = originalHTML;
-            }, 2500);
-        }
-
-        function resetGame() {
-            screenEnd.classList.add('hidden');
-            screenEnd.classList.remove('flex');
-            document.body.style.overflow = '';
-            startGame();
-        }
-
-        function updateScoreDisplay() {
-            scoreDisplay.innerText = score;
-        }
-
-    </script>
+    <script type="module" src="./src/app.js"></script>
 </body>
 </html>

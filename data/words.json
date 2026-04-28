@@ -1,0 +1,160 @@
+[
+  {
+    "word": "bute",
+    "displayWord": "BUTE",
+    "correctDefinition": "Bueno, genial o de mucha calidad.",
+    "fakeDefinitions": [
+      "El bus que va lleno a Riazor en día de partido.",
+      "La mochila que pesa más que el propio chinorro.",
+      "Una discusión eterna sobre dónde aparcar en Matogrande."
+    ],
+    "example": "Este bocata está bute, neno; me cunde máis que unha tarde de praia.",
+    "difficulty": "easy",
+    "tags": ["positivo", "expresión", "básico"],
+    "note": "Úsase cando algo che parece moi bo ou che presta moito."
+  },
+  {
+    "word": "fucar",
+    "displayWord": "FUCAR",
+    "correctDefinition": "Robar algo con disimulo.",
+    "fakeDefinitions": [
+      "Meter prisa a alguien de mala manera.",
+      "Fallar estrepitosamente ligando en el Orzán.",
+      "Dormirse en un bus urbano y aparecer en Novo Mesoiro.",
+      "Abrir una bolsa de pipas sin que se caiga ninguna."
+    ],
+    "example": "Coidado polas noites cas carteiras, que che fucan o móbil nun despiste.",
+    "difficulty": "medium",
+    "tags": ["verbo", "calle", "básico"],
+    "note": "Tamén pode aparecer en bromas cando alguén colle algo sen avisar."
+  },
+  {
+    "word": "kel",
+    "displayWord": "KEL",
+    "correctDefinition": "Casa, hogar.",
+    "fakeDefinitions": [
+      "Una gaviota que te roba el bocadillo.",
+      "El viento frío que entra por el Paseo Marítimo.",
+      "Estar sin un euro a final de mes."
+    ],
+    "example": "Macho, estou rebentado, voume para o kel que xa é tarde.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "básico"]
+  },
+  {
+    "word": "achantar",
+    "correctDefinition": "Callarse, rendirse o irse por miedo.",
+    "fakeDefinitions": [
+      "Pisar un charco enorme sin querer.",
+      "Comerse un pincho de tortilla de un solo bocado.",
+      "Encontrar sitio para aparcar a la primera."
+    ],
+    "example": "Viñeron os gorilas da discoteca e tivo que achantar.",
+    "difficulty": "easy",
+    "tags": ["verbo", "básico"]
+  },
+  {
+    "word": "bulebule",
+    "displayWord": "BULEBULE",
+    "correctDefinition": "Persona muy inquieta o con mucha prisa.",
+    "fakeDefinitions": [
+      "El bus que va al estadio de Riazor.",
+      "Bebida mezcla de licor café y fanta.",
+      "El ruido que hacen las olas al chocar."
+    ],
+    "example": "Rapaz, non sexas bulebule e séntate un pouco a descansar.",
+    "difficulty": "medium",
+    "tags": ["persona", "ritmo"]
+  },
+  {
+    "word": "chorbo",
+    "displayWord": "CHORBO / CHORBA",
+    "correctDefinition": "Chico o chica, chaval.",
+    "fakeDefinitions": [
+      "Un bocadillo de calamares muy grasiento.",
+      "Lluvia fina que molesta pero no moja mucho.",
+      "El vigilante de la ORA."
+    ],
+    "example": "Ese chorbo de aí é o que traballa na panadería.",
+    "difficulty": "easy",
+    "tags": ["persona", "básico"]
+  },
+  {
+    "word": "neno",
+    "displayWord": "NENO",
+    "correctDefinition": "Vocativo comodín para llamar a literalmente cualquier persona.",
+    "fakeDefinitions": [
+      "Un niño pequeño que aún no sabe andar.",
+      "Un tipo de marisco que solo se da en Riazor.",
+      "El conductor del bus de la línea 11."
+    ],
+    "example": "¡Qué pasa neno! ¿Todo bien o qué?",
+    "difficulty": "easy",
+    "tags": ["vocativo", "básico"],
+    "note": "Clave absoluta: pode valer para amigos, descoñecidos e medio mundo."
+  },
+  {
+    "word": "escarallar",
+    "correctDefinition": "Romper, estropear o dejar algo inservible.",
+    "fakeDefinitions": [
+      "Caerse redondo por las escaleras de la Torre.",
+      "Comer demasiadas pipas y atragantarse.",
+      "Empezar a llover justo cuando tiendes la ropa."
+    ],
+    "example": "Non toques iso que o vas escarallar, neno.",
+    "difficulty": "easy",
+    "tags": ["verbo", "básico"]
+  },
+  {
+    "word": "parguela",
+    "displayWord": "PARGUELA",
+    "correctDefinition": "Persona pringada, ingenua o que se deja engañar.",
+    "fakeDefinitions": [
+      "Un tipo de paraguas que no aguanta el viento del Orzán.",
+      "Especie de gaviota gigante que ataca en María Pita.",
+      "El ayudante del cobrador del tranvía."
+    ],
+    "example": "Non sexas parguela y dille que che devolva os cartos.",
+    "difficulty": "medium",
+    "tags": ["persona", "insulto suave"]
+  },
+  {
+    "word": "kunda",
+    "displayWord": "KUNDA",
+    "correctDefinition": "Coche, generalmente viejo o destartalado.",
+    "fakeDefinitions": [
+      "Quedarse dormido en la playa del Matadero.",
+      "Una fiesta clandestina en los bajos del estadio.",
+      "El viento polar que corta la cara en invierno."
+    ],
+    "example": "Mete as cousas na kunda que nos piramos á praia.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "transporte"]
+  },
+  {
+    "word": "trapallada",
+    "correctDefinition": "Cosa mal hecha, inútil o de muy poco valor.",
+    "fakeDefinitions": [
+      "Una empanada rellena de sobras de la semana.",
+      "Un tropiezo aparatoso en la calle Real.",
+      "La técnica secreta para no pagar en la zona azul."
+    ],
+    "example": "Vaia trapallada de chollo che fixeron na casa.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "crítica"]
+  },
+  {
+    "word": "esmorga",
+    "displayWord": "ESMORGA",
+    "correctDefinition": "Juerga, fiesta descontrolada y borrachera.",
+    "fakeDefinitions": [
+      "Un monstruo mitológico que vive en la Torre de Hércules.",
+      "La niebla densa que cubre la ciudad de repente.",
+      "Un desayuno grasiento para curar la resaca en un bar de barrio."
+    ],
+    "example": "Vaia esmorga nos pillamos onte, aínda me doe a cabeza.",
+    "difficulty": "hard",
+    "tags": ["fiesta", "sustantivo"],
+    "type": "definition"
+  }
+]

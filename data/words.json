@@ -31,27 +31,30 @@
   {
     "word": "kel",
     "displayWord": "KEL",
-    "correctDefinition": "Casa, hogar.",
+    "correctDefinition": "Casa, vivienda, refugio u hogar.",
     "fakeDefinitions": [
-      "Una gaviota que te roba el bocadillo.",
-      "El viento frío que entra por el Paseo Marítimo.",
-      "Estar sin un euro a final de mes."
+      "El viento polar helado que entra de repente por el Paseo Marítimo.",
+      "Una gaviota traicionera que te roba el bocadillo en la playa.",
+      "Estar sin un pavo en el bolsillo a final de mes."
     ],
-    "example": "Macho, estou rebentado, voume para o kel que xa é tarde.",
+    "example": "Macho, estoy reventado, me najo para el kel que ya es tarde.",
     "difficulty": "easy",
-    "tags": ["sustantivo", "básico"]
+    "tags": ["sustantivo", "básico", "lugar"],
+    "note": "Del caló 'quer'. Siempre utilizado en género masculino."
   },
   {
     "word": "achantar",
-    "correctDefinition": "Callarse, rendirse o irse por miedo.",
+    "displayWord": "ACHANTAR",
+    "correctDefinition": "Callarse, apartarse, quitarse de en medio, esconderse o rendirse por miedo.",
     "fakeDefinitions": [
-      "Pisar un charco enorme sin querer.",
-      "Comerse un pincho de tortilla de un solo bocado.",
-      "Encontrar sitio para aparcar a la primera."
+      "Pisar una gaviota en la Marina sin querer.",
+      "Comerse un pincho de tortilla del Bombilla de un solo bocado.",
+      "Encontrar aparcamiento en la Plaza de Lugo a la primera."
     ],
-    "example": "Viñeron os gorilas da discoteca e tivo que achantar.",
+    "example": "Achanta de en medio y déjame pasar, neno.",
     "difficulty": "easy",
-    "tags": ["verbo", "básico"]
+    "tags": ["verbo", "básico"],
+    "note": "Muy usado cuando hay tensión: '¡Achanta la mui!' significa '¡Cállate la boca!'."
   },
   {
     "word": "bulebule",
@@ -69,29 +72,30 @@
   {
     "word": "chorbo",
     "displayWord": "CHORBO / CHORBA",
-    "correctDefinition": "Chico o chica, chaval.",
+    "correctDefinition": "Chico o chica, chaval; también vocativo para llamar a alguien.",
     "fakeDefinitions": [
-      "Un bocadillo de calamares muy grasiento.",
-      "Lluvia fina que molesta pero no moja mucho.",
-      "El vigilante de la ORA."
+      "Un plato típico de cuchara para revivir los domingos de resaca.",
+      "El revisor de la ORA acechando tu coche en Juan Flórez.",
+      "Lluvia fina y molesta que te empapa pero parece que no llueve."
     ],
-    "example": "Ese chorbo de aí é o que traballa na panadería.",
+    "example": "Ese chorbo de ahí es el que curraba en la garimbería.",
     "difficulty": "easy",
-    "tags": ["persona", "básico"]
+    "tags": ["sustantivo", "vocativo", "persona", "básico"],
+    "note": "A diferencia del castellano, en koruño nunca se usa para referirse al novio de alguien (eso es la 'já' o el 'chaveo')."
   },
   {
     "word": "neno",
     "displayWord": "NENO",
     "correctDefinition": "Vocativo comodín para llamar a literalmente cualquier persona.",
     "fakeDefinitions": [
-      "Un niño pequeño que aún no sabe andar.",
-      "Un tipo de marisco que solo se da en Riazor.",
-      "El conductor del bus de la línea 11."
+      "Un niño pequeño que todavía no sabe andar sin caerse.",
+      "El conductor gruñón del bus urbano de la línea 11.",
+      "El pulpo á feira cuando te lo sirven frío en una terraza."
     ],
     "example": "¡Qué pasa neno! ¿Todo bien o qué?",
     "difficulty": "easy",
-    "tags": ["vocativo", "básico"],
-    "note": "Clave absoluta: pode valer para amigos, descoñecidos e medio mundo."
+    "tags": ["sustantivo", "vocativo", "clásico", "básico"],
+    "note": "Del gallego 'neno'. Clave absoluta: pode valer para amigos, descoñecidos e medio mundo."
   },
   {
     "word": "escarallar",
@@ -156,5 +160,355 @@
     "difficulty": "hard",
     "tags": ["fiesta", "sustantivo"],
     "type": "definition"
+  },
+  {
+    "word": "amagar",
+    "displayWord": "AMAGAR",
+    "correctDefinition": "Plagiar, imitar o copiar descaradamente a alguien.",
+    "fakeDefinitions": [
+      "Hacer el intento de pagar la cuenta pero escaquearse siempre.",
+      "Esconderse del inspector en el bus de la Compañía de Tranvías.",
+      "Pedir una Estrella Galicia y que te intenten colar una Mahou."
+    ],
+    "example": "El plas de Juanito te amagó las bambas, chorbo, se pilló las mismas.",
+    "difficulty": "medium",
+    "tags": ["verbo", "crítica", "estilo"],
+    "note": "Originalmente usado para definir el plagio de un grafitti, luego se extendió a la ropa y gestos."
+  },
+  {
+    "word": "apirolado",
+    "displayWord": "APIROLADO",
+    "correctDefinition": "Atontado, confundido, que no se entera de la movida.",
+    "fakeDefinitions": [
+      "El que se pide un licor café a las 9 de la mañana sin desayunar.",
+      "Quedarse embobado mirando los destellos de la Torre de Hércules.",
+      "Persona que lleva bufanda y plumas en agosto en Riazor."
+    ],
+    "example": "Después de escartar contra la farola me quedé apirolado unos segundos.",
+    "difficulty": "easy",
+    "tags": ["adjetivo", "despectivo", "estado"],
+    "note": "Deriva del gallego 'apaiolado' o de 'pirolo'."
+  },
+  {
+    "word": "barul",
+    "displayWord": "BARUL",
+    "correctDefinition": "Basura, o un lugar/cosa que es un desastre o una porquería.",
+    "fakeDefinitions": [
+      "Un tipo de gaviota gigante que vigila los contenedores del Orzán.",
+      "El bus nocturno Búho que te lleva a Monte Alto a las 4 AM.",
+      "Un charco profundo de barro en los jardines de Méndez Núñez."
+    ],
+    "example": "Vaya barul de garito, chorbo, vámonos a otro lado.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "descriptivo", "negativo"],
+    "note": "Se utiliza tanto en femenino como en masculino."
+  },
+  {
+    "word": "bocoi",
+    "displayWord": "BOCOI",
+    "correctDefinition": "Persona muy gorda, corpulenta o pesada, como un tonel.",
+    "fakeDefinitions": [
+      "El sonido que hacen los barcos mercantes al entrar en el puerto.",
+      "Un bocadillo gigante de calamares del Copacabana.",
+      "Una piedra enorme de las que se tiran al Rompeolas."
+    ],
+    "example": "Menudo pedazo de bocoi que está hecho tu colega.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "insulto", "clásico"],
+    "note": "Viene de la expresión gallega 'gordo coma un bocoi'."
+  },
+  {
+    "word": "cachada",
+    "displayWord": "CACHADA",
+    "correctDefinition": "Situación en la que te pillan in fraganti haciendo algo mal.",
+    "fakeDefinitions": [
+      "Una ración de pulpo muy picante que te hace llorar.",
+      "Tirarse de bomba al mar desde las rocas del Matadero.",
+      "Quedarse dormido en el bus y aparecer en la Grela."
+    ],
+    "example": "Hoy cachada de la jefa de estudios, que me pilló latando a primera hora.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "acción", "escuela"],
+    "note": "Deriva de 'cachar' (descubrir, pillar)."
+  },
+  {
+    "word": "chanar",
+    "displayWord": "CHANAR",
+    "correctDefinition": "Dominar mucho un tema, saber o entender de algo.",
+    "fakeDefinitions": [
+      "Llevar el chándal por dentro de los calcetines blancos.",
+      "Caminar inclinado contra el viento huracanado en el Paseo Marítimo.",
+      "Pedir otra ronda de garimbas cuando ya no te tienes en pie."
+    ],
+    "example": "Ahí, neno, ahí, tú sí que chanas de esto.",
+    "difficulty": "easy",
+    "tags": ["verbo", "habilidad", "positivo"],
+    "note": "Viene del caló 'chanar' que significa: saber."
+  },
+  {
+    "word": "chosco",
+    "displayWord": "CHOSCO",
+    "correctDefinition": "Que no ve bien, cegato o medio ciego.",
+    "fakeDefinitions": [
+      "Un tipo de empanada que lleva absolutamente de todo.",
+      "Estar de resaca un domingo por la mañana en Los Cantones.",
+      "Un perrito caliente comprado de madrugada en un carrito."
+    ],
+    "example": "Tú no junas nel, estás chosco, chorbo. Pon las lelas.",
+    "difficulty": "easy",
+    "tags": ["adjetivo", "descriptivo", "estado"],
+    "note": "Del gallego 'chosco'."
+  },
+  {
+    "word": "choupa",
+    "displayWord": "CHOUPA",
+    "correctDefinition": "Escupitajo o gota de saliva proyectada sin querer al hablar.",
+    "fakeDefinitions": [
+      "La niebla densa que entra por Riazor y no te deja ver a dos metros.",
+      "Una chaqueta gorda y acolchada para el invierno coruñés.",
+      "Un charco gigante en Alfonso Molina que te salpica al pasar un coche."
+    ],
+    "example": "¡Oes neno, qué asco! Me estás duchando con tanta choupa.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "asqueroso", "cómico"],
+    "note": "Deriva de la acción defensiva de los cefalópodos de lanzar tinta."
+  },
+  {
+    "word": "embarcar",
+    "displayWord": "EMBARCAR",
+    "correctDefinition": "Lanzar un objeto (usualmente un balón) a un lugar inaccesible.",
+    "fakeDefinitions": [
+      "Coger el bus 11 para ir a dar una vuelta infinita a Marineda City.",
+      "Quedarse atrapado en el ascensor panorámico del Monte San Pedro.",
+      "Subirse al barco pirata en las fiestas de María Pita."
+    ],
+    "example": "Metí un furolo y embarqué el bolo en aquel tejado, vaya liada.",
+    "difficulty": "medium",
+    "tags": ["verbo", "deporte", "acción"],
+    "note": "Procedente de lo que se perdía de vista al embarcarse en un barco."
+  },
+  {
+    "word": "escartar",
+    "displayWord": "ESCARTAR",
+    "correctDefinition": "Caerse dándose una buena hostia o romperse de la risa.",
+    "fakeDefinitions": [
+      "Perder la tarjeta Millenium justo cuando vas a fichar en el bus.",
+      "Esconder rápido el botellón cuando pasa el coche de la secreta.",
+      "Descartar cartas malas en una partida de tute en el bar."
+    ],
+    "example": "Tropecé con una piedra y escarté de la dura contra el suelo.",
+    "difficulty": "easy",
+    "tags": ["verbo", "accidente", "común"],
+    "note": "Del gallego antiguo 'escartar'."
+  },
+  {
+    "word": "ful",
+    "displayWord": "FUL",
+    "correctDefinition": "Mierda, basura, algo de muy poco valor.",
+    "fakeDefinitions": [
+      "Llenarse de arena los pies y no encontrar las duchas en Riazor.",
+      "El viento racheado de la Torre de Hércules que te da la vuelta al paraguas.",
+      "Una jugada magistral y definitiva jugando al futbolín."
+    ],
+    "example": "Vaya full de coche, neno, ésto es una puta full, vámonos ya.",
+    "difficulty": "easy",
+    "tags": ["adjetivo", "negativo", "clásico"],
+    "note": "Del romaní 'ful' (excremento). No confundir con el inglés 'full'. Siempre en femenino: 'la ful'."
+  },
+  {
+    "word": "gambear",
+    "displayWord": "GAMBEAR",
+    "correctDefinition": "Correr, salir pitando de un sitio.",
+    "fakeDefinitions": [
+      "Comerse unas gambas a escondidas en la calle la Estrella.",
+      "Andar de lado como los cangrejos al salir del Orzán tajado.",
+      "Dejar tirado a alguien en una cita sin avisar."
+    ],
+    "example": "¡Gambea, chorbo, que perdemos el tren y no hay otro!",
+    "difficulty": "medium",
+    "tags": ["verbo", "movimiento", "urgencia"],
+    "note": "Deriva de 'gamba' (pierna). También se dice 'ir a gambín'."
+  },
+  {
+    "word": "garimba",
+    "displayWord": "GARIMBA",
+    "correctDefinition": "Cerveza (el líquido elemento dorado, normalmente Estrella Galicia).",
+    "fakeDefinitions": [
+      "El adorno tradicional que llevan los gaiteros colgando del traje.",
+      "Una ración extra picante de patatas bravas en el Bombilla.",
+      "Una chica de las afueras de la ciudad que viene de fiesta al centro."
+    ],
+    "example": "Vámonos de garimbas al salir de currar, neno.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "ocio", "bebida"],
+    "note": "Palabra también muy utilizada en Canarias, pero en A Coruña es sagrada."
+  },
+  {
+    "word": "latar",
+    "displayWord": "LATAR",
+    "correctDefinition": "Hacer novillos, faltar a clase o a una obligación intencionadamente.",
+    "fakeDefinitions": [
+      "Meter goles de rebote usando botes de Coca-Cola vacíos.",
+      "Tirarse horas muertas en un banco de los jardines de Méndez Núñez.",
+      "Lanzar piedras planas al mar desde el Rompeolas a ver si botan."
+    ],
+    "example": "Hoy cachada de la jefa de estudios, que me pilló latando a primera hora.",
+    "difficulty": "easy",
+    "tags": ["verbo", "escuela", "rebeldía"],
+    "note": "Del gallego 'latar'."
+  },
+  {
+    "word": "maqueado",
+    "displayWord": "MAQUEADO",
+    "correctDefinition": "Arreglado, guapo, con mucho estilo (persona o cosa).",
+    "fakeDefinitions": [
+      "Un coche de los 90 con el tubo de escape trucado para que haga ruido.",
+      "Estar mareado después de montar en los caballitos de los jardines.",
+      "Una empanada que se ha pasado de horno y está negra por los bordes."
+    ],
+    "example": "Esa já siempre va muy maqueada cuando sale de fiestuki.",
+    "difficulty": "medium",
+    "tags": ["adjetivo", "estilo", "positivo"],
+    "note": "A diferencia de otras jergas, en Koruño NUNCA significa 'tuneado' (referido a coches)."
+  },
+  {
+    "word": "najar",
+    "displayWord": "NAJAR",
+    "correctDefinition": "Irse, marcharse, pirarse, abrirse de un sitio.",
+    "fakeDefinitions": [
+      "Comerse un buen plato de navajas a la plancha.",
+      "Hacer un corte de mangas desde la ventanilla del coche.",
+      "Salpicar agua de los charcos a los peatones al pasar con el buga."
+    ],
+    "example": "Me najo pal kel, chorbo, que ya va siendo hora de sobar.",
+    "difficulty": "easy",
+    "tags": ["verbo", "movimiento", "despedida"],
+    "note": "Del caló 'najar'."
+  },
+  {
+    "word": "palmar",
+    "displayWord": "PALMAR",
+    "correctDefinition": "Perder algo, extraviarlo, perder el bus o directamente morirse.",
+    "fakeDefinitions": [
+      "Dar palmas y aplaudir cuando aterriza el avión de Ryanair en Alvedro.",
+      "Tirarse en plancha en la playa del Matadero y rasparse el pecho.",
+      "Comerse una palmera de chocolate gigante de la confitería."
+    ],
+    "example": "No llegué a tiempo y palmé el bus, me toca ir al galguil.",
+    "difficulty": "medium",
+    "tags": ["verbo", "pérdida", "negativo"],
+    "note": "También usado en juegos o apuestas: 'Palmé 40 pavos jugando a las cartas'."
+  },
+  {
+    "word": "percal",
+    "displayWord": "PERCAL",
+    "correctDefinition": "Panorama, situación, tema o cosa en general.",
+    "fakeDefinitions": [
+      "Una chaqueta de lluvia típica de pescador amarilla chillón.",
+      "El césped artificial gastado del campo de fútbol del barrio.",
+      "Un tipo de bocadillo grasiento que venden a las afueras de Riazor."
+    ],
+    "example": "Vio cómo estaba el percal y se fue a gambín antes de que le cayeran unas.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "contexto", "comodín"],
+    "note": "Deriva de la jerga de sastrería 'conocer el percal'."
+  },
+  {
+    "word": "plas",
+    "displayWord": "PLAS",
+    "correctDefinition": "Hermano, hermana, o un colega muy íntimo.",
+    "fakeDefinitions": [
+      "Un bofetón dado con la mano abierta en toda la cara.",
+      "El ruido que hace una gaviota al robarte el bocata de las manos.",
+      "Un chupito de licor café tomado de golpe sin respirar."
+    ],
+    "example": "El jueves viene mi plas con su já, ya los verás.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "familia", "amistad"],
+    "note": "Del caló 'planó'. A veces sin distinción de género (mi plas es mi hermano o hermana)."
+  },
+  {
+    "word": "puril",
+    "displayWord": "PURIL",
+    "correctDefinition": "Padre, madre o persona mayor en general.",
+    "fakeDefinitions": [
+      "Un puro barato y apestoso que se fuma en las bodas.",
+      "El temido inspector del bus urbano que sube a pedir los billetes.",
+      "Una bebida mezcla de ron, piña y a saber qué más."
+    ],
+    "example": "Achanta, que están mis puriles y nos van a mangar la bronca.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "familia", "respeto"],
+    "note": "Del caló 'purí'. No confundir con 'pureta' que es más despectivo."
+  },
+  {
+    "word": "rabar",
+    "displayWord": "RABAR",
+    "correctDefinition": "Vomitar, expeler el contenido del estómago después de tajarse.",
+    "fakeDefinitions": [
+      "Rayar el coche del vecino al intentar aparcar en paralelo.",
+      "Robar el único asiento libre en el Vitrasa haciéndose el loco.",
+      "Hablar muy rápido sin que se te entienda absolutamente nada."
+    ],
+    "example": "Buah neno, está echando todo el rabao el pavo en la esquina.",
+    "difficulty": "medium",
+    "tags": ["verbo", "fiesta", "asqueroso"],
+    "note": "Sinónimo de llamar a Guajardo o a Juan."
+  },
+  {
+    "word": "safar",
+    "displayWord": "SAFAR",
+    "correctDefinition": "Librarse de un castigo, un problema o un marrón. Salvarse por los pelos.",
+    "fakeDefinitions": [
+      "Ir de safari dominguero por los montes del parque de Bens.",
+      "Hacer surf en la playa del Orzán un día de temporal rojo.",
+      "Sacar la basura a deshora y que te vea el camión."
+    ],
+    "example": "Vaya piñazo tuvimos con el buga, aún safamos que casi escartamos de la dura.",
+    "difficulty": "easy",
+    "tags": ["verbo", "suerte", "cotidiano"],
+    "note": "Del gallego con seseo 'zafar'."
+  },
+  {
+    "word": "trece catorce",
+    "displayWord": "TRECE CATORCE",
+    "correctDefinition": "Un engaño, una jugada por la espalda o un truco para dejarte tirado.",
+    "fakeDefinitions": [
+      "La línea de bus urbano que te lleva a la Universidad y siempre va llena.",
+      "El código postal falso que das cuando no quieres que te manden spam.",
+      "La hora exacta a la que encienden las luces del Paseo Marítimo."
+    ],
+    "example": "Buah neno, cómo me hizo la trece catorce, me dejó esperando una hora.",
+    "difficulty": "hard",
+    "tags": ["expresión", "engaño", "broma"],
+    "note": "Origen en la broma de talleres donde se manda al novato a buscar la llave 13-14 (que no existe)."
+  },
+  {
+    "word": "truja",
+    "displayWord": "TRUJA",
+    "correctDefinition": "Cigarrillo, piti.",
+    "fakeDefinitions": [
+      "Una persona que hace magia mala en la calle Real pidiendo monedas.",
+      "Una zapatilla de deporte vieja, desgastada y que huele mal.",
+      "La señora que vende castañas asadas en la plaza de Lugo en invierno."
+    ],
+    "example": "Déjame la pava, chorbo, que no tengo guita pa pillar trujas.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "vicio", "calle"],
+    "note": "Del caló 'trujan' (tabaco)."
+  },
+  {
+    "word": "varanda",
+    "displayWord": "VARANDA",
+    "correctDefinition": "Juerga, parranda, o persona muy fiestera y vividora.",
+    "fakeDefinitions": [
+      "El palo gordo de madera que se usa para atizar la lumerada de San Juan.",
+      "Apoyarse a mirar al mar en la barandilla del paseo marítimo horas y horas.",
+      "Una bebida barata que mezcla cerveza, limón y licor café."
+    ],
+    "example": "Tú eres un varanda y andas todo el día por ahí de rachí.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "fiesta", "histórico"],
+    "note": "Mítico término que sale en el lema: 'Vivir na Coruña que bonito é, andar de varanda e dormir de pé'."
   }
 ]

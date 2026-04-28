@@ -509,5 +509,425 @@
     "difficulty": "medium",
     "tags": ["sustantivo", "fiesta", "histórico"],
     "note": "Mítico término que sale en el lema: 'Vivir na Coruña que bonito é, andar de varanda e dormir de pé'."
+  },
+  {
+    "word": "buga",
+    "displayWord": "BUGA",
+    "correctDefinition": "Coche, tu vehículo o el bólido con el que vas a la playa.",
+    "fakeDefinitions": [
+      "Un tipo de gaviota pequeña y muy ruidosa.",
+      "Bajar rodando a lo loco por Monte Alto.",
+      "Echarse un pedo silencioso pero letal."
+    ],
+    "example": "El buga se me quedó sin sopa en el Pasaje, oíste.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "transporte", "básico"],
+    "note": "Aceptado en toda España, pero un clásico coruñés."
+  },
+  {
+    "word": "rular",
+    "displayWord": "RULAR",
+    "correctDefinition": "Pasar algo de mano en mano o funcionar como es debido.",
+    "fakeDefinitions": [
+      "Caerse rodando por las escaleras de la Torre.",
+      "Robar disimuladamente un mechero en el bar.",
+      "Quedarse profundamente dormido en el bus urbano."
+    ],
+    "example": "Oye, rúlame ahí tu práctica que la mía no tira.",
+    "difficulty": "easy",
+    "tags": ["verbo", "acción", "cotidiano"],
+    "note": "Se usa tanto para 'pásame eso' como para 'esto no rula'."
+  },
+  {
+    "word": "chuzar",
+    "displayWord": "CHUZAR",
+    "correctDefinition": "Llover a cántaros o beber alcohol hasta no tenerte en pie.",
+    "fakeDefinitions": [
+      "Clavar mal la sombrilla en la arena de Riazor.",
+      "Pedir otra ronda de Estrella cuando ya es tarde.",
+      "Lanzar piedras planas a rebotar en el mar."
+    ],
+    "example": "No pudimos ir a la yuky porque chuzaba muchísimo.",
+    "difficulty": "medium",
+    "tags": ["verbo", "clima", "fiesta"],
+    "note": "Chuzarse es emborracharse a lo bestia."
+  },
+  {
+    "word": "sobar",
+    "displayWord": "SOBAR",
+    "correctDefinition": "Dormir a pierna suelta después de una larga noche de fiesta.",
+    "fakeDefinitions": [
+      "Robar el único asiento libre en el tranvía.",
+      "Comerse un pincho de tortilla de un solo bocado.",
+      "Quedarse atascado con el coche en Alfonso Molina."
+    ],
+    "example": "Vámonos ya a sobar que es muy tarde, neno.",
+    "difficulty": "easy",
+    "tags": ["verbo", "descanso", "básico"],
+    "note": "Del caló, totalmente asentado."
+  },
+  {
+    "word": "guita",
+    "displayWord": "GUITA",
+    "correctDefinition": "Dinero, billetes, plata o eso que siempre falta a final de mes.",
+    "fakeDefinitions": [
+      "Gaviota gigante que roba bocadillos a los turistas.",
+      "Lluvia fina, fría y extremadamente molesta.",
+      "Persona muy pesada que te da la chapa."
+    ],
+    "example": "Déjame la pava, que no tengo guita para pillar trujas.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "dinero", "básico"],
+    "note": "Sin guita no hay garimbas."
+  },
+  {
+    "word": "pavo",
+    "displayWord": "PAVO",
+    "correctDefinition": "Una moneda de euro o un tío cualquiera que te cruzas.",
+    "fakeDefinitions": [
+      "Un plato combinado típico de la plaza de María Pita.",
+      "El temido inspector que pide billetes en el bus urbano.",
+      "Un coche muy viejo, ruidoso y destartalado."
+    ],
+    "example": "Me vino la pava y me pidió una truja.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "persona", "dinero"],
+    "note": "Antes era un duro (5 pesetas), hoy es un euro o un tío."
+  },
+  {
+    "word": "já",
+    "displayWord": "JÁ",
+    "correctDefinition": "Chica, novia o pareja sentimental femenina de un colega.",
+    "fakeDefinitions": [
+      "Expresión mítica para burlarse de alguien que se cae.",
+      "Bebida fortísima mezclada con licor café y hielo.",
+      "Tocar el claxon del bus urbano repetidas veces."
+    ],
+    "example": "El jueves viene mi plas con su já.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "persona", "amor"],
+    "note": "Nunca se dice 'la chorba de Juan', se dice 'la já de Juan'."
+  },
+  {
+    "word": "chaveo",
+    "displayWord": "CHAVEO / CHAVEA",
+    "correctDefinition": "Chico, novio o pareja sentimental masculina de alguien.",
+    "fakeDefinitions": [
+      "Llavero hortera del Deportivo de la Coruña.",
+      "Gaviota vieja y enorme que vive en el Orzán.",
+      "El barman de la cervecería de Estrella Galicia."
+    ],
+    "example": "A ver cuándo nos presentas al chaveo, eh.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "persona", "amor"],
+    "note": "Ojo: chavea es femenino (la novia) y chaveo masculino (el novio)."
+  },
+  {
+    "word": "chinorro",
+    "displayWord": "CHINORRO",
+    "correctDefinition": "Niño pequeño o chavalito que todavía no levanta ni un palmo.",
+    "fakeDefinitions": [
+      "Viento helado que te corta la cara en invierno.",
+      "Piedra afilada en la orilla de la playa del Matadero.",
+      "Pincho de tortilla grasiento pero riquísimo."
+    ],
+    "example": "Ese chinorro se pasa el día montándola en el parque.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "infancia"],
+    "note": "Procede del caló 'chinorré'."
+  },
+  {
+    "word": "julay",
+    "displayWord": "JULAY",
+    "correctDefinition": "Gilipollas, pardillo o persona ingenua que se deja engañar fácilmente.",
+    "fakeDefinitions": [
+      "Helado de hielo que se derrite súper rápido.",
+      "Turista madrileño perdido buscando María Pita.",
+      "Fiesta playera hawaiana en San Amaro."
+    ],
+    "example": "Vendeulle la moto rota porque vio que era un julay.",
+    "difficulty": "medium",
+    "tags": ["insulto", "persona"],
+    "note": "Palabra comodín imprescindible."
+  },
+  {
+    "word": "pirolo",
+    "displayWord": "PIROLO",
+    "correctDefinition": "Tonto, lento, pardillo o el típico que nunca se entera de nada.",
+    "fakeDefinitions": [
+      "Pájaro pequeño típico de los jardines de la Marina.",
+      "Helado de hielo muy barato y de colores chillones.",
+      "Billete de bus urbano que ya ha caducado."
+    ],
+    "example": "Yo no soy un pirolo como tú, así que achanta.",
+    "difficulty": "medium",
+    "tags": ["insulto", "persona", "despectivo"],
+    "note": "Apirolado es su evolución a adjetivo de estado."
+  },
+  {
+    "word": "trenco",
+    "displayWord": "TRENCO",
+    "correctDefinition": "Patoso, torpe o bobo que tropieza hasta con su propia sombra.",
+    "fakeDefinitions": [
+      "Bus urbano articulado gigante que bloquea la calle.",
+      "Viento huracanado del norte que tira las papeleras.",
+      "Bocadillo grasiento de calamares con mucha mayonesa."
+    ],
+    "example": "El Juan es mazo trenco, me lo bajé veinte veces en el Counter.",
+    "difficulty": "hard",
+    "tags": ["adjetivo", "insulto", "habilidad"],
+    "note": "Del gallego 'trenco' (zambo)."
+  },
+  {
+    "word": "nécora",
+    "displayWord": "NÉCORA",
+    "correctDefinition": "Persona extremadamente torpe o totalmente negada para hacer alguna tarea.",
+    "fakeDefinitions": [
+      "Pescador gruñón del puerto de A Coruña.",
+      "Autobús nocturno Búho que sube a Monte Alto.",
+      "Vendedor callejero de castañas asadas en invierno."
+    ],
+    "example": "Paso, neno, que yo para esto soy un nécora.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "insulto", "torpeza"],
+    "note": "Aparte del marisco, es ser un negado."
+  },
+  {
+    "word": "empanarse",
+    "displayWord": "EMPANARSE",
+    "correctDefinition": "Darse cuenta de algo muy tarde o quedarse totalmente embobado.",
+    "fakeDefinitions": [
+      "Comer demasiadas empanadillas de bonito seguidas.",
+      "Llenarse de arena hasta las orejas en Riazor.",
+      "Abrigar excesivamente al perro en pleno invierno."
+    ],
+    "example": "Iba un poco atorao y no me empané de nada.",
+    "difficulty": "easy",
+    "tags": ["verbo", "estado", "despiste"],
+    "note": "Estar empanado es el pan de cada día."
+  },
+  {
+    "word": "cundir",
+    "displayWord": "CUNDIR",
+    "correctDefinition": "Disfrutar mucho de un plan o que algo merezca realmente la pena.",
+    "fakeDefinitions": [
+      "Conducir muy rápido por el centro de la ciudad.",
+      "Llenar el vaso de garimba hasta el borde mismo.",
+      "Quedarse tirado sin dinero a mitad de la noche."
+    ],
+    "example": "Me cunde ir a la playa, que hace calor.",
+    "difficulty": "easy",
+    "tags": ["verbo", "positivo", "expresión"],
+    "note": "Respuesta afirmativa de oro: '¡Me cunde!'."
+  },
+  {
+    "word": "mimá",
+    "displayWord": "¡MIMÁ!",
+    "correctDefinition": "Expresión súper mítica de asombro, admiración o sorpresa absoluta.",
+    "fakeDefinitions": [
+      "Madre muy pesada que te llama mil veces.",
+      "Siesta muy corta y reparadora después de comer.",
+      "Gaviota pequeña y escandalosa de María Pita."
+    ],
+    "example": "¡Mimá, qué golazo acaba de meter el Dépor!",
+    "difficulty": "easy",
+    "tags": ["expresión", "asombro", "clásico"],
+    "note": "Prima hermana de '¡Mimén!'."
+  },
+  {
+    "word": "uese",
+    "displayWord": "¡UESE!",
+    "correctDefinition": "Grito de asombro total cuando alguien hace una locura o sobrada.",
+    "fakeDefinitions": [
+      "Saludo rápido e informal entre colegas por la calle.",
+      "El vigilante de la zona ORA que te pone la multa.",
+      "Viento racheado que pega en la Torre de Hércules."
+    ],
+    "example": "¡Uese Jonny rompiéndolo todo en la pista, neno!",
+    "difficulty": "hard",
+    "tags": ["expresión", "asombro"],
+    "note": "A veces es admiración pura y dura."
+  },
+  {
+    "word": "yuqui",
+    "displayWord": "YUQUI",
+    "correctDefinition": "La playa, ese lugar donde te asas o congelas en Coruña.",
+    "fakeDefinitions": [
+      "Bebida dulce que mezcla ron, piña y hielo.",
+      "Turista despistado con cámara de fotos en el centro.",
+      "Gaviota gigante especialista en robar patatas fritas."
+    ],
+    "example": "Hoy vamos a la yuqui que nos cunde con este calor.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "lugar", "ocio"],
+    "note": "Abreviación cariñosa de 'playuqui'."
+  },
+  {
+    "word": "chapar",
+    "displayWord": "CHAPAR",
+    "correctDefinition": "Estudiar a muerte para un examen hasta quemarse las pestañas.",
+    "fakeDefinitions": [
+      "Cerrar la puerta de un golpe fuerte al enfadarse.",
+      "Echar un buen trago de licor café de golpe.",
+      "Ponerse muchísima crema solar blanca en la cara."
+    ],
+    "example": "Hoxe non podo quedar, teño que chapar para o exame.",
+    "difficulty": "easy",
+    "tags": ["verbo", "estudios", "esfuerzo"],
+    "note": "El que chapa saca un 10, no un carolo."
+  },
+  {
+    "word": "petar",
+    "displayWord": "PETAR",
+    "correctDefinition": "Que algo se estropee, que un bar se llene o fornicar.",
+    "fakeDefinitions": [
+      "Comer pipas compulsivamente sentado en un banco.",
+      "Lanzar piedras a lo bruto en el rompeolas.",
+      "Llamar a la puerta de casa súper fuerte."
+    ],
+    "example": "El bus iba petado de gente, no cabía nadie más.",
+    "difficulty": "medium",
+    "tags": ["verbo", "comodín", "acción"],
+    "note": "Depende del contexto significa llenarse o romperse."
+  },
+  {
+    "word": "mallado",
+    "displayWord": "MALLADO",
+    "correctDefinition": "Estar cansadísimo, agotado o totalmente extenuado tras un gran esfuerzo.",
+    "fakeDefinitions": [
+      "Jersey de lana gruesa ideal para el frío invierno.",
+      "Totalmente empapado por culpa de un chaparrón sorpresa.",
+      "Borracho tirado en el suelo incapaz de moverse."
+    ],
+    "example": "Vengo mallado de burlar tanto al fútbol, neno.",
+    "difficulty": "easy",
+    "tags": ["adjetivo", "cansancio", "estado"],
+    "note": "Del gallego, como si te hubieran dado una paliza."
+  },
+  {
+    "word": "engorilarse",
+    "displayWord": "ENGORILARSE",
+    "correctDefinition": "Emocionarse muchísimo, fliparse o venirse arriba demasiado rápido.",
+    "fakeDefinitions": [
+      "Subirse a un árbol alto del parque y no bajar.",
+      "Quedarse atascado sin salida en el tráfico de Alfonso Molina.",
+      "Enfurecerse y gritarle al árbitro en un partido."
+    ],
+    "example": "No te engoriles, chorbo, que la noche acaba de empezar.",
+    "difficulty": "medium",
+    "tags": ["verbo", "emoción", "actitud"],
+    "note": "Sinónimo de venirse arriba o emocionarse sin freno."
+  },
+  {
+    "word": "bambas",
+    "displayWord": "BAMBAS",
+    "correctDefinition": "Zapatillas deportivas, sobre todo las míticas anchas tipo skater.",
+    "fakeDefinitions": [
+      "Chicas despistadas que vienen de turismo desde Madrid.",
+      "Olas gigantes que rompen con fuerza en el Orzán.",
+      "Bebidas baratas y explosivas típicas de botellón."
+    ],
+    "example": "El Juanito se amagó mis bambas nuevas, vaya prea.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "ropa", "calzado"],
+    "note": "Originalmente de la marca Wamba Pirelli."
+  },
+  {
+    "word": "lelas",
+    "displayWord": "LELAS",
+    "correctDefinition": "Gafas o lentes que te pones cuando estás medio chosco.",
+    "fakeDefinitions": [
+      "Chicas que caminan muy despacio ocupando toda la acera.",
+      "Gaviotas ruidosas que planean sobre el Paseo Marítimo.",
+      "Campanas de la iglesia vieja repicando el domingo."
+    ],
+    "example": "Le rompieron las lelas de un balonazo jugando al fútbol.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "accesorios"],
+    "note": "Indispensables para el que no jupa nada."
+  },
+  {
+    "word": "peluco",
+    "displayWord": "PELUCO",
+    "correctDefinition": "Reloj, ya sea uno barato del chino o uno carísimo.",
+    "fakeDefinitions": [
+      "Corte de pelo muy hortera o que te han trasquilado.",
+      "Tipo de pez feo pero sabroso típico gallego.",
+      "Abrigo gigante de plumas para no pasar pelete."
+    ],
+    "example": "¿Qué hora gasta tu peluco, chorbo?",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "accesorio", "clásico"],
+    "note": "Del castellano, pero súper usado en el Koruño clásico."
+  },
+  {
+    "word": "piltra",
+    "displayWord": "PILTRA",
+    "correctDefinition": "La cama o lecho donde caes rendido después de la esmorga.",
+    "fakeDefinitions": [
+      "Borrachera brutal a base de chupitos de licor café.",
+      "Lluvia muy fina, fría y extremadamente molesta.",
+      "Moneda falsa o extranjera que parece un euro."
+    ],
+    "example": "Me voy a la piltra que no me tengo en pie.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "descanso", "lugar"],
+    "note": "Del caló, sinónimo de sobre o cama."
+  },
+  {
+    "word": "cacharro",
+    "displayWord": "CACHARRO",
+    "correctDefinition": "Un buen cubata, combinado o copa para salir por el Orzán.",
+    "fakeDefinitions": [
+      "Coche muy viejo, ruidoso y destartalado.",
+      "Móvil con la pantalla rota que a duras penas funciona.",
+      "Barco pesquero pequeño y oxidado del puerto."
+    ],
+    "example": "¿Me invitas a un cacharro o qué, neno?",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "bebida", "fiesta"],
+    "note": "Para la cerveza se usa garimba, para las copas cacharro."
+  },
+  {
+    "word": "tajarse",
+    "displayWord": "TAJARSE",
+    "correctDefinition": "Emborracharse muchísimo o reírse de forma súper escandalosa con los colegas.",
+    "fakeDefinitions": [
+      "Cortarse con una roca escondida en la playa del Matadero.",
+      "Comer pinchos de tortilla hasta reventar el botón del pantalón.",
+      "Pelearse a puñetazos con el gorila de la puerta del bar."
+    ],
+    "example": "Ayer nos tajamos de la dura en los jardines.",
+    "difficulty": "medium",
+    "tags": ["verbo", "fiesta", "exceso"],
+    "note": "Pillar una buena tajada es un clásico de la fiesta."
+  },
+  {
+    "word": "rachí",
+    "displayWord": "RACHÍ",
+    "correctDefinition": "Noche mítica de fiesta loca y descontrolada por toda la ciudad.",
+    "fakeDefinitions": [
+      "Viento helado de madrugada que te congela la cara.",
+      "Romper los pantalones jugando al fútbol en la calle.",
+      "Coche patrulla de la policía que pasa buscando bronca."
+    ],
+    "example": "Irse de rachí un jueves por la noche es una locura.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "fiesta", "noche"],
+    "note": "Del caló 'rachí' que significa: noche."
+  },
+  {
+    "word": "matizar",
+    "displayWord": "MATIZAR",
+    "correctDefinition": "Flirtear, tontear o tirarle los trastos a otra persona en el bar.",
+    "fakeDefinitions": [
+      "Añadir un chorro de licor café a la cerveza fría.",
+      "Aparcar de milagro en un hueco imposible en Monte Alto.",
+      "Pagar una cuenta grande solo con monedas de céntimo."
+    ],
+    "example": "El pavo se está matizando a la Ana, fíjate.",
+    "difficulty": "medium",
+    "tags": ["verbo", "amor", "ligue"],
+    "note": "Estar de matiz es estar en pleno flirteo."
   }
 ]

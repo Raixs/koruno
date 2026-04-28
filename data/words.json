@@ -2,7 +2,7 @@
   {
     "word": "bute",
     "displayWord": "BUTE",
-    "correctDefinition": "Bueno, genial o de mucha calidad.",
+    "correctDefinition": "Estar genial, ser de mucha calidad o molar mil, como un bocata de calamares del Copacabana.",
     "fakeDefinitions": [
       "El bus que va lleno a Riazor en día de partido.",
       "La mochila que pesa más que el propio chinorro.",
@@ -16,7 +16,7 @@
   {
     "word": "fucar",
     "displayWord": "FUCAR",
-    "correctDefinition": "Robar algo con disimulo.",
+    "correctDefinition": "Robar algo con muchísimo disimulo en un despiste, como las gaviotas con los bocatas en María Pita.",
     "fakeDefinitions": [
       "Meter prisa a alguien de mala manera.",
       "Fallar estrepitosamente ligando en el Orzán.",
@@ -31,7 +31,7 @@
   {
     "word": "kel",
     "displayWord": "KEL",
-    "correctDefinition": "Casa, vivienda, refugio u hogar.",
+    "correctDefinition": "Tu casa, vivienda o ese dulce refugio al que te vas a sobar después de cerrar los bares.",
     "fakeDefinitions": [
       "El viento polar helado que entra de repente por el Paseo Marítimo.",
       "Una gaviota traicionera que te roba el bocadillo en la playa.",
@@ -45,7 +45,7 @@
   {
     "word": "achantar",
     "displayWord": "ACHANTAR",
-    "correctDefinition": "Callarse, apartarse, quitarse de en medio, esconderse o rendirse por miedo.",
+    "correctDefinition": "Callarse, apartarse o rendirse por miedo cuando la movida se pone fea o vienen los gorilas.",
     "fakeDefinitions": [
       "Pisar una gaviota en la Marina sin querer.",
       "Comerse un pincho de tortilla del Bombilla de un solo bocado.",
@@ -59,7 +59,7 @@
   {
     "word": "bulebule",
     "displayWord": "BULEBULE",
-    "correctDefinition": "Persona muy inquieta o con mucha prisa.",
+    "correctDefinition": "Persona muy inquieta y con tanta prisa que no es capaz de parar quieta ni cinco segundos en la silla.",
     "fakeDefinitions": [
       "El bus que va al estadio de Riazor.",
       "Bebida mezcla de licor café y fanta.",
@@ -72,7 +72,7 @@
   {
     "word": "chorbo",
     "displayWord": "CHORBO / CHORBA",
-    "correctDefinition": "Chico o chica, chaval; también vocativo para llamar a alguien.",
+    "correctDefinition": "Chico o chica, chaval, o simplemente la forma más mítica de llamar a tu colega de toda la vida.",
     "fakeDefinitions": [
       "Un plato típico de cuchara para revivir los domingos de resaca.",
       "El revisor de la ORA acechando tu coche en Juan Flórez.",
@@ -86,7 +86,7 @@
   {
     "word": "neno",
     "displayWord": "NENO",
-    "correctDefinition": "Vocativo comodín para llamar a literalmente cualquier persona.",
+    "correctDefinition": "Vocativo comodín absoluto que sirve para llamar a cualquiera, desde tu mejor amigo hasta el camarero.",
     "fakeDefinitions": [
       "Un niño pequeño que todavía no sabe andar sin caerse.",
       "El conductor gruñón del bus urbano de la línea 11.",
@@ -99,7 +99,7 @@
   },
   {
     "word": "escarallar",
-    "correctDefinition": "Romper, estropear o dejar algo inservible.",
+    "correctDefinition": "Romper, estropear o dejar algo totalmente inservible, como que se te caiga el móvil en el Paseo Marítimo.",
     "fakeDefinitions": [
       "Caerse redondo por las escaleras de la Torre.",
       "Comer demasiadas pipas y atragantarse.",
@@ -112,11 +112,11 @@
   {
     "word": "parguela",
     "displayWord": "PARGUELA",
-    "correctDefinition": "Persona pringada, ingenua o que se deja engañar.",
+    "correctDefinition": "Persona pringada, muy ingenua o que se deja engañar fácilmente por cualquier espabilado.",
     "fakeDefinitions": [
-      "Un tipo de paraguas que no aguanta el viento del Orzán.",
-      "Especie de gaviota gigante que ataca en María Pita.",
-      "El ayudante del cobrador del tranvía."
+      "Un tipo de paraguas que no aguanta el viento huracanado del Orzán.",
+      "Especie de gaviota gigante que ataca a traición en María Pita.",
+      "El ayudante del cobrador del antiguo tranvía."
     ],
     "example": "Non sexas parguela y dille que che devolva os cartos.",
     "difficulty": "medium",
@@ -125,11 +125,11 @@
   {
     "word": "kunda",
     "displayWord": "KUNDA",
-    "correctDefinition": "Coche, generalmente viejo o destartalado.",
+    "correctDefinition": "Coche, generalmente viejo, ruidoso y destartalado, ideal para ir a la playa de Bastiagueiro con cinco colegas.",
     "fakeDefinitions": [
-      "Quedarse dormido en la playa del Matadero.",
-      "Una fiesta clandestina en los bajos del estadio.",
-      "El viento polar que corta la cara en invierno."
+      "Quedarse dormido en la arena en la playa del Matadero.",
+      "Una fiesta clandestina en los bajos del estadio de Riazor.",
+      "El viento polar que corta la cara en invierno cruzando el puente del Pasaje."
     ],
     "example": "Mete as cousas na kunda que nos piramos á praia.",
     "difficulty": "medium",
@@ -137,11 +137,11 @@
   },
   {
     "word": "trapallada",
-    "correctDefinition": "Cosa mal hecha, inútil o de muy poco valor.",
+    "correctDefinition": "Cosa mal hecha, una chapuza inútil o un trabajo que no vale ni un duro, como un paraguas de los chinos en temporal.",
     "fakeDefinitions": [
-      "Una empanada rellena de sobras de la semana.",
-      "Un tropiezo aparatoso en la calle Real.",
-      "La técnica secreta para no pagar en la zona azul."
+      "Una empanada reseca rellena de las sobras de la semana pasada.",
+      "Un tropiezo muy aparatoso caminando por la calle Real.",
+      "La técnica secreta de los veteranos para no pagar en la zona azul."
     ],
     "example": "Vaia trapallada de chollo che fixeron na casa.",
     "difficulty": "easy",
@@ -150,11 +150,11 @@
   {
     "word": "esmorga",
     "displayWord": "ESMORGA",
-    "correctDefinition": "Juerga, fiesta descontrolada y borrachera.",
+    "correctDefinition": "Juerga brutal, fiesta descontrolada y borrachera mítica que suele terminar desayunando churros en Bonilla.",
     "fakeDefinitions": [
-      "Un monstruo mitológico que vive en la Torre de Hércules.",
-      "La niebla densa que cubre la ciudad de repente.",
-      "Un desayuno grasiento para curar la resaca en un bar de barrio."
+      "Un monstruo mitológico que vive encerrado en la Torre de Hércules.",
+      "La niebla densa y traicionera que cubre la ciudad de repente.",
+      "Un desayuno súper grasiento para curar la resaca en un bar de barrio."
     ],
     "example": "Vaia esmorga nos pillamos onte, aínda me doe a cabeza.",
     "difficulty": "hard",
@@ -164,11 +164,11 @@
   {
     "word": "amagar",
     "displayWord": "AMAGAR",
-    "correctDefinition": "Plagiar, imitar o copiar descaradamente a alguien.",
+    "correctDefinition": "Plagiar, imitar o copiar descaradamente el estilo de alguien, como si te compraras las mismas zapatillas que tu colega.",
     "fakeDefinitions": [
-      "Hacer el intento de pagar la cuenta pero escaquearse siempre.",
-      "Esconderse del inspector en el bus de la Compañía de Tranvías.",
-      "Pedir una Estrella Galicia y que te intenten colar una Mahou."
+      "Hacer el intento de pagar la cuenta en el bar pero escaquearse siempre.",
+      "Esconderse del inspector debajo de los asientos en el bus de Tranvías.",
+      "Pedir una Estrella Galicia y que el camarero te intente colar una Mahou."
     ],
     "example": "El plas de Juanito te amagó las bambas, chorbo, se pilló las mismas.",
     "difficulty": "medium",
@@ -178,11 +178,11 @@
   {
     "word": "apirolado",
     "displayWord": "APIROLADO",
-    "correctDefinition": "Atontado, confundido, que no se entera de la movida.",
+    "correctDefinition": "Estar atontado, muy confundido o en la parra, como si te acabaras de levantar de una siesta de tres horas.",
     "fakeDefinitions": [
-      "El que se pide un licor café a las 9 de la mañana sin desayunar.",
-      "Quedarse embobado mirando los destellos de la Torre de Hércules.",
-      "Persona que lleva bufanda y plumas en agosto en Riazor."
+      "El julai que se pide un licor café a las 9 de la mañana sin desayunar.",
+      "Quedarse embobado mirando los destellos del faro de la Torre de Hércules.",
+      "Esa persona friolera que lleva bufanda y plumas en pleno agosto en Riazor."
     ],
     "example": "Después de escartar contra la farola me quedé apirolado unos segundos.",
     "difficulty": "easy",
@@ -192,11 +192,11 @@
   {
     "word": "barul",
     "displayWord": "BARUL",
-    "correctDefinition": "Basura, o un lugar/cosa que es un desastre o una porquería.",
+    "correctDefinition": "Mierda, basura, o referirse a un garito que es un desastre y está que da pena verlo.",
     "fakeDefinitions": [
-      "Un tipo de gaviota gigante que vigila los contenedores del Orzán.",
-      "El bus nocturno Búho que te lleva a Monte Alto a las 4 AM.",
-      "Un charco profundo de barro en los jardines de Méndez Núñez."
+      "Un tipo de gaviota gigante y agresiva que vigila los contenedores del Orzán.",
+      "El mítico bus nocturno Búho que te lleva a Monte Alto de madrugada.",
+      "Un charco profundo de barro y agua sucia en los jardines de Méndez Núñez."
     ],
     "example": "Vaya barul de garito, chorbo, vámonos a otro lado.",
     "difficulty": "medium",
@@ -206,11 +206,11 @@
   {
     "word": "bocoi",
     "displayWord": "BOCOI",
-    "correctDefinition": "Persona muy gorda, corpulenta o pesada, como un tonel.",
+    "correctDefinition": "Persona muy gorda o extremadamente corpulenta, con una silueta similar a la de un barril de cerveza.",
     "fakeDefinitions": [
-      "El sonido que hacen los barcos mercantes al entrar en el puerto.",
-      "Un bocadillo gigante de calamares del Copacabana.",
-      "Una piedra enorme de las que se tiran al Rompeolas."
+      "El sonido grave que hacen los barcos mercantes al entrar en el puerto con niebla.",
+      "Un bocadillo gigante de calamares del Copacabana que te mancha toda la camiseta.",
+      "Una piedra enorme de las que se tiran a lo bruto en el Rompeolas."
     ],
     "example": "Menudo pedazo de bocoi que está hecho tu colega.",
     "difficulty": "hard",
@@ -220,11 +220,11 @@
   {
     "word": "cachada",
     "displayWord": "CACHADA",
-    "correctDefinition": "Situación en la que te pillan in fraganti haciendo algo mal.",
+    "correctDefinition": "Situación tensa en la que te pillan in fraganti con las manos en la masa y ya no tienes escapatoria posible.",
     "fakeDefinitions": [
-      "Una ración de pulpo muy picante que te hace llorar.",
-      "Tirarse de bomba al mar desde las rocas del Matadero.",
-      "Quedarse dormido en el bus y aparecer en la Grela."
+      "Una ración de pulpo con demasiado pimentón picante que te hace llorar.",
+      "Tirarse de bomba al mar desde las rocas del Matadero salpicando a todos.",
+      "Quedarse dormido profundamente en el bus y aparecer de repente en la Grela."
     ],
     "example": "Hoy cachada de la jefa de estudios, que me pilló latando a primera hora.",
     "difficulty": "easy",
@@ -234,11 +234,11 @@
   {
     "word": "chanar",
     "displayWord": "CHANAR",
-    "correctDefinition": "Dominar mucho un tema, saber o entender de algo.",
+    "correctDefinition": "Dominar muchísimo un tema o ser un absoluto máquina y un experto haciendo algo concreto.",
     "fakeDefinitions": [
-      "Llevar el chándal por dentro de los calcetines blancos.",
-      "Caminar inclinado contra el viento huracanado en el Paseo Marítimo.",
-      "Pedir otra ronda de garimbas cuando ya no te tienes en pie."
+      "Llevar el chándal metido por dentro de los calcetines blancos de deporte.",
+      "Caminar muy inclinado contra el viento huracanado en el Paseo Marítimo.",
+      "Pedir valientemente otra ronda de garimbas cuando ya no te tienes en pie."
     ],
     "example": "Ahí, neno, ahí, tú sí que chanas de esto.",
     "difficulty": "easy",
@@ -248,11 +248,11 @@
   {
     "word": "chosco",
     "displayWord": "CHOSCO",
-    "correctDefinition": "Que no ve bien, cegato o medio ciego.",
+    "correctDefinition": "Que no ve bien, está cegato perdido o necesita poner las lelas para distinguir a un colega de lejos.",
     "fakeDefinitions": [
-      "Un tipo de empanada que lleva absolutamente de todo.",
-      "Estar de resaca un domingo por la mañana en Los Cantones.",
-      "Un perrito caliente comprado de madrugada en un carrito."
+      "Un tipo de empanada gigante que lleva absolutamente todas las sobras de la semana.",
+      "Estar de una resaca mortal un domingo por la mañana tirado en Los Cantones.",
+      "Un perrito caliente súper grasiento comprado de madrugada en un carrito callejero."
     ],
     "example": "Tú no junas nel, estás chosco, chorbo. Pon las lelas.",
     "difficulty": "easy",
@@ -262,11 +262,11 @@
   {
     "word": "choupa",
     "displayWord": "CHOUPA",
-    "correctDefinition": "Escupitajo o gota de saliva proyectada sin querer al hablar.",
+    "correctDefinition": "Escupitajo volador o gota de saliva proyectada sin querer hacia el otro al hablar demasiado acalorado.",
     "fakeDefinitions": [
-      "La niebla densa que entra por Riazor y no te deja ver a dos metros.",
-      "Una chaqueta gorda y acolchada para el invierno coruñés.",
-      "Un charco gigante en Alfonso Molina que te salpica al pasar un coche."
+      "La niebla densa que entra por Riazor en verano y no te deja ver ni a dos metros.",
+      "Una chaqueta gorda, acolchada y fea típica para sobrevivir al invierno coruñés.",
+      "Un charco gigante en Alfonso Molina que te salpica de arriba a abajo al pasar un coche."
     ],
     "example": "¡Oes neno, qué asco! Me estás duchando con tanta choupa.",
     "difficulty": "medium",
@@ -276,11 +276,11 @@
   {
     "word": "embarcar",
     "displayWord": "EMBARCAR",
-    "correctDefinition": "Lanzar un objeto (usualmente un balón) a un lugar inaccesible.",
+    "correctDefinition": "Lanzar un balón o un objeto a un tejado, finca o lugar inaccesible del que sabes que jamás volverá.",
     "fakeDefinitions": [
-      "Coger el bus 11 para ir a dar una vuelta infinita a Marineda City.",
-      "Quedarse atrapado en el ascensor panorámico del Monte San Pedro.",
-      "Subirse al barco pirata en las fiestas de María Pita."
+      "Coger el bus 11 sin saber a dónde vas para dar una vuelta infinita a Marineda City.",
+      "Quedarse atascado de forma dramática en el ascensor panorámico del Monte San Pedro.",
+      "Subirse valientemente al barco pirata en los puestecitos de las fiestas de María Pita."
     ],
     "example": "Metí un furolo y embarqué el bolo en aquel tejado, vaya liada.",
     "difficulty": "medium",
@@ -290,11 +290,11 @@
   {
     "word": "escartar",
     "displayWord": "ESCARTAR",
-    "correctDefinition": "Caerse dándose una buena hostia o romperse de la risa.",
+    "correctDefinition": "Pegarse una hostia tremenda cayéndose de morros al suelo, o romperse a carcajadas de la risa de forma descontrolada.",
     "fakeDefinitions": [
-      "Perder la tarjeta Millenium justo cuando vas a fichar en el bus.",
-      "Esconder rápido el botellón cuando pasa el coche de la secreta.",
-      "Descartar cartas malas en una partida de tute en el bar."
+      "Perder la tarjeta Millenium por el hueco del asiento justo cuando vas a fichar en el bus.",
+      "Esconder a toda prisa las botellas del botellón cuando aparece el coche de la secreta.",
+      "Descartar las cartas malas en una partida tensa de tute en el bar de la esquina."
     ],
     "example": "Tropecé con una piedra y escarté de la dura contra el suelo.",
     "difficulty": "easy",
@@ -304,11 +304,11 @@
   {
     "word": "ful",
     "displayWord": "FUL",
-    "correctDefinition": "Mierda, basura, algo de muy poco valor.",
+    "correctDefinition": "Mierda absoluta, basura o cualquier cosa de poquísimo valor que te acaban de intentar colar como si fuera buena.",
     "fakeDefinitions": [
-      "Llenarse de arena los pies y no encontrar las duchas en Riazor.",
-      "El viento racheado de la Torre de Hércules que te da la vuelta al paraguas.",
-      "Una jugada magistral y definitiva jugando al futbolín."
+      "Llenarse de arena mojada los pies y no encontrar ni una ducha funcionando en todo Riazor.",
+      "El viento racheado de la Torre de Hércules que te da la vuelta al paraguas y te lo rompe.",
+      "Una jugada magistral, rápida y definitiva dejando en ridículo al rival jugando al futbolín."
     ],
     "example": "Vaya full de coche, neno, ésto es una puta full, vámonos ya.",
     "difficulty": "easy",
@@ -318,11 +318,11 @@
   {
     "word": "gambear",
     "displayWord": "GAMBEAR",
-    "correctDefinition": "Correr, salir pitando de un sitio.",
+    "correctDefinition": "Correr a toda pastilla o salir pitando de un sitio echando fuego por los pies cuando la cosa se pone tensa.",
     "fakeDefinitions": [
-      "Comerse unas gambas a escondidas en la calle la Estrella.",
-      "Andar de lado como los cangrejos al salir del Orzán tajado.",
-      "Dejar tirado a alguien en una cita sin avisar."
+      "Comerse unas raciones de gambas al ajillo a escondidas en un restaurante de la calle la Estrella.",
+      "Andar de lado tambaleándose como los cangrejos al salir del Orzán a las 6 de la mañana.",
+      "Dejar tirado y plantado a un colega en una cita importante sin avisarle con antelación."
     ],
     "example": "¡Gambea, chorbo, que perdemos el tren y no hay otro!",
     "difficulty": "medium",
@@ -332,11 +332,11 @@
   {
     "word": "garimba",
     "displayWord": "GARIMBA",
-    "correctDefinition": "Cerveza (el líquido elemento dorado, normalmente Estrella Galicia).",
+    "correctDefinition": "Cerveza, el preciado líquido elemento dorado y frío que te bebes de un trago con los colegas en Cuatro Caminos.",
     "fakeDefinitions": [
-      "El adorno tradicional que llevan los gaiteros colgando del traje.",
-      "Una ración extra picante de patatas bravas en el Bombilla.",
-      "Una chica de las afueras de la ciudad que viene de fiesta al centro."
+      "El adorno tradicional de borlas que llevan los gaiteros colgando del traje en las fiestas.",
+      "Una ración extra picante de patatas bravas en el Bombilla que te hace sudar la gota gorda.",
+      "Una chica despistada de las afueras de la ciudad que viene de fiesta al centro y se pierde."
     ],
     "example": "Vámonos de garimbas al salir de currar, neno.",
     "difficulty": "easy",
@@ -346,11 +346,11 @@
   {
     "word": "latar",
     "displayWord": "LATAR",
-    "correctDefinition": "Hacer novillos, faltar a clase o a una obligación intencionadamente.",
+    "correctDefinition": "Hacer novillos o escaquearse de ir a clase intencionadamente para irse a dar un rule o sentarse en un banco.",
     "fakeDefinitions": [
-      "Meter goles de rebote usando botes de Coca-Cola vacíos.",
-      "Tirarse horas muertas en un banco de los jardines de Méndez Núñez.",
-      "Lanzar piedras planas al mar desde el Rompeolas a ver si botan."
+      "Meter goles de rebote y chiripa usando botes de Coca-Cola aplastados en el patio del colegio.",
+      "Tirarse horas muertas bebiendo latas en un banco de madera escondido en los jardines de Méndez Núñez.",
+      "Lanzar piedras planas al mar desde el Rompeolas intentando batir el récord de botes en el agua."
     ],
     "example": "Hoy cachada de la jefa de estudios, que me pilló latando a primera hora.",
     "difficulty": "easy",
@@ -360,11 +360,11 @@
   {
     "word": "maqueado",
     "displayWord": "MAQUEADO",
-    "correctDefinition": "Arreglado, guapo, con mucho estilo (persona o cosa).",
+    "correctDefinition": "Ir súper arreglado, ponerse guapo y tener muchísimo estilo para salir a romper la noche coruñesa el sábado.",
     "fakeDefinitions": [
-      "Un coche de los 90 con el tubo de escape trucado para que haga ruido.",
-      "Estar mareado después de montar en los caballitos de los jardines.",
-      "Una empanada que se ha pasado de horno y está negra por los bordes."
+      "Un coche viejo de los 90 con el tubo de escape trucado en un taller de barrio para que haga más ruido.",
+      "Estar profundamente mareado y con el estómago del revés después de montar en los caballitos de los jardines.",
+      "Una empanada gigante que se ha pasado bastante de horno y está dura y negra por todos los bordes."
     ],
     "example": "Esa já siempre va muy maqueada cuando sale de fiestuki.",
     "difficulty": "medium",
@@ -374,11 +374,11 @@
   {
     "word": "najar",
     "displayWord": "NAJAR",
-    "correctDefinition": "Irse, marcharse, pirarse, abrirse de un sitio.",
+    "correctDefinition": "Irse, marcharse, abrirse o pirar de un sitio apresuradamente porque se hace tarde o ya no pintas nada ahí.",
     "fakeDefinitions": [
-      "Comerse un buen plato de navajas a la plancha.",
-      "Hacer un corte de mangas desde la ventanilla del coche.",
-      "Salpicar agua de los charcos a los peatones al pasar con el buga."
+      "Comerse un buen plato de navajas frescas a la plancha chupándose los dedos de arriba a abajo.",
+      "Hacer un corte de mangas rabioso desde la ventanilla del coche al que se te acaba de colar en la rotonda.",
+      "Salpicar intencionadamente el agua de los charcos a los peatones despistados al pasar rápido con el buga."
     ],
     "example": "Me najo pal kel, chorbo, que ya va siendo hora de sobar.",
     "difficulty": "easy",
@@ -388,11 +388,11 @@
   {
     "word": "palmar",
     "displayWord": "PALMAR",
-    "correctDefinition": "Perder algo, extraviarlo, perder el bus o directamente morirse.",
+    "correctDefinition": "Perder la cartera de fiesta, quedarse frustrado sin el bus en la parada o, en el peor de los casos, morirse.",
     "fakeDefinitions": [
-      "Dar palmas y aplaudir cuando aterriza el avión de Ryanair en Alvedro.",
-      "Tirarse en plancha en la playa del Matadero y rasparse el pecho.",
-      "Comerse una palmera de chocolate gigante de la confitería."
+      "Dar palmas rítmicas y aplaudir con euforia incomprensible cuando aterriza por fin el avión de Ryanair en Alvedro.",
+      "Tirarse en plancha en la marea baja en la playa del Matadero y acabar rascándose todo el pecho con la arena.",
+      "Comerse tú solo una palmera de chocolate gigante de la mejor confitería de la ciudad para merendar."
     ],
     "example": "No llegué a tiempo y palmé el bus, me toca ir al galguil.",
     "difficulty": "medium",
@@ -402,11 +402,11 @@
   {
     "word": "percal",
     "displayWord": "PERCAL",
-    "correctDefinition": "Panorama, situación, tema o cosa en general.",
+    "correctDefinition": "El panorama general, la situación tensa del momento o el cotilleo y tema de conversación del que todo el mundo habla.",
     "fakeDefinitions": [
-      "Una chaqueta de lluvia típica de pescador amarilla chillón.",
-      "El césped artificial gastado del campo de fútbol del barrio.",
-      "Un tipo de bocadillo grasiento que venden a las afueras de Riazor."
+      "Una clásica y fea chaqueta de lluvia típica de pescador de un color amarillo chillón que se ve a kilómetros.",
+      "Ese césped artificial negro, gastado y que raspa de los campos de fútbol míticos de barrio de la ciudad.",
+      "Un tipo de bocadillo misterioso y muy grasiento que venden a las afueras de Riazor los días que hay partido grande."
     ],
     "example": "Vio cómo estaba el percal y se fue a gambín antes de que le cayeran unas.",
     "difficulty": "medium",
@@ -416,11 +416,11 @@
   {
     "word": "plas",
     "displayWord": "PLAS",
-    "correctDefinition": "Hermano, hermana, o un colega muy íntimo.",
+    "correctDefinition": "Hermano, hermana o ese colega súper íntimo de toda la vida que es literalmente como de tu propia familia.",
     "fakeDefinitions": [
-      "Un bofetón dado con la mano abierta en toda la cara.",
-      "El ruido que hace una gaviota al robarte el bocata de las manos.",
-      "Un chupito de licor café tomado de golpe sin respirar."
+      "Un bofetón tremendo y sonoro dado con la mano totalmente abierta en toda la cara en medio de una discusión.",
+      "Ese ruido tan característico que hace una gaviota furiosa justo cuando te roba de las manos el bocata entero.",
+      "Echarse al estómago un chupito caliente de licor café tomado de golpe y sin pararse ni siquiera a respirar."
     ],
     "example": "El jueves viene mi plas con su já, ya los verás.",
     "difficulty": "hard",
@@ -430,11 +430,11 @@
   {
     "word": "puril",
     "displayWord": "PURIL",
-    "correctDefinition": "Padre, madre o persona mayor en general.",
+    "correctDefinition": "Tu padre, tu madre o cualquier persona mayor entrañable que ya tiene sus buenos brejes y experiencia encima.",
     "fakeDefinitions": [
-      "Un puro barato y apestoso que se fuma en las bodas.",
-      "El temido inspector del bus urbano que sube a pedir los billetes.",
-      "Una bebida mezcla de ron, piña y a saber qué más."
+      "Un enorme puro barato y apestoso de esos que se empeñan en fumar los cuñados al final de los banquetes de bodas.",
+      "El temido y mítico inspector del bus urbano que sube sigilosamente a pedir los billetes a los que se cuelan.",
+      "Una bebida dudosa de botellón mezcla de ron de mala calidad, piña y a saber qué más cosas sacaron de la despensa."
     ],
     "example": "Achanta, que están mis puriles y nos van a mangar la bronca.",
     "difficulty": "easy",
@@ -444,11 +444,11 @@
   {
     "word": "rabar",
     "displayWord": "RABAR",
-    "correctDefinition": "Vomitar, expeler el contenido del estómago después de tajarse.",
+    "correctDefinition": "Vomitar en una esquina, echar la pota o expeler todo el contenido del estómago después de una buena tajada.",
     "fakeDefinitions": [
-      "Rayar el coche del vecino al intentar aparcar en paralelo.",
-      "Robar el único asiento libre en el Vitrasa haciéndose el loco.",
-      "Hablar muy rápido sin que se te entienda absolutamente nada."
+      "Rayar el coche del vecino por un lado al intentar aparcar desesperadamente en paralelo en una calle muy estrecha.",
+      "Robar astutamente el único asiento que queda libre en el bus haciéndose el loco o el que está despistado.",
+      "Hablar muy rápido y sin hacer ni una pausa de forma que no se te entienda absolutamente nada de lo que dices."
     ],
     "example": "Buah neno, está echando todo el rabao el pavo en la esquina.",
     "difficulty": "medium",
@@ -458,11 +458,11 @@
   {
     "word": "safar",
     "displayWord": "SAFAR",
-    "correctDefinition": "Librarse de un castigo, un problema o un marrón. Salvarse por los pelos.",
+    "correctDefinition": "Librarse en el último segundo de un buen castigo, evitar un marrón gigante o salvarse por los pelos de una gran liada.",
     "fakeDefinitions": [
-      "Ir de safari dominguero por los montes del parque de Bens.",
-      "Hacer surf en la playa del Orzán un día de temporal rojo.",
-      "Sacar la basura a deshora y que te vea el camión."
+      "Irse de safari en plan dominguero aventurero un domingo cualquiera por los montes del parque de Bens.",
+      "Tratar de hacer surf heroicamente en la playa del Orzán justo un día que hay aviso de temporal rojo y olas gigantes.",
+      "Sacar sigilosamente la basura a deshora cuando nadie te ve pero que justo te cruce la mirada el señor del camión."
     ],
     "example": "Vaya piñazo tuvimos con el buga, aún safamos que casi escartamos de la dura.",
     "difficulty": "easy",
@@ -472,11 +472,11 @@
   {
     "word": "trece catorce",
     "displayWord": "TRECE CATORCE",
-    "correctDefinition": "Un engaño, una jugada por la espalda o un truco para dejarte tirado.",
+    "correctDefinition": "Un engaño rastrero, una jugarreta por la espalda o un truco sucio que te hacen para dejarte tirado y con cara de tonto.",
     "fakeDefinitions": [
-      "La línea de bus urbano que te lleva a la Universidad y siempre va llena.",
-      "El código postal falso que das cuando no quieres que te manden spam.",
-      "La hora exacta a la que encienden las luces del Paseo Marítimo."
+      "La legendaria línea de bus urbano que te lleva siempre dando vueltas a la Universidad y suele ir hasta los topes.",
+      "Ese código postal inventado o falso que sueles dar cuando quieres que las empresas dejen de enviarte tanto spam.",
+      "La hora enigmática y exacta a la que tradicionalmente se encienden todas las farolas mágicas del Paseo Marítimo."
     ],
     "example": "Buah neno, cómo me hizo la trece catorce, me dejó esperando una hora.",
     "difficulty": "hard",
@@ -486,11 +486,11 @@
   {
     "word": "truja",
     "displayWord": "TRUJA",
-    "correctDefinition": "Cigarrillo, piti.",
+    "correctDefinition": "Cigarrillo, piti rubio o de liar que normalmente te fumas haciendo la mítica pausa fuera en la puerta de los bares.",
     "fakeDefinitions": [
-      "Una persona que hace magia mala en la calle Real pidiendo monedas.",
-      "Una zapatilla de deporte vieja, desgastada y que huele mal.",
-      "La señora que vende castañas asadas en la plaza de Lugo en invierno."
+      "Esa persona peculiar que hace trucos de magia bastante mala por la calle Real intentando conseguir que le des unas monedas.",
+      "Una zapatilla de deporte que tienes por casa, que está muy vieja, completamente desgastada y que empieza a oler mal.",
+      "La entrañable señora que lleva años y años vendiendo humeantes castañas asadas en su carrito en la plaza de Lugo en pleno invierno."
     ],
     "example": "Déjame la pava, chorbo, que no tengo guita pa pillar trujas.",
     "difficulty": "medium",
@@ -500,11 +500,11 @@
   {
     "word": "varanda",
     "displayWord": "VARANDA",
-    "correctDefinition": "Juerga, parranda, o persona muy fiestera y vividora.",
+    "correctDefinition": "Una buena juerga, tremenda parranda o esa persona súper fiestera y vividora que siempre es la última en cerrar los bares.",
     "fakeDefinitions": [
-      "El palo gordo de madera que se usa para atizar la lumerada de San Juan.",
-      "Apoyarse a mirar al mar en la barandilla del paseo marítimo horas y horas.",
-      "Una bebida barata que mezcla cerveza, limón y licor café."
+      "El palo gordo de madera que se usa peligrosamente de espada para atizar y avivar las ascuas de la lumerada en la noche de San Juan.",
+      "Estar horas apoyado contemplando nostálgicamente el mar en la vieja y oxidada barandilla blanca del paseo marítimo.",
+      "Una bebida barata e improvisada para un botellón casero que consiste en mezclar cerveza, limón y licor café a ojo."
     ],
     "example": "Tú eres un varanda y andas todo el día por ahí de rachí.",
     "difficulty": "medium",

@@ -13,9 +13,51 @@ export function getPlayableQuestions(words, type = 'definition') {
   return words.filter((word) => word.type === type);
 }
 
-export function selectGameQuestions(words, count, rng = Math.random) {
+export function getQuestionId(question) {
+  return String(question.word || '').trim().toLowerCase();
+}
+
+function pickQuestion(candidates, usedIds, rng) {
+  const available = candidates.filter((question) => !usedIds.has(getQuestionId(question)));
+  return shuffle(available, rng)[0] || null;
+}
+
+export function selectGameQuestions(words, options = {}) {
+  const {
+    count = 5,
+    difficultyPattern = [],
+    recentWordIds = [],
+    rng = Math.random
+  } = options;
   const playableQuestions = getPlayableQuestions(words);
-  return shuffle(playableQuestions, rng).slice(0, Math.min(count, playableQuestions.length));
+  const recentIds = new Set(recentWordIds.map((wordId) => String(wordId).trim().toLowerCase()));
+  const selected = [];
+  const usedIds = new Set();
+  const maxQuestions = Math.min(count, playableQuestions.length);
+
+  for (let index = 0; index < maxQuestions; index += 1) {
+    const targetDifficulty = difficultyPattern[index];
+    const nonRecent = playableQuestions.filter((question) => !recentIds.has(getQuestionId(question)));
+    const preferred = targetDifficulty
+      ? nonRecent.filter((question) => question.difficulty === targetDifficulty)
+      : nonRecent;
+    const fallbackNonRecent = nonRecent;
+    const fallbackDifficulty = targetDifficulty
+      ? playableQuestions.filter((question) => question.difficulty === targetDifficulty)
+      : playableQuestions;
+
+    const question = pickQuestion(preferred, usedIds, rng)
+      || pickQuestion(fallbackNonRecent, usedIds, rng)
+      || pickQuestion(fallbackDifficulty, usedIds, rng)
+      || pickQuestion(playableQuestions, usedIds, rng);
+
+    if (!question) break;
+
+    selected.push(question);
+    usedIds.add(getQuestionId(question));
+  }
+
+  return selected;
 }
 
 export function buildDefinitionOptions(question, rng = Math.random) {

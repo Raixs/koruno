@@ -8,11 +8,20 @@ export const DEFAULT_STATS = {
   totalCorrect: 0,
   totalWrong: 0,
   currentStreak: 0,
-  lastPlayedDailyId: null
+  lastPlayedDailyId: null,
+  recentWords: []
 };
 
 function toSafeNumber(value) {
   return Number.isFinite(value) && value >= 0 ? value : 0;
+}
+
+function normalizeRecentWords(value) {
+  if (!Array.isArray(value)) return [];
+
+  return value
+    .map((wordId) => String(wordId || '').trim().toLowerCase())
+    .filter(Boolean);
 }
 
 export function normalizeStats(value = {}) {
@@ -24,7 +33,8 @@ export function normalizeStats(value = {}) {
     totalCorrect: toSafeNumber(value.totalCorrect),
     totalWrong: toSafeNumber(value.totalWrong),
     currentStreak: toSafeNumber(value.currentStreak),
-    lastPlayedDailyId: typeof value.lastPlayedDailyId === 'string' ? value.lastPlayedDailyId : null
+    lastPlayedDailyId: typeof value.lastPlayedDailyId === 'string' ? value.lastPlayedDailyId : null,
+    recentWords: normalizeRecentWords(value.recentWords)
   };
 }
 
@@ -55,13 +65,28 @@ export function recordGameStarted(stats) {
   });
 }
 
-export function recordGameCompleted(stats, { score, correct, wrong }) {
+export function updateRecentWords(previousWords = [], playedWords = [], limit = 20) {
+  const recentWords = normalizeRecentWords(previousWords);
+
+  normalizeRecentWords(playedWords).forEach((wordId) => {
+    const existingIndex = recentWords.indexOf(wordId);
+    if (existingIndex >= 0) {
+      recentWords.splice(existingIndex, 1);
+    }
+    recentWords.push(wordId);
+  });
+
+  return recentWords.slice(-limit);
+}
+
+export function recordGameCompleted(stats, { score, correct, wrong, playedWords = [], recentWordsLimit = 20 }) {
   return normalizeStats({
     ...stats,
     gamesCompleted: stats.gamesCompleted + 1,
     bestScore: Math.max(stats.bestScore, score),
     lastScore: score,
     totalCorrect: stats.totalCorrect + correct,
-    totalWrong: stats.totalWrong + wrong
+    totalWrong: stats.totalWrong + wrong,
+    recentWords: updateRecentWords(stats.recentWords, playedWords, recentWordsLimit)
   });
 }

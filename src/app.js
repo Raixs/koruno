@@ -1,6 +1,6 @@
 import { GAME_CONFIG, WORDS_URL } from './config.js';
 import { loadWords } from './data.js';
-import { buildDefinitionOptions, selectGameQuestions } from './game.js';
+import { buildDefinitionOptions, getQuestionId, selectGameQuestions } from './game.js';
 import { calculateQuestionScore, getAnswerPatternSymbol, getRank } from './scoring.js';
 import { buildShareText, copyTextToClipboard } from './share.js';
 import { readStats, recordGameCompleted, recordGameStarted, saveStats } from './storage.js';
@@ -9,6 +9,7 @@ import {
   createUI,
   hideFeedback,
   markAnswered,
+  renderStartStats,
   renderQuestion,
   setConfigText,
   setShareButtonCopied,
@@ -47,6 +48,7 @@ bindUIEvents(ui, {
   onReset: resetGame
 });
 setConfigText(ui, GAME_CONFIG);
+renderStartStats(ui, state.stats);
 
 init();
 
@@ -69,7 +71,11 @@ function startGame() {
   if (state.words.length === 0) return;
 
   stopTimer();
-  state.currentQuestions = selectGameQuestions(state.words, GAME_CONFIG.questionsPerGame);
+  state.currentQuestions = selectGameQuestions(state.words, {
+    count: GAME_CONFIG.questionsPerGame,
+    difficultyPattern: GAME_CONFIG.difficultyPattern,
+    recentWordIds: state.stats.recentWords
+  });
   state.currentIndex = 0;
   state.score = 0;
   state.correctCount = 0;
@@ -178,9 +184,12 @@ function endGame() {
   state.stats = recordGameCompleted(state.stats, {
     score: state.score,
     correct: state.correctCount,
-    wrong: state.wrongCount
+    wrong: state.wrongCount,
+    playedWords: state.currentQuestions.map(getQuestionId),
+    recentWordsLimit: GAME_CONFIG.recentWordsLimit
   });
   saveStats(state.stats);
+  renderStartStats(ui, state.stats);
 
   showEnd(ui, {
     score: state.score,

@@ -15,6 +15,7 @@ export function createUI() {
     startButtonLabel: document.getElementById('start-button-label'),
     startButtonIcon: document.getElementById('start-button-icon'),
     rulesTimeLimit: document.getElementById('rules-time-limit'),
+    startStats: document.getElementById('start-stats'),
     loadStatus: document.getElementById('load-status'),
     wordDisplay: document.getElementById('word-display'),
     optionsContainer: document.getElementById('options-container'),
@@ -44,6 +45,24 @@ export function createUI() {
 export function setConfigText(ui, config) {
   ui.rulesTimeLimit.textContent = String(config.timeLimitSeconds);
   ui.timerText.textContent = String(config.timeLimitSeconds);
+}
+
+export function renderStartStats(ui, stats) {
+  ui.startStats.replaceChildren();
+
+  if (stats.gamesCompleted > 0) {
+    const bestScore = document.createElement('p');
+    const gamesPlayed = document.createElement('p');
+
+    bestScore.className = 'font-black';
+    bestScore.textContent = `🔥 Mellor marca: ${stats.bestScore} pts`;
+    gamesPlayed.className = 'font-black';
+    gamesPlayed.textContent = `🎮 Partidas xogadas: ${stats.gamesCompleted}`;
+    ui.startStats.append(bestScore, gamesPlayed);
+    return;
+  }
+
+  ui.startStats.textContent = 'Aínda non tes marca. A primeira vai ser histórica.';
 }
 
 export function bindUIEvents(ui, handlers) {

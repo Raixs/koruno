@@ -929,5 +929,103 @@
     "difficulty": "medium",
     "tags": ["verbo", "amor", "ligue"],
     "note": "Estar de matiz es estar en pleno flirteo."
+  },
+  {
+    "word": "grelo",
+    "displayWord": "GRELO",
+    "correctDefinition": "Un buen porro o canuto, aunque en el cocido gallego también rinde.",
+    "fakeDefinitions": [
+      "Moco verde y muy duro que no sale de la nariz ni a tiros.",
+      "Canica de cristal de cuando éramos chinorris en el patio del colegio.",
+      "Grito de guerra clásico de los ultras del Dépor en Riazor."
+    ],
+    "example": "Pásame ese grelo, neno, que quiero relajarme un rato.",
+    "difficulty": "medium",
+    "tags": ["sustantivo", "vicio", "humor"],
+    "note": "También significa tener potra ('¡qué grelo tienes!') o el miembro viril."
+  },
+  {
+    "word": "privar",
+    "displayWord": "PRIVAR",
+    "correctDefinition": "Beber como si no hubiera un mañana hasta acabar literalmente mallado.",
+    "fakeDefinitions": [
+      "Robar con muchísimo disimulo el mechero a un colega despistado.",
+      "Quedarse sin nada de cobertura en el móvil entrando a un pub.",
+      "Echar de malas formas a un notas plasta del grupo."
+    ],
+    "example": "Ayer nos pasamos la noche privando y hoy tengo un zumbe brutal.",
+    "difficulty": "easy",
+    "tags": ["verbo", "fiesta", "acción"],
+    "note": "Acción que lleva directamente a acabar como un chuzas."
+  },
+  {
+    "word": "chuzas",
+    "displayWord": "CHUZAS",
+    "correctDefinition": "El mítico borracho de barrio que siempre te cuenta batallas.",
+    "fakeDefinitions": [
+      "Zapatillas de mercadillo que hacen mucho ruido al andar.",
+      "Golpes de viento huracanado que te destrozan el paraguas.",
+      "Navajas de muy mala calidad que pinchan al morderlas."
+    ],
+    "example": "Vaya chuzas está hecho, lleva desde las seis en el bar.",
+    "difficulty": "easy",
+    "tags": ["sustantivo", "persona", "insulto"],
+    "note": "Apócope maestro de la palabra borrachuzas."
+  },
+  {
+    "word": "chusmar",
+    "displayWord": "CHUSMAR",
+    "correctDefinition": "Fumar tranquilamente un buen trujel apoyado en la barandilla de Riazor.",
+    "fakeDefinitions": [
+      "Cotillear lo que hacen los vecinos por la ventana en Labañou.",
+      "Escupir al suelo desde lo alto del puente del Pasaje.",
+      "Beberse sin asco las sobras calientes de los vasos ajenos."
+    ],
+    "example": "Voy a chusmar un rato fuera del bar que hace calor.",
+    "difficulty": "medium",
+    "tags": ["verbo", "vicio", "acción"],
+    "note": "Acción sagrada que se hace siempre fuera del garito."
+  },
+  {
+    "word": "pava",
+    "displayWord": "PAVA",
+    "correctDefinition": "Las últimas caladas del cigarro que siempre te gorrea un buen colega.",
+    "fakeDefinitions": [
+      "Chica estirada de Madrid que viene de veraneo a Coruña.",
+      "Moneda falsa de un euro que no traga la máquina.",
+      "Gaviota torpe que no da cazado ni un trozo de pan."
+    ],
+    "example": "Te pedí la pava neno, y solo me dejaste la chicharra.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "vicio", "restos"],
+    "note": "Es la miseria pura del piti, pero salva vidas."
+  },
+  {
+    "word": "jiñar",
+    "displayWord": "JIÑAR",
+    "correctDefinition": "Ir urgentemente a plantar un buen pino en el baño del garito.",
+    "fakeDefinitions": [
+      "Llorar a moco tendido porque perdiste el último bus nocturno.",
+      "Comerse unas bravas súper picantes a toda velocidad picándose una.",
+      "Fumar a escondidas en el baño del instituto para no ser cachado."
+    ],
+    "example": "Me najo al baño a jiñar que me estoy muriendo, neno.",
+    "difficulty": "easy",
+    "tags": ["verbo", "escatológico", "necesidad"],
+    "note": "Del caló, defecar de toda la vida."
+  },
+  {
+    "word": "flay",
+    "displayWord": "FLAY",
+    "correctDefinition": "Ventosidad traicionera, un gas maloliente que se te escapa en un descuido.",
+    "fakeDefinitions": [
+      "Folletos de discoteca que te dan dando la chapa por la calle Real.",
+      "Mosca de la fruta súper pesada, gorda y molesta en verano.",
+      "Pase de pecho espectacular jugando un partido de fútbol en el barrio."
+    ],
+    "example": "Huele a flay que flipas en este kel, abrid la ventana.",
+    "difficulty": "hard",
+    "tags": ["sustantivo", "asqueroso", "cuerpo"],
+    "note": "También usado para referirse a un peta, pero su origen es confróntese con el francés antiguo flair, olor"
   }
 ]

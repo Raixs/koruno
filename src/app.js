@@ -34,6 +34,7 @@ const state = {
   timeLeftSeconds: GAME_CONFIG.timeLimitSeconds,
   timerInterval: null,
   isAnswering: false,
+  hasTimedOut: false,
   correctCount: 0,
   wrongCount: 0,
   resultPattern: [],
@@ -84,6 +85,7 @@ function startGame() {
   state.resultPattern = [];
   state.currentRankText = '';
   state.isAnswering = false;
+  state.hasTimedOut = false;
   state.stats = recordGameStarted(state.stats);
   saveStats(state.stats);
 
@@ -95,6 +97,7 @@ function startGame() {
 
 function loadCurrentQuestion() {
   state.isAnswering = false;
+  state.hasTimedOut = false;
   state.timeLeftSeconds = GAME_CONFIG.timeLimitSeconds;
 
   const question = state.currentQuestions[state.currentIndex];
@@ -103,7 +106,7 @@ function loadCurrentQuestion() {
   window.scrollTo(0, 0);
   updateQuestionCount(ui, state.currentIndex, state.currentQuestions.length);
   renderQuestion(ui, question, options, ({ button, isCorrect }) => {
-    handleAnswer({ button, isCorrect, isTimeout: false });
+    handleAnswer({ button, isCorrect, isTimeout: state.hasTimedOut });
   });
   startTimer();
 }
@@ -119,8 +122,9 @@ function startTimer() {
 
     if (state.timeLeftSeconds <= 0) {
       state.timeLeftSeconds = 0;
+      state.hasTimedOut = true;
       updateTimer(ui, state.timeLeftSeconds, GAME_CONFIG.timeLimitSeconds);
-      handleAnswer({ button: null, isCorrect: false, isTimeout: true });
+      stopTimer();
       return;
     }
 
@@ -144,7 +148,7 @@ function handleAnswer({ button, isCorrect, isTimeout }) {
   const question = state.currentQuestions[state.currentIndex];
   let points = 0;
 
-  if (isCorrect) {
+  if (isCorrect && !isTimeout) {
     points = calculateQuestionScore(state.timeLeftSeconds, GAME_CONFIG);
     state.score += points;
     state.correctCount += 1;

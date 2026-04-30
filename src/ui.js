@@ -202,15 +202,21 @@ export function showFeedback(ui, { isCorrect, isTimeout, points, question }) {
   void cardWrapper.offsetWidth;
   cardWrapper.classList.add('slide-up');
 
-  if (isCorrect) {
+  if (isTimeout) {
+    ui.feedbackIcon.textContent = '⏱️';
+    ui.feedbackTitle.textContent = pickRandom(TIMEOUT_MESSAGES);
+    ui.feedbackTitle.className = 'text-3xl sm:text-4xl font-black mb-1 text-red-600 text-center';
+    ui.feedbackPoints.textContent = '0 pts · tempo esgotado';
+    ui.feedbackPoints.className = 'font-bold text-red-400 mb-6 text-xl sm:text-2xl';
+  } else if (isCorrect) {
     ui.feedbackIcon.textContent = '🔥';
     ui.feedbackTitle.textContent = pickRandom(CORRECT_MESSAGES);
     ui.feedbackTitle.className = 'text-3xl sm:text-4xl font-black mb-1 text-green-600 text-center';
     ui.feedbackPoints.textContent = `+${points} pts`;
     ui.feedbackPoints.className = 'font-bold text-green-500 mb-6 text-xl sm:text-2xl';
   } else {
-    ui.feedbackIcon.textContent = isTimeout ? '⏱️' : '🤦‍♂️';
-    ui.feedbackTitle.textContent = pickRandom(isTimeout ? TIMEOUT_MESSAGES : WRONG_MESSAGES);
+    ui.feedbackIcon.textContent = '🤦‍♂️';
+    ui.feedbackTitle.textContent = pickRandom(WRONG_MESSAGES);
     ui.feedbackTitle.className = 'text-3xl sm:text-4xl font-black mb-1 text-red-600 text-center';
     ui.feedbackPoints.textContent = '0 pts';
     ui.feedbackPoints.className = 'font-bold text-red-400 mb-6 text-xl sm:text-2xl';

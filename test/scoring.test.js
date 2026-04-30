@@ -45,6 +45,13 @@ describe('scoring', () => {
       timeLeftSeconds: 0,
       timeLimitSeconds: 30
     })).toBe('⬛');
+
+    expect(getAnswerPatternSymbol({
+      isCorrect: true,
+      isTimeout: true,
+      timeLeftSeconds: 0,
+      timeLimitSeconds: 30
+    })).toBe('⬛');
   });
 
   it('returns more granular final ranks', () => {

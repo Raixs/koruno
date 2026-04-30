@@ -9,19 +9,38 @@ export const DEFAULT_STATS = {
   totalWrong: 0,
   currentStreak: 0,
   lastPlayedDailyId: null,
-  recentWords: []
+  recentWords: [],
+  discoveredWords: []
 };
 
 function toSafeNumber(value) {
   return Number.isFinite(value) && value >= 0 ? value : 0;
 }
 
-function normalizeRecentWords(value) {
+function normalizeWordIds(value) {
   if (!Array.isArray(value)) return [];
 
   return value
     .map((wordId) => String(wordId || '').trim().toLowerCase())
     .filter(Boolean);
+}
+
+function appendUniqueWordIds(previousWords = [], playedWords = []) {
+  const wordIds = [];
+
+  normalizeWordIds(previousWords).forEach((wordId) => {
+    if (!wordIds.includes(wordId)) {
+      wordIds.push(wordId);
+    }
+  });
+
+  normalizeWordIds(playedWords).forEach((wordId) => {
+    if (!wordIds.includes(wordId)) {
+      wordIds.push(wordId);
+    }
+  });
+
+  return wordIds;
 }
 
 export function normalizeStats(value = {}) {
@@ -34,7 +53,10 @@ export function normalizeStats(value = {}) {
     totalWrong: toSafeNumber(value.totalWrong),
     currentStreak: toSafeNumber(value.currentStreak),
     lastPlayedDailyId: typeof value.lastPlayedDailyId === 'string' ? value.lastPlayedDailyId : null,
-    recentWords: normalizeRecentWords(value.recentWords)
+    recentWords: normalizeWordIds(value.recentWords),
+    discoveredWords: appendUniqueWordIds(
+      Array.isArray(value.discoveredWords) ? value.discoveredWords : value.recentWords
+    )
   };
 }
 
@@ -66,9 +88,9 @@ export function recordGameStarted(stats) {
 }
 
 export function updateRecentWords(previousWords = [], playedWords = [], limit = 20) {
-  const recentWords = normalizeRecentWords(previousWords);
+  const recentWords = normalizeWordIds(previousWords);
 
-  normalizeRecentWords(playedWords).forEach((wordId) => {
+  normalizeWordIds(playedWords).forEach((wordId) => {
     const existingIndex = recentWords.indexOf(wordId);
     if (existingIndex >= 0) {
       recentWords.splice(existingIndex, 1);
@@ -79,6 +101,10 @@ export function updateRecentWords(previousWords = [], playedWords = [], limit = 
   return recentWords.slice(-limit);
 }
 
+export function updateDiscoveredWords(previousWords = [], playedWords = []) {
+  return appendUniqueWordIds(previousWords, playedWords);
+}
+
 export function recordGameCompleted(stats, { score, correct, wrong, playedWords = [], recentWordsLimit = 20 }) {
   return normalizeStats({
     ...stats,
@@ -87,6 +113,7 @@ export function recordGameCompleted(stats, { score, correct, wrong, playedWords 
     lastScore: score,
     totalCorrect: stats.totalCorrect + correct,
     totalWrong: stats.totalWrong + wrong,
-    recentWords: updateRecentWords(stats.recentWords, playedWords, recentWordsLimit)
+    recentWords: updateRecentWords(stats.recentWords, playedWords, recentWordsLimit),
+    discoveredWords: updateDiscoveredWords(stats.discoveredWords, playedWords)
   });
 }

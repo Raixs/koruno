@@ -35,6 +35,8 @@ export function createUI() {
     finalScore: document.getElementById('final-score'),
     finalBestScore: document.getElementById('final-best-score'),
     finalGamesCompleted: document.getElementById('final-games-completed'),
+    finalDiscoveredWords: document.getElementById('final-discovered-words'),
+    finalDiscoveredMessage: document.getElementById('final-discovered-message'),
     finalRank: document.getElementById('final-rank'),
     finalMessage: document.getElementById('final-message'),
     shareButton: document.getElementById('share-button'),
@@ -47,18 +49,34 @@ export function setConfigText(ui, config) {
   ui.timerText.textContent = String(config.timeLimitSeconds);
 }
 
-export function renderStartStats(ui, stats) {
+export function renderStartStats(ui, stats, totalWords = 0) {
   ui.startStats.replaceChildren();
 
   if (stats.gamesCompleted > 0) {
     const bestScore = document.createElement('p');
     const gamesPlayed = document.createElement('p');
+    const discoveredWords = document.createElement('p');
 
     bestScore.className = 'font-black';
     bestScore.textContent = `🔥 Mellor marca: ${stats.bestScore} pts`;
     gamesPlayed.className = 'font-black';
     gamesPlayed.textContent = `🎮 Partidas xogadas: ${stats.gamesCompleted}`;
     ui.startStats.append(bestScore, gamesPlayed);
+
+    if (totalWords > 0) {
+      const discoveredCount = Math.min(stats.discoveredWords.length, totalWords);
+      discoveredWords.className = 'font-black';
+      discoveredWords.textContent = `📚 Palabros descubertos: ${discoveredCount}/${totalWords}`;
+      ui.startStats.append(discoveredWords);
+
+      if (discoveredCount >= totalWords) {
+        const completedCollection = document.createElement('p');
+        completedCollection.className = 'text-xs mt-1';
+        completedCollection.textContent = 'Xa descubriches todos os palabros. Pronto engadiremos máis.';
+        ui.startStats.append(completedCollection);
+      }
+    }
+
     return;
   }
 
@@ -222,15 +240,19 @@ export function hideFeedback(ui) {
   document.body.style.overflow = '';
 }
 
-export function showEnd(ui, { score, rank, message, stats }) {
+export function showEnd(ui, { score, rank, message, stats, totalWords = 0 }) {
   showScreen(ui, 'end');
   window.scrollTo(0, 0);
+
+  const discoveredCount = totalWords > 0 ? Math.min(stats.discoveredWords.length, totalWords) : stats.discoveredWords.length;
 
   ui.finalScore.textContent = String(score);
   ui.finalBestScore.textContent = String(stats.bestScore);
   ui.finalGamesCompleted.textContent = String(stats.gamesCompleted);
+  ui.finalDiscoveredWords.textContent = totalWords > 0 ? `${discoveredCount}/${totalWords}` : String(discoveredCount);
   ui.finalRank.textContent = rank;
   ui.finalMessage.textContent = `"${message}"`;
+  ui.finalDiscoveredMessage.classList.toggle('hidden', !(totalWords > 0 && discoveredCount >= totalWords));
 }
 
 export function setShareButtonCopied(ui, originalHTML) {

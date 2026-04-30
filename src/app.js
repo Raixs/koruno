@@ -57,6 +57,7 @@ async function init() {
 
   try {
     state.words = await loadWords(WORDS_URL);
+    renderStartStats(ui, state.stats, state.words.length);
     setStartReady(ui);
   } catch (error) {
     console.error(error);
@@ -189,13 +190,14 @@ function endGame() {
     recentWordsLimit: GAME_CONFIG.recentWordsLimit
   });
   saveStats(state.stats);
-  renderStartStats(ui, state.stats);
+  renderStartStats(ui, state.stats, state.words.length);
 
   showEnd(ui, {
     score: state.score,
     rank: result.rank,
     message: result.message,
-    stats: state.stats
+    stats: state.stats,
+    totalWords: state.words.length
   });
 }
 

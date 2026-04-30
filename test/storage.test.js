@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { normalizeStats, recordGameCompleted, updateRecentWords } from '../src/storage.js';
+import { normalizeStats, recordGameCompleted, updateDiscoveredWords, updateRecentWords } from '../src/storage.js';
 
 describe('storage helpers', () => {
   it('keeps recent words normalized and limited', () => {
@@ -21,5 +21,18 @@ describe('storage helpers', () => {
     expect(nextStats.gamesCompleted).toBe(3);
     expect(nextStats.bestScore).toBe(800);
     expect(nextStats.recentWords).toEqual(['kel', 'bute', 'fucar']);
+    expect(nextStats.discoveredWords).toEqual(['kel', 'bute', 'fucar']);
+  });
+
+  it('keeps discovered words unique and keeps old discoveries', () => {
+    const discoveredWords = updateDiscoveredWords(['kel', 'Neno'], ['bute', 'kel', 'Fucar']);
+
+    expect(discoveredWords).toEqual(['kel', 'neno', 'bute', 'fucar']);
+  });
+
+  it('deduplicates discovered words while normalizing old stats', () => {
+    const stats = normalizeStats({ discoveredWords: ['Kel', 'kel', 'Neno'] });
+
+    expect(stats.discoveredWords).toEqual(['kel', 'neno']);
   });
 });
